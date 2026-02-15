@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DCG Panama — DEF CON Group Panama</title>
+  <meta name="description" content="DEF CON Group Panama — Panama's first offensive security community. Hackers, pentesters, researchers. There are no spectators here.">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="icon" type="image/png" href="assets/dcgpanamalogonobg.png">
+</head>
+<body>
+
+  <!-- Matrix Rain Background -->
+  <canvas id="matrix-canvas"></canvas>
+  <div class="grid-bg"></div>
+  <div class="scanlines"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/dcgpanamalogonobg.png" alt="DCG Panama">
+      <span>DCG Panama</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">[=]</button>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="pages/manifesto.html">Manifesto</a></li>
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/events.html">Events</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="page-content">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <!-- Boot Sequence -->
+      <div class="boot-sequence"></div>
+
+      <!-- Logo -->
+      <div class="hero-logo-container">
+        <img src="assets/dcgpanamalogonobg.png" alt="DCG Panama" class="hero-logo">
+      </div>
+
+      <!-- Tagline -->
+      <div class="hero-tagline glitch flicker" data-text="There Are No Spectators Here">There Are No Spectators Here</div>
+      <div class="hero-sub">Panama's First DEF CON Group &mdash; Offensive Security Community</div>
+
+      <!-- Stats -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-value" data-count="9">0</span>
+          <span class="stat-label">Focus Areas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" data-count="5">0</span>
+          <span class="stat-label">Core Values</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" data-count="4">0</span>
+          <span class="stat-label">Core Goals</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" data-count="1">0</span>
+          <span class="stat-label">Chapter</span>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- Focus Areas Section -->
+    <section class="home-section">
+      <h2 class="section-header">// Focus Areas</h2>
+      <div class="section-divider"></div>
+
+      <div class="focus-grid">
+        <div class="focus-card">
+          <span class="focus-card-icon">⚔️</span>
+          <div class="focus-card-title">Red Team Operations</div>
+          <div class="focus-card-desc">Full adversary simulation and attack emulation against enterprise environments.</div>
+        </div>
+        <div class="focus-card">
+          <span class="focus-card-icon">🌐</span>
+          <div class="focus-card-title">Network & Web Exploitation</div>
+          <div class="focus-card-desc">Infrastructure and application-level attacks. Protocol analysis and exploitation techniques.</div>
+        </div>
+        <div class="focus-card">
+          <span class="focus-card-icon">👁️‍🗨️</span>
+          <div class="focus-card-title">EDR Evasion</div>
+          <div class="focus-card-desc">Defeating modern endpoint security controls and detection bypass techniques.</div>
+        </div>
+        <div class="focus-card">
+          <span class="focus-card-icon">🔓</span>
+          <div class="focus-card-title">Physical Security</div>
+          <div class="focus-card-desc">Real-world physical penetration testing and access bypass techniques.</div>
+        </div>
+        <div class="focus-card">
+          <span class="focus-card-icon">🔧</span>
+          <div class="focus-card-title">Hardware Hacking</div>
+          <div class="focus-card-desc">IoT, firmware analysis, and embedded systems exploitation.</div>
+        </div>
+        <div class="focus-card">
+          <span class="focus-card-icon">📡</span>
+          <div class="focus-card-title">RF Hacking</div>
+          <div class="focus-card-desc">Software Defined Radio, wireless protocols, and RF exploitation research.</div>
+        </div>
+        <div class="focus-card">
+          <span class="focus-card-icon">🚗</span>
+          <div class="focus-card-title">Automotive Security</div>
+          <div class="focus-card-desc">Vehicle systems research, CAN bus analysis, and automotive attack surfaces.</div>
+        </div>
+        <div class="focus-card">
+          <span class="focus-card-icon">🎯</span>
+          <div class="focus-card-title">Threat Emulation</div>
+          <div class="focus-card-desc">Mimicking real-world threat actors and adversary simulation frameworks.</div>
+        </div>
+        <div class="focus-card">
+          <span class="focus-card-icon">🏢</span>
+          <div class="focus-card-title">Active Directory</div>
+          <div class="focus-card-desc">Enterprise domain compromise, privilege escalation, and lateral movement.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="cta-text glitch" data-text="You either remain ordinary. Or you become something else.">You either remain ordinary. Or you become something else.</div>
+      <a href="pages/about.html" class="cta-btn">Access Terminal →</a>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-line"><span class="green">DCG Panama</span> — DEF CON Group Panama</div>
+    <div class="footer-line">Panama's First DEF CON Offensive Security Community</div>
+    <div class="footer-line" style="margin-top:0.5rem;opacity:0.4">We do not ask for permission to understand systems. We take them apart.</div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

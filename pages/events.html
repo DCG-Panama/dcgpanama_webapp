@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DCG Panama — Events</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/events.css">
+  <link rel="icon" type="image/png" href="../assets/dcgpanamalogonobg.png">
+</head>
+<body>
+
+  <canvas id="matrix-canvas"></canvas>
+  <div class="grid-bg"></div>
+  <div class="scanlines"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <a href="../index.html" class="nav-brand">
+      <img src="../assets/dcgpanamalogonobg.png" alt="DCG Panama">
+      <span>DCG Panama</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">[=]</button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="page-content events-page">
+
+    <!-- Header -->
+    <div class="events-header">
+      <h1 class="glitch fade-in-up" data-text="// Events">// Events</h1>
+      <p class="fade-in-up delay-1">Meetups, CTFs, Workshops, and Operations</p>
+      <div class="text-center fade-in-up delay-2">
+        <div class="events-status">
+          <span class="status-indicator"></span>
+          <span class="status-text">System Active — Monitoring for events</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Events Timeline -->
+    <div class="events-timeline">
+
+      <!-- Coming Soon -->
+      <div class="events-coming-soon fade-in-up delay-3">
+        <!-- <div class="coming-soon-icon">📡</div> -->
+        <div class="coming-soon-text cursor-blink">Initializing Event Queue</div>
+        <div class="coming-soon-sub mt-2">
+          DCG Panama is preparing its first series of events.<br>
+          Stay connected. The signal is incoming.
+        </div>
+      </div>
+
+      
+      <div class="event-card upcoming fade-in-up delay-4">
+        <div class="event-date">Coming Soon — Feb. 2026</div>
+        <span class="event-tag meetup">Meetup</span>
+        <div class="event-title">DCG Panama — First meetup</div>
+        <div class="event-desc">
+          The inaugural meetup for Panama's DEF CON Group. Meet the community, 
+          discuss the roadmap, and connect with fellow operators. 
+          This is where it starts.
+        </div>
+        <div class="event-meta">
+          <span>Panama City, Panama</span>
+          <span>Open to all skill levels</span>
+          <span>Details TBA</span>
+        </div>
+      </div>
+
+      <!-- <div class="event-card fade-in-up delay-5">
+        <div class="event-date">Coming Soon — 2025</div>
+        <span class="event-tag ctf">CTF</span>
+        <div class="event-title">First Blood — Introductory CTF</div>
+        <div class="event-desc">
+          A hands-on Capture The Flag event designed to test and build skills 
+          across web exploitation, binary analysis, cryptography, and more. 
+          Compete or learn — either way, you level up.
+        </div>
+        <div class="event-meta">
+          <span>Format: Jeopardy-style</span>
+          <span>Teams welcome</span>
+          <span>Details TBA</span>
+        </div>
+      </div> -->
+
+      <!-- <div class="event-card fade-in-up delay-6">
+        <div class="event-date">Coming Soon — 2025</div>
+        <span class="event-tag workshop">Workshop</span>
+        <div class="event-title">Offensive Tooling 101</div>
+        <div class="event-desc">
+          A deep-dive workshop on building custom offensive tools. 
+          From payload generation to evasion techniques — 
+          we build what we need.
+        </div>
+        <div class="event-meta">
+          <span>Hands-on lab</span>
+          <span>Bring your laptop</span>
+          <span>Details TBA</span>
+        </div>
+      </div> -->
+
+    </div>
+
+    <!-- Contact Section -->
+    <div class="events-contact fade-in-up delay-6">
+      <p>Want to propose a talk, workshop, or event?<br>We're building this together.</p>
+      <div class="contact-links">
+        <a href="mailto:dcgpanama@zerotrustoffsec.com" class="contact-link">Email us</a>
+        <a href="https://wa.me/50765016118" class="contact-link">Chat with us</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-line"><span class="green">DCG Panama</span> — DEF CON Group Panama</div>
+    <div class="footer-line" style="opacity:0.4">We seek systems designed to stop us.</div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

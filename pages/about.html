@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DCG Panama — About // Terminal</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/about.css">
+  <link rel="icon" type="image/png" href="../assets/dcgpanamalogonobg.png">
+</head>
+<body>
+
+  <canvas id="matrix-canvas"></canvas>
+  <div class="grid-bg"></div>
+  <div class="scanlines"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <a href="../index.html" class="nav-brand">
+      <img src="../assets/dcgpanamalogonobg.png" alt="DCG Panama">
+      <span>DCG Panama</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">[=]</button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="page-content about-page">
+
+    <div class="terminal-window">
+      <!-- Title Bar -->
+      <div class="terminal-titlebar">
+        <div class="terminal-dots">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+        </div>
+        <div class="terminal-title">operator@dcgpanama: ~</div>
+        <div class="terminal-title-right">bash 5.1.0</div>
+      </div>
+
+      <!-- Terminal Body -->
+      <div class="terminal-body">
+        <div class="terminal-output"></div>
+
+        <!-- Prompt -->
+        <div class="terminal-prompt">
+          <span class="prompt-user">operator@dcgpanama</span>
+          <span class="prompt-separator">:</span>
+          <span class="prompt-path">~</span>
+          <span class="prompt-symbol">$</span>
+          <input type="text" class="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="type a command...">
+        </div>
+      </div>
+
+      <!-- Status Bar -->
+      <div class="terminal-statusbar">
+        <div class="statusbar-left">
+          <div class="statusbar-item">
+            <span class="statusbar-dot"></span>
+            <span>CONNECTED</span>
+          </div>
+          <div class="statusbar-item">
+            <span>UTF-8</span>
+          </div>
+          <div class="statusbar-item">
+            <span>BASH</span>
+          </div>
+        </div>
+        <div>
+          <span>Type "help" for commands</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-line"><span class="green">DCG Panama</span> — DEF CON Group Panama</div>
+    <div class="footer-line" style="opacity:0.4">Capability is everything.</div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/terminal.js"></script>
+</body>
+</html>

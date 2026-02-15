@@ -1,0 +1,256 @@
+/* ============================================
+   DCG PANAMA — EVENTS PAGE
+   ============================================ */
+
+.events-page {
+  min-height: 100vh;
+  padding: 100px 2rem 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* --- Page Header --- */
+.events-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.events-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: var(--green-primary);
+  text-shadow: 0 0 15px var(--green-glow);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.events-header p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--white-dim);
+  letter-spacing: 2px;
+}
+
+/* --- Status Display --- */
+.events-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 1.5rem;
+  padding: 12px 24px;
+  border: 1px solid var(--green-dark);
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green-primary);
+  box-shadow: 0 0 8px var(--green-glow);
+  animation: ledPulse 2s ease infinite;
+}
+
+.status-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--green-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* --- Timeline --- */
+.events-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.events-timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--green-primary), var(--green-dark), transparent);
+}
+
+/* --- Event Card --- */
+.event-card {
+  position: relative;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  border: 1px solid var(--gray-mid);
+  background: rgba(26, 26, 26, 0.3);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  left: -33px;
+  top: 2rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  border: 2px solid var(--green-primary);
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+.event-card:hover {
+  border-color: var(--green-dim);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.05);
+}
+
+.event-card.upcoming::before {
+  background: var(--green-primary);
+  animation: pulseGlow 2s ease infinite;
+}
+
+.event-date {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--green-primary);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.event-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--bg-primary);
+  background: var(--green-primary);
+  padding: 2px 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.event-tag.ctf { background: var(--cyan-accent); }
+.event-tag.workshop { background: var(--amber); }
+.event-tag.meetup { background: var(--green-primary); }
+.event-tag.talk { background: var(--red-accent); color: #fff; }
+
+.event-title {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.event-desc {
+  font-size: 0.8rem;
+  color: var(--white-dim);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.event-meta {
+  display: flex;
+  gap: 2rem;
+  font-size: 0.7rem;
+  color: var(--white-dim);
+  flex-wrap: wrap;
+}
+
+.event-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.event-meta span::before {
+  content: '>';
+  color: var(--green-primary);
+}
+
+/* --- Coming Soon State --- */
+.events-coming-soon {
+  text-align: center;
+  padding: 4rem 2rem;
+  border: 1px dashed var(--green-dark);
+  margin-top: 2rem;
+}
+
+.coming-soon-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.coming-soon-text {
+  font-family: var(--font-retro);
+  font-size: 1.4rem;
+  color: var(--green-primary);
+  text-shadow: 0 0 10px var(--green-glow);
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+
+.coming-soon-sub {
+  font-size: 0.8rem;
+  color: var(--white-dim);
+  letter-spacing: 1px;
+}
+
+/* --- Subscribe / Contact Section --- */
+.events-contact {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--gray-mid);
+}
+
+.events-contact p {
+  font-size: 0.85rem;
+  color: var(--white-dim);
+  margin-bottom: 1rem;
+}
+
+.contact-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--green-dim);
+  text-decoration: none;
+  border: 1px solid var(--green-dark);
+  padding: 8px 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--green-primary);
+  border-color: var(--green-primary);
+  box-shadow: 0 0 15px var(--green-glow);
+}
+
+@media (max-width: 768px) {
+  .events-timeline {
+    padding-left: 30px;
+  }
+
+  .event-card::before {
+    left: -23px;
+  }
+
+  .events-timeline::before {
+    left: 8px;
+  }
+}
