@@ -259,7 +259,7 @@ COMMUNITY EVENTS:
     }
     return '/' + resolved.join('/') || '/';
   }
-
+  
   // --- Add line to output ---
   function addLine(text, className = '') {
     const div = document.createElement('div');
@@ -491,6 +491,46 @@ COMMUNITY EVENTS:
   function processCommand(cmdStr) {
     const trimmed = cmdStr.trim();
     if (!trimmed) return;
+
+    // ===== SECURITY CHECK =====
+    // Check for attack patterns BEFORE processing
+    if (window._0xSECCHECK) {
+      const secCheck = window._0xSECCHECK(trimmed);
+      if (secCheck._0x8j9k) {
+        commandHistory.push(trimmed);
+        historyIndex = commandHistory.length;
+        addCommandLine(trimmed);
+        addLine('');
+        addLine(secCheck._0x9l0m, 'error');
+        addLine('');
+        
+        // Log the attack
+        if (window._0xLOGATTACK) {
+          window._0xLOGATTACK(secCheck._0xan1b, trimmed);
+        }
+        
+        setTimeout(() => {
+          terminalBody.scrollTop = terminalBody.scrollHeight;
+        }, 10);
+        return;
+      }
+    }
+
+    // Check Easter eggs
+    if (window._0xEASTEREGG && window._0xEASTEREGG[trimmed]) {
+      commandHistory.push(trimmed);
+      historyIndex = commandHistory.length;
+      addCommandLine(trimmed);
+      addLine('');
+      addLine(window._0xEASTEREGG[trimmed], 'highlight');
+      addLine('');
+      
+      setTimeout(() => {
+        terminalBody.scrollTop = terminalBody.scrollHeight;
+      }, 10);
+      return;
+    }
+    // ===== END SECURITY CHECK =====
 
     commandHistory.push(trimmed);
     historyIndex = commandHistory.length;
