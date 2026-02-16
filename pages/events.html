@@ -62,7 +62,7 @@
       <div class="event-card upcoming fade-in-up delay-4">
         <div class="event-date">Coming Soon — Feb. 2026</div>
         <span class="event-tag meetup">Meetup</span>
-        <div class="event-title">DCG Panama — First meetup</div>
+        <div class="event-title">DCG PANAMA 1</div>
         <div class="event-desc">
           The inaugural meetup for Panama's DEF CON Group. Meet the community, 
           discuss the roadmap, and connect with fellow operators. 
@@ -71,17 +71,64 @@
         <div class="event-meta">
           <span>Panama City, Panama</span>
           <span>Open to all skill levels</span>
-          <span>Details TBA</span>
+          <span>Willingness to learn</span>
         </div>
+
+        <!-- Agenda Dropdown -->
+        <div class="event-dropdown">
+          <button class="dropdown-toggle">
+            <span class="dropdown-icon">></span>
+            <span>Agenda</span>
+          </button>
+          <div class="dropdown-content">
+            <table class="agenda-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Activity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>TBD</td>
+                  <td>TBD</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Talks Dropdown -->
+        <div class="event-dropdown">
+          <button class="dropdown-toggle">
+            <span class="dropdown-icon">></span>
+            <span>Talks</span>
+          </button>
+          <div class="dropdown-content">
+            <div class="talk-item">
+              <div class="talk-title">Hallucinations and Evasions: Red Teaming with AI-Generated Malware</div>
+              <div class="talk-speaker">Speaker: Alejandro Torres</div>
+              <div class="talk-desc">
+                This session reverse-engineers the prompt engineering behind modern adversary simulation. We demonstrate how carefully crafted instructions bypass safety filters to generate functional tradecraft—from infostealers to modular C2 frameworks with persistence and process injection.
+                <br>
+                We analyze which AI architectures resist malicious generation versus which collapse under iterative prompting, testing capabilities across commercial and open-source models. Live demonstrations include evasion of microsoft Defender solutions and achieving zero detections on popular scanning platforms.
+                <br>
+                All demonstrated techniques are confined to authorized red team operations
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <a href="https://luma.com/event/evt-HY0BH4I3NU492Yx" class="cta-btn" data-luma-action="checkout" data-luma-event-id="evt-HY0BH4I3NU492Yx">Register for Event</a>
       </div>
 
     </div>
 
     <!-- Contact Section -->
     <div class="events-contact fade-in-up delay-6">
-      <p>Want to propose a talk, workshop, or event?<br>We're building this together.</p>
+      <p>Want to propose a talk, workshop, event or sponsor us?<br>We're building this together.</p>
       <div class="contact-links">
-        <a href="mailto:dcgpanama@zerotrustoffsec.com" class="contact-link">Email us</a>
+        <a href="/cdn-cgi/l/email-protection#7115121601101f101c10310b14031e05030402051e17170214125f121e1c" class="contact-link">Email us</a>
         <a href="https://wa.me/50765016118" class="contact-link">Chat with us</a>
       </div>
     </div>
@@ -96,5 +143,6 @@
   </footer>
 
   <script src="../js/main.js"></script>
+  <script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js"></script>
 </body>
 </html>
