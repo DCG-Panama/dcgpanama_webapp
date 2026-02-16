@@ -130,10 +130,35 @@ function animateCounters() {
   });
 }
 
+// --- Event Dropdowns ---
+function initEventDropdowns() {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const content = toggle.nextElementSibling;
+      const isOpen = toggle.classList.contains('active');
+      
+      // Close all other dropdowns
+      document.querySelectorAll('.dropdown-toggle').forEach(other => {
+        if (other !== toggle) {
+          other.classList.remove('active');
+          other.nextElementSibling.classList.remove('open');
+        }
+      });
+      
+      // Toggle current dropdown
+      toggle.classList.toggle('active');
+      content.classList.toggle('open');
+    });
+  });
+}
+
 // --- Initialize on DOM Ready ---
 document.addEventListener('DOMContentLoaded', () => {
   initMatrixRain();
   initNavigation();
   initBootSequence();
   animateCounters();
+  initEventDropdowns();
 });
