@@ -110,6 +110,7 @@ Our vision is to create a self-sustaining hacker culture where knowledge flows o
   > Automotive security research
   > Threat emulation and adversary simulation
   > Active Directory attacks
+  > APPSEC
 \\
 [GOAL 3] PROMOTE HANDS-ON LEARNING
   Encourage practical experimentation through:
@@ -180,32 +181,35 @@ There are no spectators here.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 [01] Red Team Operations
-     Full adversary simulation and attack emulation
+We become the adversary. Full-spectrum intrusion, persistence, lateral movement, and complete domain domination without detection.
 \\
 [02] Network & Web Exploitation
-     Infrastructure and application-level attacks
+Breaking exposed surfaces. Exploiting services, abusing protocols, and tearing through web applications to gain initial footholds.
 \\
 [03] EDR Evasion & Detection Bypass
-     Defeating modern endpoint security controls
+Silencing the watchdogs. Bypassing EDR, evading telemetry, and executing payloads while remaining invisible to defensive controls.
 \\
 [04] Physical Security & Access Bypass
-     Real-world physical penetration testing
+When firewalls fail, doors fall next. Lock bypass, badge cloning, and physical intrusion to access what was never meant to be reached.
 \\
 [05] Hardware & Embedded Systems Hacking
-     IoT, firmware, and hardware-level attacks
+Owning devices below the operating system. Firmware extraction, hardware implants, and embedded system compromise.
 \\
 [06] Radio Frequency (RF) Hacking
-     SDR, wireless protocols, RF exploitation
+Weaponizing the airwaves. Intercepting, decoding, and exploiting wireless communications across unknown frequencies.
 \\
 [07] Automotive Security Research
-     Vehicle systems and CAN bus analysis
+Breaking machines in motion. CAN bus injection, ECU compromise, and full control over vehicle systems.
 \\
 [08] Threat Emulation & Adversary Simulation
-     Mimicking real-world threat actors
+Thinking like real attackers. Reproducing nation-state tradecraft, adversary TTPs, and real-world attack chains.
 \\
 [09] Active Directory Attacks
-     Enterprise domain compromise techniques`
-    },
+Total enterprise takeover. Privilege escalation, credential harvesting, and complete domain compromise.
+\\
+[10] APPSEC
+Breaking applications at their core. Injection, logic abuse, auth bypass, and weaponizing code flaws to achieve full compromise.`
+},
     '/operations/activities.txt': {
       type: 'file',
       content: `>> ACTIVITIES & OPERATIONS
