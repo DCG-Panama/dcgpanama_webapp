@@ -283,7 +283,7 @@ COMMUNITY EVENTS:
   function addCommandLine(cmd) {
     const pathDisplay = currentPath === '/' ? '~' : '~' + currentPath;
     addHTML(
-      `<span style="color:var(--green-primary);text-shadow:0 0 5px var(--green-glow)">operator@dcgpanama</span><span style="color:var(--white-dim)">:</span><span style="color:var(--cyan-accent)">${pathDisplay}</span><span style="color:var(--white)">$ ${escapeHtml(cmd)}</span>`,
+      `<span style="color:var(--red-primary);text-shadow:0 0 5px var(--red-glow)">operator@dcgpanama</span><span style="color:var(--white-dim)">:</span><span style="color:var(--cyan-accent)">${pathDisplay}</span><span style="color:var(--white)">$ ${escapeHtml(cmd)}</span>`,
       'command'
     );
   }
@@ -316,7 +316,7 @@ COMMUNITY EVENTS:
       ];
       cmds.forEach(([cmd, desc]) => {
         addHTML(
-          `  <span style="color:var(--green-primary);min-width:180px;display:inline-block;font-weight:bold">${cmd.padEnd(20)}</span> <span style="color:var(--white-dim)">${desc}</span>`
+          `  <span style="color:var(--red-primary);min-width:180px;display:inline-block;font-weight:bold">${cmd.padEnd(20)}</span> <span style="color:var(--white-dim)">${desc}</span>`
         );
       });
       addLine('');
@@ -339,7 +339,7 @@ COMMUNITY EVENTS:
         if (isDir) {
           listing += `<span style="color:var(--cyan-accent);font-weight:bold">${item}/</span>    `;
         } else {
-          listing += `<span style="color:var(--green-dim)">${item}</span>    `;
+          listing += `<span style="color:var(--red-dim)">${item}</span>    `;
         }
       });
       addHTML(listing);

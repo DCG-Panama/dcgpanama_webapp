@@ -7,14 +7,14 @@
 
 /* --- CSS Variables --- */
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #0d0d0d;
+  --bg-primary: #000000;
+  --bg-secondary: #1f0000;
   --bg-terminal: #050505;
-  --green-primary: #00ff41;
-  --green-dim: #00cc33;
-  --green-glow: #00ff4180;
-  --green-dark: #003300;
-  --red-accent: #ff0033;
+  --red-primary: #ff0000;
+  --red-dim: #cc0000;
+  --red-glow: #ff000080;
+  --red-dark: #330000;
+  --red-accent: #ff0000;
   --red-glow: #ff003360;
   --cyan-accent: #00e5ff;
   --cyan-glow: #00e5ff50;
@@ -50,7 +50,7 @@ body {
 }
 
 ::selection {
-  background: var(--green-primary);
+  background: var(--red-primary);
   color: var(--bg-primary);
 }
 
@@ -63,12 +63,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--green-dark);
+  background: var(--red-dark);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--green-dim);
+  background: var(--red-dim);
 }
 
 /* --- Scanline Overlay (Global) --- */
@@ -126,7 +126,7 @@ body {
   z-index: 1000;
   background: rgba(10, 10, 10, 0.92);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--green-dark);
+  border-bottom: 1px solid var(--red-dark);
   padding: 0 2rem;
   height: 60px;
   display: flex;
@@ -138,11 +138,11 @@ body {
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--green-primary);
+  color: var(--red-primary);
   text-decoration: none;
   letter-spacing: 3px;
   text-transform: uppercase;
-  text-shadow: 0 0 10px var(--green-glow);
+  text-shadow: 0 0 10px var(--red-glow);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -155,7 +155,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 0.25rem;
   list-style: none;
   align-items: center;
 }
@@ -175,15 +175,15 @@ body {
 .nav-links a::before {
   content: '>';
   margin-right: 4px;
-  color: var(--green-primary);
+  color: var(--red-primary);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--green-primary);
-  text-shadow: 0 0 8px var(--green-glow);
+  color: var(--red-primary);
+  text-shadow: 0 0 8px var(--red-glow);
 }
 
 .nav-links a:hover::before,
@@ -195,8 +195,8 @@ body {
 .nav-toggle {
   display: none;
   background: none;
-  border: 1px solid var(--green-dark);
-  color: var(--green-primary);
+  border: 1px solid var(--red-dark);
+  color: var(--red-primary);
   font-size: 1.4rem;
   cursor: pointer;
   padding: 4px 8px;
@@ -217,7 +217,7 @@ body {
     flex-direction: column;
     padding: 2rem;
     gap: 1.5rem;
-    border-bottom: 1px solid var(--green-dark);
+    border-bottom: 1px solid var(--red-dark);
     transform: translateY(-120%);
     transition: transform 0.4s ease;
   }
@@ -334,7 +334,7 @@ body {
 .cursor-blink::after {
   content: '█';
   animation: blink 1s step-end infinite;
-  color: var(--green-primary);
+  color: var(--red-primary);
   margin-left: 2px;
 }
 
@@ -347,7 +347,7 @@ body {
 .typing-text {
   overflow: hidden;
   white-space: nowrap;
-  border-right: 2px solid var(--green-primary);
+  border-right: 2px solid var(--red-primary);
   animation: typing 2s steps(30) forwards, blink 1s step-end infinite;
   width: 0;
 }
@@ -366,10 +366,10 @@ body {
 /* --- Pulse Glow --- */
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 5px var(--green-glow), 0 0 10px var(--green-glow);
+    box-shadow: 0 0 5px var(--red-glow), 0 0 10px var(--red-glow);
   }
   50% {
-    box-shadow: 0 0 15px var(--green-glow), 0 0 30px var(--green-glow), 0 0 50px var(--green-glow);
+    box-shadow: 0 0 15px var(--red-glow), 0 0 30px var(--red-glow), 0 0 50px var(--red-glow);
   }
 }
 
@@ -382,14 +382,14 @@ body {
   height: 100%;
   z-index: -2;
   background-image:
-    linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0) 1px, transparent 1px);
   background-size: 50px 50px;
 }
 
 /* --- Footer --- */
 .site-footer {
-  border-top: 1px solid var(--green-dark);
+  border-top: 1px solid var(--red-dark);
   padding: 2rem;
   text-align: center;
   font-size: 0.75rem;
@@ -403,7 +403,7 @@ body {
 }
 
 .site-footer span.green {
-  color: var(--green-primary);
+  color: var(--red-primary);
 }
 
 /* --- Page Transition --- */
@@ -413,7 +413,7 @@ body {
 }
 
 /* --- Utility --- */
-.text-green { color: var(--green-primary); }
+.text-green { color: var(--red-primary); }
 .text-red { color: var(--red-accent); }
 .text-cyan { color: var(--cyan-accent); }
 .text-amber { color: var(--amber); }
