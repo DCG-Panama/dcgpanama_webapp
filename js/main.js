@@ -21,7 +21,7 @@ function initMatrixRain() {
     ctx.fillStyle = 'rgba(24, 24, 24, 0.22)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#00ff41';
+    ctx.fillStyle = '#ff0000';
     ctx.font = `${fontSize}px monospace`;
 
     for (let i = 0; i < drops.length; i++) {
