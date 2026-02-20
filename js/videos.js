@@ -592,3 +592,22 @@ function closePlayerWithoutReplace() {
   gridView.style.display = '';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// Nav fallback (por si main.js no carga)
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    toggle.textContent = links.classList.contains('open') ? '[X]' : '[=]';
+  });
+
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.textContent = '[=]';
+    });
+  });
+});
