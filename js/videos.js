@@ -63,8 +63,8 @@ const VIDEOS = [
     title: "🏴‍☠️ DEFCON: Inside the World's Most Infamous Hacking Conference | Full Documentary",
     odyseeUrl: 'https://www.youtube.com/embed/YcQEXZWSSFE?si=tE322-fehS4EEGQp',
     thumbnail: 'https://i.ytimg.com/vi/YcQEXZWSSFE/sddefault.jpg',
-    date: '2024-10-16',
-    duration: '26:22',
+    date: '2025-03-06',
+    duration: '1:50:56',
     tags: ['Documentary', 'Conference', 'hacking', 'culture'],
     desc: "DEFCON: The Full Documentary takes you inside the world's largest and most legendary hacking conference. Witness how ethical hackers, security experts, and cybercriminals gather annually in Las Vegas to discuss vulnerabilities, showcase exploits, and push the boundaries of cybersecurity. This film explores DEFCON's origins, the hacking culture, and the evolving world of cybersecurity, ethical hacking, and digital warfare. Whether you're a hacker, pentester, or cybersecurity enthusiast, this documentary is a must-watch!"
   }
