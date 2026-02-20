@@ -156,14 +156,14 @@
 .manifesto-line {
   font-family: var(--font-retro);
   font-size: 1.3rem;
-  color: var(--green-primary);
-  text-shadow: 0 0 6px var(--green-glow);
+  color: var(--red-primary);
+  text-shadow: 0 0 6px var(--red-glow);
   line-height: 1.8;
   margin-bottom: 0.3rem;
 }
 
 .manifesto-line.separator {
-  color: var(--green-dim);
+  color: var(--red-dim);
   margin: 1.5rem 0;
   text-align: center;
   opacity: 0.5;
@@ -178,14 +178,14 @@
 .manifesto-line.title-line {
   font-family: var(--font-display);
   font-size: 1.8rem;
-  color: var(--green-primary);
-  text-shadow: 0 0 15px var(--green-glow);
+  color: var(--red-primary);
+  text-shadow: 0 0 15px var(--red-glow);
   margin-bottom: 1rem;
   letter-spacing: 3px;
 }
 
 .manifesto-line.dim {
-  color: var(--green-dim);
+  color: var(--red-dim);
   opacity: 0.7;
 }
 
@@ -251,9 +251,9 @@
 .toggle-btn {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--green-dim);
+  color: var(--red-dim);
   background: rgba(0, 0, 0, 0.4);
-  border: 1px solid var(--green-dark);
+  border: 1px solid var(--red-dark);
   padding: 8px 16px;
   cursor: pointer;
   letter-spacing: 2px;
@@ -263,9 +263,9 @@
 }
 
 .toggle-btn:hover {
-  color: var(--green-primary);
-  border-color: var(--green-dim);
-  box-shadow: 0 0 10px var(--green-glow);
+  color: var(--red-primary);
+  border-color: var(--red-dim);
+  box-shadow: 0 0 10px var(--red-glow);
 }
 
 .toggle-btn.active {
@@ -279,8 +279,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green-primary);
-  box-shadow: 0 0 6px var(--green-glow);
+  background: var(--red-primary);
+  box-shadow: 0 0 6px var(--red-glow);
   animation: ledPulse 2s ease infinite;
 }
 

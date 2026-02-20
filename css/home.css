@@ -21,7 +21,7 @@
 
 .hero-logo {
   width: min(500px, 80vw);
-  filter: drop-shadow(0 0 20px var(--green-glow)) drop-shadow(0 0 60px rgba(0, 255, 65, 0.15));
+  filter: drop-shadow(0 0 20px var(--red-glow)) drop-shadow(0 0 60px rgba(255, 0, 0, 0.15));
   animation: logoReveal 1.5s ease forwards, logoPulse 4s ease-in-out 2s infinite;
   opacity: 0;
 }
@@ -33,21 +33,21 @@
     filter: drop-shadow(0 0 0px transparent) brightness(3);
   }
   50% {
-    filter: drop-shadow(0 0 40px var(--green-glow)) brightness(2);
+    filter: drop-shadow(0 0 40px var(--red-glow)) brightness(2);
   }
   100% {
     opacity: 1;
     transform: scale(1);
-    filter: drop-shadow(0 0 20px var(--green-glow)) drop-shadow(0 0 60px rgba(0, 255, 65, 0.15));
+    filter: drop-shadow(0 0 20px var(--red-glow)) drop-shadow(0 0 60px rgba(255, 0, 0, 0.15));
   }
 }
 
 @keyframes logoPulse {
   0%, 100% {
-    filter: drop-shadow(0 0 20px var(--green-glow)) drop-shadow(0 0 60px rgba(0, 255, 65, 0.15));
+    filter: drop-shadow(0 0 20px var(--red-glow)) drop-shadow(0 0 60px rgba(255, 0, 0, 0.15));
   }
   50% {
-    filter: drop-shadow(0 0 35px var(--green-glow)) drop-shadow(0 0 80px rgba(0, 255, 65, 0.25));
+    filter: drop-shadow(0 0 35px var(--red-glow)) drop-shadow(0 0 80px rgba(255, 0, 0, 0.25));
   }
 }
 
@@ -55,8 +55,8 @@
 .hero-tagline {
   font-family: var(--font-retro);
   font-size: clamp(1.2rem, 3vw, 2rem);
-  color: var(--green-primary);
-  text-shadow: 0 0 10px var(--green-glow);
+  color: var(--red-primary);
+  text-shadow: 0 0 10px var(--red-glow);
   letter-spacing: 4px;
   text-transform: uppercase;
   text-align: center;
@@ -82,7 +82,7 @@
   left: 5%;
   font-family: var(--font-retro);
   font-size: 0.85rem;
-  color: var(--green-dim);
+  color: var(--red-dim);
   opacity: 0;
   animation: fadeIn 0.5s ease 0.3s forwards;
   line-height: 1.8;
@@ -100,8 +100,8 @@
   gap: 3rem;
   margin-top: 3rem;
   padding: 1.5rem 2.5rem;
-  border: 1px solid var(--green-dark);
-  background: rgba(0, 255, 65, 0.02);
+  border: 1px solid var(--red-dark);
+  background: rgba(255, 0, 0, 0.02);
   opacity: 0;
   animation: fadeInUp 1s ease 1.8s forwards;
 }
@@ -114,8 +114,8 @@
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 900;
-  color: var(--green-primary);
-  text-shadow: 0 0 10px var(--green-glow);
+  color: var(--red-primary);
+  text-shadow: 0 0 10px var(--red-glow);
   display: block;
 }
 
@@ -140,8 +140,8 @@
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   font-weight: 700;
-  color: var(--green-primary);
-  text-shadow: 0 0 10px var(--green-glow);
+  color: var(--red-primary);
+  text-shadow: 0 0 10px var(--red-glow);
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
@@ -150,8 +150,8 @@
 .section-divider {
   width: 60px;
   height: 2px;
-  background: var(--green-primary);
-  box-shadow: 0 0 10px var(--green-glow);
+  background: var(--red-primary);
+  box-shadow: 0 0 10px var(--red-glow);
   margin-bottom: 2rem;
 }
 
@@ -180,15 +180,15 @@
   left: 0;
   width: 3px;
   height: 0;
-  background: var(--green-primary);
-  box-shadow: 0 0 10px var(--green-glow);
+  background: var(--red-primary);
+  box-shadow: 0 0 10px var(--red-glow);
   transition: height 0.4s ease;
 }
 
 .focus-card:hover {
-  border-color: var(--green-dim);
+  border-color: var(--red-dim);
   transform: translateY(-3px);
-  box-shadow: 0 5px 30px rgba(0, 255, 65, 0.05);
+  box-shadow: 0 5px 30px rgba(255, 0, 0, 0.05);
 }
 
 .focus-card:hover::before {
@@ -204,7 +204,7 @@
 .focus-card-title {
   font-family: var(--font-mono);
   font-size: 0.9rem;
-  color: var(--green-primary);
+  color: var(--red-primary);
   letter-spacing: 1px;
   margin-bottom: 0.8rem;
 }
@@ -235,8 +235,8 @@
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--green-primary);
-  border: 1px solid var(--green-primary);
+  color: var(--red-primary);
+  border: 1px solid var(--red-primary);
   padding: 12px 32px;
   text-decoration: none;
   letter-spacing: 3px;
@@ -247,9 +247,9 @@
 }
 
 .cta-btn:hover {
-  background: var(--green-primary);
+  background: var(--red-primary);
   color: var(--bg-primary);
-  box-shadow: 0 0 20px var(--green-glow), 0 0 40px var(--green-glow);
+  box-shadow: 0 0 20px var(--red-glow), 0 0 40px var(--red-glow);
 }
 
 /* --- Scroll indicator --- */
@@ -265,8 +265,8 @@
 .scroll-arrow {
   width: 24px;
   height: 24px;
-  border-right: 2px solid var(--green-dim);
-  border-bottom: 2px solid var(--green-dim);
+  border-right: 2px solid var(--red-dim);
+  border-bottom: 2px solid var(--red-dim);
   transform: rotate(45deg);
   animation: scrollBounce 2s ease infinite;
 }
