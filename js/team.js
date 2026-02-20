@@ -105,12 +105,33 @@ setInterval(updateClock, 1000);
     const entry = logMessages[idx % logMessages.length];
     idx++;
 
+    // Validate that entry fields are strings before using them.
+    const level = typeof entry.level === 'string' ? entry.level : 'INFO';
+    const msg   = typeof entry.msg   === 'string' ? entry.msg   : '';
+
     const now = new Date();
     const ts  = now.toTimeString().slice(0, 8);
 
     const div = document.createElement('div');
     div.className = 'log-entry';
-    div.innerHTML = `<span class="log-time">${ts}</span><span class="log-level ${entry.level}">[${entry.level}]</span><span class="log-msg">${entry.msg}</span>`;
+
+    const tsSpan = document.createElement('span');
+    tsSpan.className = 'log-time';
+    tsSpan.textContent = ts;
+
+    const levelSpan = document.createElement('span');
+    // className assignment via property never executes injected handlers
+    levelSpan.className = `log-level ${level}`;
+    levelSpan.textContent = `[${level}]`;
+
+    const msgSpan = document.createElement('span');
+    msgSpan.className = 'log-msg';
+    msgSpan.textContent = msg;   // textContent — tags rendered as plain text
+
+    div.appendChild(tsSpan);
+    div.appendChild(levelSpan);
+    div.appendChild(msgSpan);
+
     feed.appendChild(div);
 
     // Keep only last 20 entries
@@ -122,22 +143,3 @@ setInterval(updateClock, 1000);
   for (let i = 0; i < 6; i++) appendLog();
   setInterval(appendLog, 2200);
 })();
-
-// Nav fallback (por si main.js no carga)
-document.addEventListener('DOMContentLoaded', function () {
-  const toggle = document.querySelector('.nav-toggle');
-  const links  = document.querySelector('.nav-links');
-  if (!toggle || !links) return;
-
-  toggle.addEventListener('click', () => {
-    links.classList.toggle('open');
-    toggle.textContent = links.classList.contains('open') ? '[X]' : '[=]';
-  });
-
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.textContent = '[=]';
-    });
-  });
-});

@@ -60,14 +60,34 @@ const VIDEOS = [
   },
   {
     id: 'v005',
-    title: "🏴‍☠️ DEFCON: Inside the World’s Most Infamous Hacking Conference | Full Documentary",
+    title: "🏴‍☠️ DEFCON: Inside the World's Most Infamous Hacking Conference | Full Documentary",
     odyseeUrl: 'https://www.youtube.com/embed/YcQEXZWSSFE?si=tE322-fehS4EEGQp',
     thumbnail: 'https://i.ytimg.com/vi/YcQEXZWSSFE/sddefault.jpg',
     date: '2024-10-16',
     duration: '26:22',
     tags: ['Documentary', 'Conference', 'hacking', 'culture'],
-    desc: "DEFCON: The Full Documentary takes you inside the world's largest and most legendary hacking conference. Witness how ethical hackers, security experts, and cybercriminals gather annually in Las Vegas to discuss vulnerabilities, showcase exploits, and push the boundaries of cybersecurity. This film explores DEFCON's origins, the hacking culture, and the evolving world of cybersecurity, ethical hacking, and digital warfare. Whether you’re a hacker, pentester, or cybersecurity enthusiast, this documentary is a must-watch!"
+    desc: "DEFCON: The Full Documentary takes you inside the world's largest and most legendary hacking conference. Witness how ethical hackers, security experts, and cybercriminals gather annually in Las Vegas to discuss vulnerabilities, showcase exploits, and push the boundaries of cybersecurity. This film explores DEFCON's origins, the hacking culture, and the evolving world of cybersecurity, ethical hacking, and digital warfare. Whether you're a hacker, pentester, or cybersecurity enthusiast, this documentary is a must-watch!"
   }
+];
+
+// ============================================
+// ALLOWED EMBED ORIGINS
+// Only URLs from these origins are permitted as iframe src.
+// ============================================
+const ALLOWED_EMBED_ORIGINS = [
+  'https://www.youtube.com',
+  'https://youtube.com',
+  'https://odysee.com',
+];
+
+// ============================================
+// ALLOWED THUMBNAIL ORIGINS
+// Only images from these origins are permitted as img src.
+// ============================================
+const ALLOWED_THUMBNAIL_ORIGINS = [
+  'https://i.ytimg.com',
+  'https://thumbnail.odycdn.com',
+  'https://odysee.com',
 ];
 
 // ============================================
@@ -168,25 +188,66 @@ function renderGrid() {
   state.filteredVideos.forEach(video => {
     const card = document.createElement('div');
     card.className = 'video-card';
-    card.innerHTML = `
-      <div class="card-thumb">
-        ${video.thumbnail
-          ? `<img src="${video.thumbnail}" alt="${escHtml(video.title)}" loading="lazy">`
-          : `<div class="card-thumb-placeholder">[ NO PREVIEW ]</div>`
-        }
-        <div class="card-play-overlay"><div class="play-icon"></div></div>
-      </div>
-      <div class="card-body">
-        <div class="card-title">${escHtml(video.title)}</div>
-        <div class="card-meta">
-          <span>${formatDate(video.date)}</span>
-          <span>${video.duration}</span>
-        </div>
-        <div class="card-desc">${escHtml(video.desc)}</div>
-        <div class="card-tags">${video.tags.map(t =>
-          `<span class="card-tag" data-tag="${t}">${t}</span>`
-        ).join('')}</div>
-      </div>`;
+
+    const thumbContainer = document.createElement('div');
+    thumbContainer.className = 'card-thumb';
+
+    if (video.thumbnail && isSafeUrl(video.thumbnail, ALLOWED_THUMBNAIL_ORIGINS)) {
+      const img = document.createElement('img');
+      img.src     = video.thumbnail;          // safe — origin validated above
+      img.alt     = video.title;              // textContent-equivalent via property
+      img.loading = 'lazy';
+      thumbContainer.appendChild(img);
+    } else {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'card-thumb-placeholder';
+      placeholder.textContent = '[ NO PREVIEW ]';
+      thumbContainer.appendChild(placeholder);
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'card-play-overlay';
+    const playIcon = document.createElement('div');
+    playIcon.className = 'play-icon';
+    overlay.appendChild(playIcon);
+    thumbContainer.appendChild(overlay);
+
+    const body = document.createElement('div');
+    body.className = 'card-body';
+
+    const titleEl = document.createElement('div');
+    titleEl.className = 'card-title';
+    titleEl.textContent = video.title;        // textContent — no XSS
+
+    const metaEl = document.createElement('div');
+    metaEl.className = 'card-meta';
+    const dateSpan = document.createElement('span');
+    dateSpan.textContent = formatDate(video.date);
+    const durSpan = document.createElement('span');
+    durSpan.textContent = video.duration;
+    metaEl.appendChild(dateSpan);
+    metaEl.appendChild(durSpan);
+
+    const descEl = document.createElement('div');
+    descEl.className = 'card-desc';
+    descEl.textContent = video.desc;          // textContent — no XSS
+
+    const tagsEl = document.createElement('div');
+    tagsEl.className = 'card-tags';
+    video.tags.forEach(t => {
+      const span = document.createElement('span');
+      span.className = 'card-tag';
+      span.dataset.tag = t;                   // safe property assignment
+      span.textContent = t;                   // safe
+      tagsEl.appendChild(span);
+    });
+
+    body.appendChild(titleEl);
+    body.appendChild(metaEl);
+    body.appendChild(descEl);
+    body.appendChild(tagsEl);
+    card.appendChild(thumbContainer);
+    card.appendChild(body);
 
     // Click card → open player
     card.addEventListener('click', (e) => {
@@ -214,36 +275,48 @@ function openPlayer(video) {
   gridView.style.display = 'none';
   playerView.classList.add('active');
 
-  // Load video — pass the URL as-is, no mute param
+  const safeId = sanitizeVideoId(video.id);
+  history.pushState({ videoId: safeId }, '', `?v=${encodeURIComponent(safeId)}`);
+
+  loadPlayerContent(video);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Shared logic for populating the player view
+function loadPlayerContent(video) {
   const mainIframe = document.getElementById('player-iframe');
-  mainIframe.src = video.odyseeUrl;
 
-  // Info
-  document.getElementById('player-title').textContent = video.title;
-  document.getElementById('player-date').textContent = formatDate(video.date);
+  if (isSafeUrl(video.odyseeUrl, ALLOWED_EMBED_ORIGINS)) {
+    mainIframe.src = video.odyseeUrl;
+  } else {
+    mainIframe.src = '';
+    console.warn('Blocked unsafe embed URL:', video.odyseeUrl);
+  }
+
+  // uning textContent for all user-visible fields — no XSS possible
+  document.getElementById('player-title').textContent    = video.title;
+  document.getElementById('player-date').textContent     = formatDate(video.date);
   document.getElementById('player-duration').textContent = video.duration;
-  document.getElementById('player-desc').textContent = video.desc;
+  document.getElementById('player-desc').textContent     = video.desc;
 
-  // Tags
+  // build player tags via DOM API
   const tagsEl = document.getElementById('player-tags');
-  tagsEl.innerHTML = video.tags.map(t =>
-    `<span class="player-tag" data-tag="${t}">${t}</span>`
-  ).join('');
-
-  tagsEl.querySelectorAll('.player-tag').forEach(t => {
-    t.addEventListener('click', () => {
-      state.activeTag = t.dataset.tag;
+  tagsEl.innerHTML = '';
+  video.tags.forEach(t => {
+    const span = document.createElement('span');
+    span.className = 'player-tag';
+    span.dataset.tag = t;
+    span.textContent = t;
+    span.addEventListener('click', () => {
+      state.activeTag = t;
       closePlayer();
       filterVideos();
       renderTagFilters();
     });
+    tagsEl.appendChild(span);
   });
 
-  // Sidebar — all other videos
   renderSidebar(video);
-
-  // Scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ============================================
@@ -251,26 +324,54 @@ function openPlayer(video) {
 // ============================================
 function renderSidebar(currentVideo) {
   const sidebar = document.getElementById('player-sidebar');
-  sidebar.innerHTML = `<div class="sidebar-label">MORE TRANSMISSIONS</div>`;
+  sidebar.innerHTML = '';
+
+  const label = document.createElement('div');
+  label.className = 'sidebar-label';
+  label.textContent = 'MORE TRANSMISSIONS';
+  sidebar.appendChild(label);
 
   const others = VIDEOS.filter(v => v.id !== currentVideo.id);
-  others.forEach(v => {
-    const card = document.createElement('div');
-    card.className = 'sidebar-card';
-    card.innerHTML = `
-      <div class="sidebar-thumb">
-        ${v.thumbnail
-          ? `<img src="${v.thumbnail}" alt="${escHtml(v.title)}" loading="lazy">`
-          : `<div class="sidebar-thumb-placeholder">[ NO SIG ]</div>`
-        }
-      </div>
-      <div class="sidebar-card-info">
-        <div class="sidebar-card-title">${escHtml(v.title)}</div>
-        <div class="sidebar-card-meta">${formatDate(v.date)} · ${v.duration}</div>
-      </div>`;
-    card.addEventListener('click', () => openPlayer(v));
-    sidebar.appendChild(card);
-  });
+  others.forEach(v => buildSidebarCard(sidebar, v));
+}
+
+function buildSidebarCard(container, v) {
+  const card = document.createElement('div');
+  card.className = 'sidebar-card';
+
+  const thumbDiv = document.createElement('div');
+  thumbDiv.className = 'sidebar-thumb';
+
+  if (v.thumbnail && isSafeUrl(v.thumbnail, ALLOWED_THUMBNAIL_ORIGINS)) {
+    const img = document.createElement('img');
+    img.src     = v.thumbnail;
+    img.alt     = v.title;
+    img.loading = 'lazy';
+    thumbDiv.appendChild(img);
+  } else {
+    const ph = document.createElement('div');
+    ph.className = 'sidebar-thumb-placeholder';
+    ph.textContent = '[ NO SIG ]';
+    thumbDiv.appendChild(ph);
+  }
+
+  const info = document.createElement('div');
+  info.className = 'sidebar-card-info';
+
+  const titleEl = document.createElement('div');
+  titleEl.className = 'sidebar-card-title';
+  titleEl.textContent = v.title;
+
+  const metaEl = document.createElement('div');
+  metaEl.className = 'sidebar-card-meta';
+  metaEl.textContent = `${formatDate(v.date)} · ${v.duration}`;
+
+  info.appendChild(titleEl);
+  info.appendChild(metaEl);
+  card.appendChild(thumbDiv);
+  card.appendChild(info);
+  card.addEventListener('click', () => openPlayer(v));
+  container.appendChild(card);
 }
 
 // ============================================
@@ -284,19 +385,17 @@ function closePlayer() {
   playerView.classList.remove('active');
   gridView.style.display = '';
 
+  history.replaceState(null, '', window.location.pathname);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ============================================
 // SEARCH
-// Search filters the sidebar if in player view,
-// or the grid if in grid view. Never closes player.
 // ============================================
 function initSearch() {
   function doSearch() {
     state.searchQuery = searchInput.value;
     if (state.view === 'player') {
-      // Filter sidebar results without closing player
       renderSidebarFiltered(state.currentVideo, state.searchQuery);
     } else {
       filterVideos();
@@ -310,11 +409,15 @@ function initSearch() {
   });
 }
 
-// Render sidebar with search filter applied (used while player is open)
 function renderSidebarFiltered(currentVideo, query) {
   const q = query.toLowerCase().trim();
   const sidebar = document.getElementById('player-sidebar');
-  sidebar.innerHTML = `<div class="sidebar-label">MORE TRANSMISSIONS</div>`;
+  sidebar.innerHTML = '';
+
+  const label = document.createElement('div');
+  label.className = 'sidebar-label';
+  label.textContent = 'MORE TRANSMISSIONS';
+  sidebar.appendChild(label);
 
   const others = VIDEOS.filter(v => {
     if (v.id === currentVideo.id) return false;
@@ -334,23 +437,7 @@ function renderSidebarFiltered(currentVideo, query) {
     return;
   }
 
-  others.forEach(v => {
-    const card = document.createElement('div');
-    card.className = 'sidebar-card';
-    card.innerHTML = `
-      <div class="sidebar-thumb">
-        ${v.thumbnail
-          ? `<img src="${v.thumbnail}" alt="${escHtml(v.title)}" loading="lazy">`
-          : `<div class="sidebar-thumb-placeholder">[ NO SIG ]</div>`
-        }
-      </div>
-      <div class="sidebar-card-info">
-        <div class="sidebar-card-title">${escHtml(v.title)}</div>
-        <div class="sidebar-card-meta">${formatDate(v.date)} · ${v.duration}</div>
-      </div>`;
-    card.addEventListener('click', () => openPlayer(v));
-    sidebar.appendChild(card);
-  });
+  others.forEach(v => buildSidebarCard(sidebar, v));
 }
 
 // ============================================
@@ -411,6 +498,8 @@ function initMatrixRain() {
 // ============================================
 // UTILS
 // ============================================
+
+// escHtml kept for any legacy use, but main rendering now uses DOM API instead
 function escHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
@@ -418,6 +507,34 @@ function escHtml(str) {
 function formatDate(dateStr) {
   const d = new Date(dateStr + 'T00:00:00');
   return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'2-digit' });
+}
+
+/**
+ * URL origin allowlist validator.
+ * Returns true only if the URL starts with an approved origin.
+ * Prevents javascript:, data:, and off-origin URLs from being
+ * injected into img.src or iframe.src.
+ */
+function isSafeUrl(url, allowedOrigins) {
+  try {
+    const parsed = new URL(url);
+    // Only allow https:
+    if (parsed.protocol !== 'https:') return false;
+    return allowedOrigins.some(origin => {
+      const o = new URL(origin);
+      return parsed.origin === o.origin;
+    });
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Sanitize video ID before using in URL / history state.
+ * Allows only alphanumeric characters and hyphens.
+ */
+function sanitizeVideoId(id) {
+  return String(id).replace(/[^a-zA-Z0-9\-_]/g, '');
 }
 
 // ============================================
@@ -430,5 +547,48 @@ document.addEventListener('DOMContentLoaded', () => {
   filterVideos();
   initSearch();
 
-  document.getElementById('player-back-btn').addEventListener('click', closePlayer);
+  document.getElementById('player-back-btn').addEventListener('click', () => {
+    history.back();
+  });
+
+  window.addEventListener('popstate', (e) => {
+    if (e.state && e.state.videoId) {
+      const video = VIDEOS.find(v => v.id === e.state.videoId);
+      if (video) openPlayerWithoutPush(video);
+    } else {
+      closePlayerWithoutReplace();
+    }
+  });
+
+  // Deep-link: if page loads with ?v=id, open that video directly
+  const params = new URLSearchParams(window.location.search);
+  const rawId  = params.get('v');
+  if (rawId) {
+    // sanitize before lookup
+    const safeId = sanitizeVideoId(rawId);
+    const video  = VIDEOS.find(v => v.id === safeId);
+    if (video) openPlayerWithoutPush(video);
+  }
 });
+
+// Opens player without pushing to history (used by popstate)
+function openPlayerWithoutPush(video) {
+  state.view = 'player';
+  state.currentVideo = video;
+
+  gridView.style.display = 'none';
+  playerView.classList.add('active');
+
+  loadPlayerContent(video);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Closes player without replacing URL (used by popstate)
+function closePlayerWithoutReplace() {
+  document.getElementById('player-iframe').src = '';
+  state.view = 'grid';
+  state.currentVideo = null;
+  playerView.classList.remove('active');
+  gridView.style.display = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
