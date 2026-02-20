@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DCG Panama – Sponsors</title>
+  <meta name="description" content="DEF CON Group Panama — Support the hackers who break things before your adversaries do.">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/sponsors.css">
+  <link rel="icon" type="image/png" href="../assets/dcgpanamalogonobg.png">
+</head>
+<body>
+
+  <!-- Background effects -->
+  <canvas id="matrix-canvas"></canvas>
+  <div class="grid-bg"></div>
+  <div class="scanlines"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <a href="../index.html" class="nav-brand">
+      <img src="../assets/dcgpanamalogonobg.png" alt="DCG Panama">
+      <span>DCG Panama</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">[=]</button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="sponsors.html" class="active">Sponsors</a></li>
+      <li><a href="team.html">Team</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-content">
+
+    <!-- Header -->
+    <div class="sponsors-header">
+      <span class="sponsors-header-label">// system/sponsors</span>
+      <h1>Our <span>Sponsors</span></h1>
+      <p class="sponsors-header-sub">The organizations that invest in real offensive security capability.</p>
+    </div>
+
+    <!-- Ticker Tape -->
+    <div class="ticker-wrap">
+      <div class="ticker-inner" id="ticker-inner">
+        <span><span class="ticker-sym">PLATINUM</span><span class="ticker-up">SLOT OPEN</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">GOLD</span><span class="ticker-up">SLOT OPEN</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">SILVER</span><span class="ticker-up">SLOT OPEN</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">INFRA</span><span class="ticker-up">SLOT OPEN</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">DCG-PANAMA</span><span class="ticker-down">RECRUITING SPONSORS</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">STATUS</span><span class="ticker-up">OPERATIONAL</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">CHAPTER</span><span class="ticker-up">PANAMA CITY, PA</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">DEFCON</span><span class="ticker-up">AFFILIATED GROUP</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">PLATINUM</span><span class="ticker-up">SLOT OPEN</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">GOLD</span><span class="ticker-up">SLOT OPEN</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">SILVER</span><span class="ticker-up">SLOT OPEN</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">INFRA</span><span class="ticker-up">SLOT OPEN</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">DCG-PANAMA</span><span class="ticker-down">RECRUITING SPONSORS</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">STATUS</span><span class="ticker-up">OPERATIONAL</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">CHAPTER</span><span class="ticker-up">PANAMA CITY, PA</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+        <span><span class="ticker-sym">DEF CON</span><span class="ticker-up">AFFILIATED GROUP</span></span>
+        <span>&#x2015;&#x2015;&#x2015;</span>
+      </div>
+    </div>
+
+    <!-- ============================================
+         ACTIVE SPONSORS SECTION
+    ============================================ -->
+    <div class="sponsors-section">
+      <div class="section-label">active sponsors</div>
+      <div class="section-title">Sponsor Registry</div>
+      <div class="section-bar"></div>
+
+      <!-- PLATINUM -->
+      <div class="section-label" style="margin-bottom:0.5rem; color: var(--platinum-color); opacity:40;">Platinum Tier</div>
+      <div class="tier-placeholder-row" style="margin-bottom: 2px;">
+        <div class="tier-slot platinum" data-tier="PLATINUM SPONSOR">
+          <span class="slot-label platinum">Platinum Sponsor</span>
+          <div class="slot-placeholder platinum"></div>
+        </div>
+        <div class="tier-slot platinum" data-tier="PLATINUM SPONSOR">
+          <span class="slot-label platinum">Platinum Sponsor</span>
+          <div class="slot-placeholder platinum"></div>
+        </div>
+      </div>
+
+      <!-- GOLD -->
+      <div class="section-label" style="margin-top:1.5rem; margin-bottom:0.5rem; color: var(--gold-color); opacity:40;">Gold Tier</div>
+      <div class="tier-placeholder-row" style="margin-bottom: 2px;">
+        <div class="tier-slot gold" data-tier="GOLD SPONSOR">
+          <span class="slot-label gold">Gold Sponsor</span>
+          <div class="slot-placeholder gold"></div>
+        </div>
+        <div class="tier-slot gold" data-tier="GOLD SPONSOR">
+          <span class="slot-label gold">Gold Sponsor</span>
+          <div class="slot-placeholder gold"></div>
+        </div>
+        <div class="tier-slot gold" data-tier="GOLD SPONSOR">
+          <span class="slot-label gold">Gold Sponsor</span>
+          <div class="slot-placeholder gold"></div>
+        </div>
+      </div>
+
+      <!-- SILVER -->
+      <div class="section-label" style="margin-top:1.5rem; margin-bottom:0.5rem; color: var(--silver-color); opacity:405;">Silver Tier</div>
+      <div class="tier-placeholder-row" style="margin-bottom: 2px;">
+        <div class="tier-slot silver" data-tier="SILVER SPONSOR">
+          <span class="slot-label silver">Silver Sponsor</span>
+          <div class="slot-placeholder silver"></div>
+        </div>
+        <div class="tier-slot silver" data-tier="SILVER SPONSOR">
+          <span class="slot-label silver">Silver Sponsor</span>
+          <div class="slot-placeholder silver"></div>
+        </div>
+        <div class="tier-slot silver" data-tier="SILVER SPONSOR">
+          <span class="slot-label silver">Silver Sponsor</span>
+          <div class="slot-placeholder silver"></div>
+        </div>
+        <div class="tier-slot silver" data-tier="SILVER SPONSOR">
+          <span class="slot-label silver">Silver Sponsor</span>
+          <div class="slot-placeholder silver"></div>
+        </div>
+      </div>
+
+      <!-- INFRASTRUCTURE -->
+      <div class="section-label" style="margin-top:1.5rem; margin-bottom:0.5rem; color: var(--infra-color); opacity:25;">Infrastructure Tier</div>
+      <div class="tier-placeholder-row" style="margin-bottom: 2px;">
+        <div class="tier-slot infra" data-tier="INFRASTRUCTURE SPONSOR">
+          <span class="slot-label infra">Infrastructure Sponsor</span>
+          <div class="slot-placeholder infra"></div>
+        </div>
+        <div class="tier-slot infra" data-tier="INFRASTRUCTURE SPONSOR">
+          <span class="slot-label infra">Infrastructure Sponsor</span>
+          <div class="slot-placeholder infra"></div>
+        </div>
+        <div class="tier-slot infra" data-tier="INFRASTRUCTURE SPONSOR">
+          <span class="slot-label infra">Infrastructure Sponsor</span>
+          <div class="slot-placeholder infra"></div>
+        </div>
+      </div>
+
+      <!-- Empty state notice -->
+      <div class="sponsors-empty-state" style="margin-top: 2px;">
+        <span class="empty-icon">[ NO ACTIVE SPONSORS ]</span>
+        <div class="empty-title">Registry Empty</div>
+        <div class="empty-sub">Be the first organization to join. Your logo goes here.</div>
+      </div>
+
+    </div><!-- end .sponsors-section -->
+
+
+    <!-- ============================================
+         SPONSORSHIP INFORMATION SECTION
+    ============================================ -->
+    <div class="info-section">
+
+      <div class="section-label">sponsorship info</div>
+      <div class="section-title">Why Sponsor Us</div>
+      <div class="section-bar"></div>
+
+      <!-- Terminal block — Who we are / Why it matters -->
+      <div class="why-terminal">
+        <div class="terminal-topbar">
+          <div class="tbar-dot"></div>
+          <div class="tbar-dot"></div>
+          <div class="tbar-dot"></div>
+          <span class="tbar-title">dcg-panama // sponsorship-brief.txt</span>
+        </div>
+
+        <div class="terminal-line">
+          <span class="prompt">$</span>
+          <span class="cmd">cat who_we_are.txt</span>
+        </div>
+        <div class="terminal-line">
+          <span class="out">DEF CON Group Panama is not a classroom. Not a marketing event.</span>
+          <span class="out highlight">It's a gathering point for individuals who actually understand how systems fail.</span>
+          <span class="out">Penetration testers. Red team operators. Hardware hackers. Reverse engineers.</span>
+          <span class="out">Security researchers operating in Panama.</span>
+          <span class="out">This group exists to develop real offensive capability. Not theory. Capability.</span>
+        </div>
+
+        <div class="terminal-line" style="margin-top: 1rem;">
+          <span class="prompt">$</span>
+          <span class="cmd">cat why_this_matters.txt</span>
+        </div>
+        <div class="terminal-line">
+          <span class="out highlight">Every organization today is a target.</span>
+          <span class="out">Attackers are not waiting. They are evolving.</span>
+          <span class="out">They are already inside environments worldwide.</span>
+          <span class="out">We train minds that think like attackers — because defenders who don't</span>
+          <span class="out">understand offensive tradecraft are blind.</span>
+        </div>
+
+        <div class="terminal-line" style="margin-top: 1rem;">
+          <span class="prompt">$</span>
+          <span class="cmd">cat why_companies_sponsor.txt</span>
+        </div>
+        <div class="terminal-line">
+          <span class="out highlight">Not for marketing. For proximity.</span>
+          <span class="out">Proximity to talent. Proximity to knowledge. Proximity to capability.</span>
+          <span class="out">Sponsors gain direct visibility and access to individuals capable of</span>
+          <span class="out">identifying critical vulnerabilities before real adversaries do.</span>
+          <span class="out">This is access to the offensive security underground — legally, ethically, transparently.</span>
+        </div>
+
+        <div class="terminal-line" style="margin-top: 1rem;">
+          <span class="prompt">$</span>
+          <span class="cmd" style="color: var(--red-dim);">_<span style="animation: blink 1s step-end infinite; display:inline-block;">&#x2588;</span></span>
+        </div>
+      </div>
+
+      <!-- What you gain -->
+      <div class="section-label" style="margin-bottom:0.5rem;">what you gain</div>
+      <div class="enables-grid" style="margin-bottom: 2rem;">
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F3AF;</span>
+          <div class="enable-title">Access to Talent</div>
+          <div class="enable-desc">Direct pipeline to highly skilled offensive security professionals — the people companies try to hire but rarely find.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F4E1;</span>
+          <div class="enable-title">Brand Visibility</div>
+          <div class="enable-desc">Placement across all official materials, events, and the DCG Panama website — inside Panama's hacker ecosystem.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F91D;</span>
+          <div class="enable-title">Community Access</div>
+          <div class="enable-desc">Direct presence at our events. Network with red team operators, researchers, and future offensive security specialists.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F6E1;</span>
+          <div class="enable-title">Real Security Credibility</div>
+          <div class="enable-desc">Position your organization as a supporter of real cybersecurity capability — not marketing security. Real security.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F30E;</span>
+          <div class="enable-title">Regional Foundation</div>
+          <div class="enable-desc">Early sponsors become part of Panama's offensive security foundation as we grow into a recognized Latin American hub.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F4BB;</span>
+          <div class="enable-title">Technical Presence</div>
+          <div class="enable-desc">Platinum sponsors may present technical content directly to an audience that actually evaluates what they see.</div>
+        </div>
+      </div>
+
+      <!-- Tier Cards -->
+      <div class="section-label" style="margin-bottom:0.5rem;">sponsorship tiers</div>
+      <div class="section-title">Select Your Access Level</div>
+      <div class="section-bar"></div>
+
+      <div class="tiers-grid">
+
+        <!-- PLATINUM -->
+        <div class="tier-card platinum">
+          <span class="tier-badge">Platinum</span>
+          <span class="tier-price">$2,000</span>
+          <span class="tier-period">/ year — Highest visibility</span>
+          <div class="tier-desc">Highest level of visibility and influence. Maximum impact across all platforms.</div>
+          <ul class="tier-features">
+            <li>Primary logo placement on all official materials</li>
+            <li>Direct access to members during events</li>
+            <li>Opportunity to present technical content</li>
+            <li>Priority recognition across all platforms</li>
+            <li>Permanent sponsor recognition</li>
+          </ul>
+        </div>
+
+        <!-- GOLD -->
+        <div class="tier-card gold">
+          <span class="tier-badge">Gold</span>
+          <span class="tier-price">$1,000</span>
+          <span class="tier-period">/ year — Strong engagement</span>
+          <div class="tier-desc">Strong visibility and community engagement. Direct presence in our ecosystem.</div>
+          <ul class="tier-features">
+            <li>Logo placement on event materials</li>
+            <li>Recognition during official meetings</li>
+            <li>Access to community networking opportunities</li>
+          </ul>
+        </div>
+
+        <!-- SILVER -->
+        <div class="tier-card silver">
+          <span class="tier-badge">Silver</span>
+          <span class="tier-price">$500</span>
+          <span class="tier-period">/ year — Community support</span>
+          <div class="tier-desc">Support community growth and gain sustained visibility within the group.</div>
+          <ul class="tier-features">
+            <li>Logo placement on website</li>
+            <li>Recognition during selected events</li>
+          </ul>
+        </div>
+
+        <!-- INFRASTRUCTURE -->
+        <div class="tier-card infra">
+          <span class="tier-badge">Infrastructure</span>
+          <span class="tier-price">In-Kind</span>
+          <span class="tier-period">Contribution-based recognition</span>
+          <div class="tier-desc">Provide the physical or digital infrastructure that makes our operations possible.</div>
+          <ul class="tier-features">
+            <li>Venue space for events</li>
+            <li>Hardware &amp; embedded equipment</li>
+            <li>Cloud infrastructure</li>
+            <li>Recognition equivalent to contribution value</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- What sponsorship enables -->
+      <div class="section-label" style="margin-bottom:0.5rem;">what your funding enables</div>
+      <div class="enables-grid">
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F9EA;</span>
+          <div class="enable-title">Hands-On Hacking Labs</div>
+          <div class="enable-desc">Live operational environments where members actively compromise real systems under controlled conditions.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F4DA;</span>
+          <div class="enable-title">Technical Workshops</div>
+          <div class="enable-desc">Deep-dive sessions on offensive tradecraft, tool development, and real-world attack chain reproduction.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F3C6;</span>
+          <div class="enable-title">CTF Competitions</div>
+          <div class="enable-desc">Capture The Flag operations that develop competitive, battle-tested offensive security skills.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F527;</span>
+          <div class="enable-title">Hardware Environments</div>
+          <div class="enable-desc">Physical labs for embedded systems research, firmware analysis, RF hacking, and automotive security work.</div>
+        </div>
+        <div class="enable-item">
+          <span class="enable-icon">&#x1F5A7;</span>
+          <div class="enable-title">Community Infrastructure</div>
+          <div class="enable-desc">Servers, tools, platforms and resources that keep the group operational and growing.</div>
+        </div>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="sponsor-cta">
+        <div class="cta-headline">Attackers are already organized.</div>
+        <div class="cta-sub">// This is how defenders catch up.</div>
+
+        <div class="contact-block">
+          <div class="contact-row">
+            <span class="contact-key">email:</span>
+            <a href="mailto:dcgpanama@zerotrustoffsec.com" class="contact-val">dcgpanama@zerotrustoffsec.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">web:</span>
+            <a href="https://zerotrustoffsec.com" class="contact-val" target="_blank">zerotrustoffsec.com</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-key">location:</span>
+            <span class="contact-val">Panama City, Panama</span>
+          </div>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="mailto:dcgpanama@zerotrustoffsec.com" class="cta-btn-primary">Become a Sponsor &rarr;</a>
+          <a href="../assets/DCG-PANAMA-SPONSOR-PROP.pdf" class="cta-btn-secondary" target="_blank">Download Proposal</a>
+        </div>
+      </div>
+
+    </div><!-- end .info-section -->
+
+  </div><!-- end .page-content -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-line"><span class="green">DCG Panama</span> &mdash; DEF CON Group Panama</div>
+    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7">We do not ask for permission to understand systems. We take them apart.</div>
+    <div class="footer-line">&copy; 2026. All rights reserved. Developed by: <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/sponsors.js"></script>
+</body>
+</html>

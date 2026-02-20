@@ -19,8 +19,8 @@
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 900;
-  color: var(--green-primary);
-  text-shadow: 0 0 15px var(--green-glow);
+  color: var(--red-primary);
+  text-shadow: 0 0 15px var(--red-glow);
   letter-spacing: 5px;
   text-transform: uppercase;
   margin-bottom: 0.8rem;
@@ -41,7 +41,7 @@
   gap: 12px;
   margin-top: 1.5rem;
   padding: 12px 24px;
-  border: 1px solid var(--green-dark);
+  border: 1px solid var(--red-dark);
   display: inline-flex;
   margin-left: auto;
   margin-right: auto;
@@ -51,15 +51,15 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--green-primary);
-  box-shadow: 0 0 8px var(--green-glow);
+  background: var(--red-primary);
+  box-shadow: 0 0 8px var(--red-glow);
   animation: ledPulse 2s ease infinite;
 }
 
 .status-text {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--green-dim);
+  color: var(--red-dim);
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -77,7 +77,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom, var(--green-primary), var(--green-dark), transparent);
+  background: linear-gradient(to bottom, var(--red-primary), var(--red-dark), transparent);
 }
 
 /* --- Event Card --- */
@@ -98,25 +98,25 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--green-dark);
-  border: 2px solid var(--green-primary);
-  box-shadow: 0 0 8px var(--green-glow);
+  background: var(--red-dark);
+  border: 2px solid var(--red-primary);
+  box-shadow: 0 0 8px var(--red-glow);
 }
 
 .event-card:hover {
-  border-color: var(--green-dim);
+  border-color: var(--red-dim);
   box-shadow: 0 0 30px rgba(0, 255, 65, 0.05);
 }
 
 .event-card.upcoming::before {
-  background: var(--green-primary);
+  background: var(--red-primary);
   animation: pulseGlow 2s ease infinite;
 }
 
 .event-date {
   font-family: var(--font-display);
   font-size: 0.7rem;
-  color: var(--green-primary);
+  color: var(--red-primary);
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
@@ -127,7 +127,7 @@
   font-family: var(--font-mono);
   font-size: 0.6rem;
   color: var(--bg-primary);
-  background: var(--green-primary);
+  background: var(--red-primary);
   padding: 2px 8px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -136,7 +136,7 @@
 
 .event-tag.ctf { background: var(--cyan-accent); }
 .event-tag.workshop { background: var(--amber); }
-.event-tag.meetup { background: var(--green-primary); }
+.event-tag.meetup { background: var(--red-primary); }
 .event-tag.talk { background: var(--red-accent); color: #fff; }
 
 .event-title {
@@ -170,14 +170,14 @@
 
 .event-meta span::before {
   content: '>';
-  color: var(--green-primary);
+  color: var(--red-primary);
 }
 
 /* --- Coming Soon State --- */
 .events-coming-soon {
   text-align: center;
   padding: 4rem 2rem;
-  border: 1px dashed var(--green-dark);
+  border: 1px dashed var(--red-dark);
   margin-top: 2rem;
 }
 
@@ -190,8 +190,8 @@
 .coming-soon-text {
   font-family: var(--font-retro);
   font-size: 1.4rem;
-  color: var(--green-primary);
-  text-shadow: 0 0 10px var(--green-glow);
+  color: var(--red-primary);
+  text-shadow: 0 0 10px var(--red-glow);
   letter-spacing: 3px;
   margin-bottom: 0.5rem;
 }
@@ -226,9 +226,9 @@
 .contact-link {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--green-dim);
+  color: var(--red-dim);
   text-decoration: none;
-  border: 1px solid var(--green-dark);
+  border: 1px solid var(--red-dark);
   padding: 8px 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -236,9 +236,9 @@
 }
 
 .contact-link:hover {
-  color: var(--green-primary);
-  border-color: var(--green-primary);
-  box-shadow: 0 0 15px var(--green-glow);
+  color: var(--red-primary);
+  border-color: var(--red-primary);
+  box-shadow: 0 0 15px var(--red-glow);
 }
 
 @media (max-width: 768px) {
@@ -253,4 +253,161 @@
   .events-timeline::before {
     left: 8px;
   }
+}
+
+/* --- CTA section --- */
+.cta-section {
+  text-align: center;
+  padding: 5rem 2rem;
+  border-top: 1px solid var(--gray-mid);
+  border-bottom: 1px solid var(--gray-mid);
+}
+
+.cta-text {
+  font-family: var(--font-retro);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--white);
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--red-primary);
+  border: 1px solid var(--red-primary);
+  padding: 12px 32px;
+  text-decoration: none;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: var(--red-primary);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px var(--red-glow), 0 0 40px var(--red-glow);
+}
+
+/* --- Event Dropdowns --- */
+.event-dropdown {
+  margin-top: 1.0rem;
+}
+
+.dropdown-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid var(--red-dark);
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--red-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 1.0s ease;
+}
+
+.dropdown-toggle:hover {
+  border-color: var(--red-primary);
+  color: var(--red-primary);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+}
+
+.dropdown-icon {
+  color: var(--red-primary);
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-toggle.active .dropdown-icon {
+  transform: rotate(90deg);
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  border-left: 1px solid var(--red-dark);
+  margin-left: 16px;
+}
+
+.dropdown-content.open {
+  max-height: 1000px;
+  padding: 1.5rem 0 1rem 1.5rem;
+}
+
+/* --- Agenda Table --- */
+.agenda-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.agenda-table th {
+  text-align: left;
+  padding: 8px 12px;
+  color: var(--red-primary);
+  border-bottom: 1px solid var(--red-dark);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.agenda-table td {
+  padding: 10px 12px;
+  color: var(--white-dim);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.agenda-table td:first-child {
+  color: var(--red-dim);
+  font-weight: 600;
+  width: 80px;
+}
+
+.agenda-table tr:hover {
+  background: rgba(0, 255, 65, 0.03);
+}
+
+/* --- Talk Items --- */
+.talk-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.talk-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.talk-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+  letter-spacing: 1px;
+}
+
+.talk-speaker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--red-dim);
+  margin-bottom: 0.6rem;
+  letter-spacing: 1px;
+}
+
+.talk-desc {
+  font-size: 0.75rem;
+  color: var(--white-dim);
+  line-height: 1.6;
 }

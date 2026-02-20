@@ -21,7 +21,7 @@ function initMatrixRain() {
     ctx.fillStyle = 'rgba(24, 24, 24, 0.22)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#00ff41';
+    ctx.fillStyle = '#ff0000';
     ctx.font = `${fontSize}px monospace`;
 
     for (let i = 0; i < drops.length; i++) {
@@ -130,10 +130,35 @@ function animateCounters() {
   });
 }
 
+// --- Event Dropdowns ---
+function initEventDropdowns() {
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const content = toggle.nextElementSibling;
+      const isOpen = toggle.classList.contains('active');
+      
+      // Close all other dropdowns
+      document.querySelectorAll('.dropdown-toggle').forEach(other => {
+        if (other !== toggle) {
+          other.classList.remove('active');
+          other.nextElementSibling.classList.remove('open');
+        }
+      });
+      
+      // Toggle current dropdown
+      toggle.classList.toggle('active');
+      content.classList.toggle('open');
+    });
+  });
+}
+
 // --- Initialize on DOM Ready ---
 document.addEventListener('DOMContentLoaded', () => {
   initMatrixRain();
   initNavigation();
   initBootSequence();
   animateCounters();
+  initEventDropdowns();
 });
