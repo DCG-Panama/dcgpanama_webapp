@@ -77,6 +77,21 @@
   });
 })();
 
-// NOTE: Nav is fully handled by the IIFE block above.
-// Duplicate DOMContentLoaded fallback removed — double-registering listeners
-// causes the toggle to open and close on the same click.
+// Nav fallback (por si main.js no carga)
+document.addEventListener('DOMContentLoaded', function () {
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    toggle.textContent = links.classList.contains('open') ? '[X]' : '[=]';
+  });
+
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.textContent = '[=]';
+    });
+  });
+});
