@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DCG Panama – Signal Feed</title>
+  <meta name="description" content="DEF CON Group Panama — Intercepted transmissions. Video hub.">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/videos.css">
+  <link rel="icon" type="image/png" href="../assets/dcgpanamalogonobg.png">
+</head>
+<body>
+
+  <!-- Background effects -->
+  <canvas id="matrix-canvas"></canvas>
+  <div class="grid-bg"></div>
+  <div class="scanlines"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <a href="../index.html" class="nav-brand">
+      <img src="../assets/dcgpanamalogonobg.png" alt="DCG Panama">
+      <span>DCG Panama</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu">[=]</button>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="videohub.html" class="active">VidHub</a></li>
+    </ul>
+  </nav>
+
+  <!-- =============================================
+       VIDEO HUB WRAPPER
+  ============================================== -->
+  <div class="videohub-wrapper">
+
+    <!-- Sticky search / header bar -->
+    <div class="hub-header">
+      <span class="hub-label">// SIGNAL FEED</span>
+      <div class="search-form">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="SEARCH TRANSMISSIONS..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button class="search-btn" id="search-btn">[SCAN]</button>
+      </div>
+    </div>
+
+    <!-- Tag filter pills -->
+    <div class="tag-filters" id="tag-filters">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- ============================================
+         GRID VIEW (home / results)
+    ============================================= -->
+    <div class="hub-grid-view" id="hub-grid-view">
+      <div class="grid-section-label">
+        <span>INTERCEPTED TRANSMISSIONS</span>
+        <span class="video-count" id="video-count">-- SIGNALS</span>
+      </div>
+      <div class="videos-grid" id="videos-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- ============================================
+         PLAYER VIEW
+    ============================================= -->
+    <div class="hub-player-view" id="hub-player-view">
+
+      <!-- Main player column -->
+      <div class="player-main">
+        <button class="player-back-btn" id="player-back-btn">BACK TO FEED</button>
+
+        <!-- Embed -->
+        <div class="player-embed-wrap" id="player-embed-wrap">
+          <iframe
+            id="player-iframe"
+            src=""
+            allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          ></iframe>
+        </div>
+
+        <!-- Info panel -->
+        <div class="player-info">
+          <div class="player-title" id="player-title"></div>
+          <div class="player-meta-row">
+            <div class="player-meta-item">DATE: <span id="player-date"></span></div>
+            <div class="player-meta-item">DURATION: <span id="player-duration"></span></div>
+          </div>
+          <div class="player-tags" id="player-tags"></div>
+          <div class="player-desc" id="player-desc"></div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="player-sidebar" id="player-sidebar">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div><!-- end player view -->
+
+  </div><!-- end videohub-wrapper -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-line"><span class="green">DCG Panama</span> &mdash; DEF CON Group Panama</div>
+    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7">We do not ask for permission to understand systems. We take them apart.</div>
+    <div class="footer-line">&copy; 2026. All rights reserved. Developed by: <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/videos.js"></script>
+</body>
+</html>

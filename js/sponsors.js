@@ -68,25 +68,15 @@
 (function () {
   const inner = document.getElementById('ticker-inner');
   if (!inner) return;
-  // Duplicate children for infinite scroll illusion
-  inner.innerHTML += inner.innerHTML;
+  // FIX #2: Clone existing child nodes instead of re-parsing innerHTML.
+  // innerHTML += re-evaluates the full HTML string, which can re-trigger
+  // injected event handlers and destroys existing DOM event listeners.
+  const originalChildren = Array.from(inner.children);
+  originalChildren.forEach(child => {
+    inner.appendChild(child.cloneNode(true));
+  });
 })();
 
-// Nav fallback (por si main.js no carga)
-document.addEventListener('DOMContentLoaded', function () {
-  const toggle = document.querySelector('.nav-toggle');
-  const links  = document.querySelector('.nav-links');
-  if (!toggle || !links) return;
-
-  toggle.addEventListener('click', () => {
-    links.classList.toggle('open');
-    toggle.textContent = links.classList.contains('open') ? '[X]' : '[=]';
-  });
-
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.textContent = '[=]';
-    });
-  });
-});
+// NOTE: Nav is fully handled by the IIFE block above.
+// Duplicate DOMContentLoaded fallback removed — double-registering listeners
+// causes the toggle to open and close on the same click.
