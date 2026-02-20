@@ -502,7 +502,7 @@
 
 .contact-row {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   display: flex;
   align-items: center;
   gap: 0.6rem;
