@@ -9,8 +9,8 @@
   --platinum-glow: rgba(230, 230, 230, 0.3);
   --gold-color: #ffb300;
   --gold-glow: rgba(255, 179, 0, 0.404);
-  --silver-color: #949494;
-  --silver-glow: rgba(141, 141, 141, 0.2);
+  --silver-color: #9c9c9c;
+  --silver-glow: rgba(163, 163, 163, 0.2);
   --infra-color: #00e5ff;
   --infra-glow: rgba(0,229,255,0.2);
 }
@@ -378,7 +378,7 @@
 .tier-desc {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: #9c9c9c;
+  color: #b41313;
   letter-spacing: 1px;
   margin-bottom: 1rem;
   line-height: 1.5;
