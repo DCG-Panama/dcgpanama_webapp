@@ -71,7 +71,7 @@ body {
   background: var(--red-dim);
 }
 
-/* --- Scanline Overlay (Global) --- */
+/* --- Scanline Overlay (Global) ---
 .scanlines {
   position: fixed;
   top: 0;
@@ -87,7 +87,7 @@ body {
     rgba(0, 255, 65, var(--scanline-opacity)) 2px,
     rgba(0, 255, 65, var(--scanline-opacity)) 4px
   );
-}
+}*/
 
 /* --- Noise Overlay --- */
 .noise-overlay {

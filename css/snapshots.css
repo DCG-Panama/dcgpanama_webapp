@@ -1,29 +1,53 @@
+/* ============================================
+   DCG PANAMA — SNAPSHOTS PAGE
+============================================ */
 .snapshots-page {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
+  padding: calc(60px + 2rem) 1.5rem 4rem;
 }
+
+/* ---- Page Header ---- */
 .snapshots-header {
   margin-bottom: 2rem;
   border: 1px solid #1f1f1f;
   background: rgba(5, 5, 5, 0.85);
   padding: 1.4rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  /* allow .glitch pseudo-elements to render outside bounds */
+  overflow: visible;
 }
+
 .snapshots-header h1 {
-  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
-  letter-spacing: 3px;
+  font-size: clamp(1.1rem, 5vw, 2.1rem);
+  letter-spacing: clamp(0px, 0.5vw, 3px);
   color: var(--red-primary);
+  line-height: 1.3;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  display: block;
+  position: relative;
 }
+
 .snapshots-header p {
   margin-top: 0.8rem;
   color: #a9a9a9;
-  font-size: 0.82rem;
+  font-size: clamp(0.72rem, 2vw, 0.82rem);
   letter-spacing: 1px;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
+
 .snapshots-header code {
   color: var(--red-dim);
   font-family: var(--font-mono);
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }
+
 .snapshots-meta {
   margin-top: 0.8rem;
   font-size: 0.7rem;
@@ -31,93 +55,180 @@
   color: #818181;
   text-transform: uppercase;
 }
+
+/* ---- Event Gallery List ---- */
 .events-gallery {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
+
 .event-gallery-card {
   border: 1px solid #252525;
   background: rgba(0, 0, 0, 0.82);
   overflow: hidden;
 }
+
 .event-gallery-head {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.6rem;
   align-items: center;
   padding: 1rem 1.1rem;
   border-bottom: 1px solid #1a1a1a;
   flex-wrap: wrap;
 }
+
 .event-name {
   color: var(--red-primary);
   font-family: var(--font-display);
-  font-size: 0.9rem;
-  letter-spacing: 2px;
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  letter-spacing: clamp(1px, 0.3vw, 2px);
   text-transform: uppercase;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
 }
+
 .event-count {
   color: #8a8a8a;
   font-size: 0.66rem;
   letter-spacing: 2px;
   text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
+
+/* ---- Preview Grid (9 tiles) ---- */
 .event-photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1px;
   background: #141414;
 }
-.event-photo-grid.collapsed .event-photo:nth-child(n+10) {
-  display: none;
-}
+
 .event-photo {
   margin: 0;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   position: relative;
+  background: #0a0a0a;
 }
+
 .event-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: grayscale(32%) contrast(1.1);
   transition: transform 0.4s ease, filter 0.4s ease;
+  display: block;
 }
+
 .event-photo:hover img {
   filter: grayscale(0%) contrast(1);
   transform: scale(1.05);
 }
+
+/* Download overlay on each tile */
+.photo-dl-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.4rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%);
+  z-index: 2;
+}
+
+.event-photo:hover .photo-dl-overlay {
+  opacity: 1;
+}
+
+.photo-dl-btn {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 1.5px;
+  color: #ccc;
+  background: rgba(0,0,0,0.78);
+  border: 1px solid #444;
+  padding: 0.28rem 0.55rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  line-height: 1;
+}
+
+.photo-dl-btn:hover {
+  color: #fff;
+  border-color: var(--red-primary);
+  box-shadow: 0 0 6px var(--red-glow);
+}
+
+/* ---- Expand button ---- */
 .event-gallery-expand {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
   padding: 0.75rem 1.1rem;
-  border-top: 1px solid #1a1a1a;
   background: rgba(0,0,0,0.6);
+  border: none;
+  border-top: 1px solid #1a1a1a;
   cursor: pointer;
   font-family: var(--font-display);
   font-size: 0.68rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #666;
-  border: none;
   width: 100%;
   transition: color 0.2s, background 0.2s;
 }
+
 .event-gallery-expand:hover {
   color: var(--red-primary);
   background: rgba(180,0,0,0.07);
 }
+
 .event-gallery-expand .expand-arrow {
   display: inline-block;
   transition: transform 0.3s ease;
 }
+
 .event-gallery-expand.expanded .expand-arrow {
   transform: rotate(180deg);
 }
+
+/* ---- Scroll container (inline, height-limited) ---- */
+.gallery-scroll-wrap {
+  height: 70vh;            /* fixed height — user scrolls inside */
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #0c0c0c;
+  border-top: 1px solid #1a1a1a;
+  /* custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #3a0000 #0c0c0c;
+}
+
+.gallery-scroll-wrap::-webkit-scrollbar        { width: 6px; }
+.gallery-scroll-wrap::-webkit-scrollbar-track  { background: #0c0c0c; }
+.gallery-scroll-wrap::-webkit-scrollbar-thumb  { background: #3a0000; border-radius: 0; }
+.gallery-scroll-wrap::-webkit-scrollbar-thumb:hover { background: var(--red-dim); }
+
+.gallery-scroll-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  background: #141414;
+  /* minimum height so the container isn't empty-looking before tiles load */
+  min-height: 100%;
+}
+
+/* Empty / error states */
 .event-empty,
 .gallery-message {
   border: 1px solid #1f1f1f;
@@ -127,11 +238,35 @@
   letter-spacing: 1px;
   padding: 1rem;
 }
+
+/* ---- Responsive ---- */
 @media (max-width: 768px) {
   .snapshots-page {
-    padding: 1.2rem 1rem 3rem;
+    padding: calc(60px + 1rem) 0.75rem 3rem;
   }
-  .event-photo-grid {
+
+  .snapshots-header {
+    padding: 1rem;
+  }
+
+  .snapshots-header h1 {
+    font-size: clamp(0.95rem, 6vw, 1.4rem);
+    letter-spacing: 0;
+  }
+
+  .event-photo-grid,
+  .gallery-scroll-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .gallery-scroll-wrap {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .snapshots-header h1 {
+    font-size: 0.95rem;
+    letter-spacing: 0;
   }
 }

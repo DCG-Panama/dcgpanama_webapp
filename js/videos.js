@@ -67,7 +67,17 @@ const VIDEOS = [
     duration: '1:50:56',
     tags: ['Documentary', 'Conference', 'hacking', 'culture'],
     desc: "DEFCON: The Full Documentary takes you inside the world's largest and most legendary hacking conference. Witness how ethical hackers, security experts, and cybercriminals gather annually in Las Vegas to discuss vulnerabilities, showcase exploits, and push the boundaries of cybersecurity. This film explores DEFCON's origins, the hacking culture, and the evolving world of cybersecurity, ethical hacking, and digital warfare. Whether you're a hacker, pentester, or cybersecurity enthusiast, this documentary is a must-watch!"
-  }
+  }//,
+  //{
+  //  id: 'v006',
+  //  title: "Official DCG Panama Meetup #1 AI generated Teaser Video",
+  //  odyseeUrl: 'https://odysee.com/%24/embed/%40zerotrustoffsec%3A1%2Fdcg-panama-meetup1-teaser%3A5?r=HzgmZTDLvBSdTiNaRMh2nPPTYZMPEj61&autoplay=true',
+  //  thumbnail: 'https://thumbs.odycdn.com/d9351de6521771c0506943dd2a8898f3.webp',
+  //  date: '2026-03-02',
+  //  duration: '00:14',
+  //  tags: ['Teaser', 'Conference', 'hacking', 'red team'],
+  //  desc: "Official DCG Panama Meetup #1 AI generated Teaser Video"
+  //}
 ];
 
 // ============================================
@@ -440,59 +450,7 @@ function renderSidebarFiltered(currentVideo, query) {
   others.forEach(v => buildSidebarCard(sidebar, v));
 }
 
-// ============================================
-// NAVIGATION
-// ============================================
-function initNavigation() {
-  const toggle = document.querySelector('.nav-toggle');
-  const links  = document.querySelector('.nav-links');
-  const dropdowns = document.querySelectorAll('.nav-dropdown');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-      toggle.textContent = links.classList.contains('open') ? '[X]' : '[=]';
-    });
-    links.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.textContent = '[=]';
-      });
-    });
-  }
-
-  dropdowns.forEach(dropdown => {
-    const toggleBtn = dropdown.querySelector('.nav-dropdown-toggle');
-    if (!toggleBtn) return;
-
-    if (dropdown.querySelector('.nav-dropdown-menu a.active')) {
-      toggleBtn.classList.add('active');
-    }
-
-    toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const willOpen = !dropdown.classList.contains('open');
-
-      dropdowns.forEach(other => {
-        if (other === dropdown) return;
-        other.classList.remove('open');
-        const otherToggle = other.querySelector('.nav-dropdown-toggle');
-        if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
-      });
-
-      dropdown.classList.toggle('open', willOpen);
-      toggleBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-    });
-  });
-
-  document.addEventListener('click', (e) => {
-    dropdowns.forEach(dropdown => {
-      if (dropdown.contains(e.target)) return;
-      dropdown.classList.remove('open');
-      const toggleBtn = dropdown.querySelector('.nav-dropdown-toggle');
-      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
-    });
-  });
-}
+// Navigation is handled by main.js — no duplicate needed here.
 
 // ============================================
 // MATRIX RAIN
@@ -580,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSearch();
 
   document.getElementById('player-back-btn').addEventListener('click', () => {
-    history.back();
+    closePlayer();
   });
 
   window.addEventListener('popstate', (e) => {
@@ -625,21 +583,4 @@ function closePlayerWithoutReplace() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Nav fallback (por si main.js no carga)
-document.addEventListener('DOMContentLoaded', function () {
-  const toggle = document.querySelector('.nav-toggle');
-  const links  = document.querySelector('.nav-links');
-  if (!toggle || !links) return;
-
-  toggle.addEventListener('click', () => {
-    links.classList.toggle('open');
-    toggle.textContent = links.classList.contains('open') ? '[X]' : '[=]';
-  });
-
-  links.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      links.classList.remove('open');
-      toggle.textContent = '[=]';
-    });
-  });
-});
+// Nav fallback removed — handled by main.js
