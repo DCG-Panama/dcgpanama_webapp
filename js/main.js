@@ -50,6 +50,7 @@ function initMatrixRain() {
 function initNavigation() {
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
 
   if (toggle && links) {
     toggle.addEventListener('click', () => {
@@ -73,6 +74,39 @@ function initNavigation() {
     if (href === current || (current === 'index.html' && href === 'index.html')) {
       a.classList.add('active');
     }
+  });
+
+  dropdowns.forEach(dropdown => {
+    const toggleBtn = dropdown.querySelector('.nav-dropdown-toggle');
+    if (!toggleBtn) return;
+
+    if (dropdown.querySelector('.nav-dropdown-menu a.active')) {
+      toggleBtn.classList.add('active');
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const willOpen = !dropdown.classList.contains('open');
+
+      dropdowns.forEach(other => {
+        if (other === dropdown) return;
+        other.classList.remove('open');
+        const otherToggle = other.querySelector('.nav-dropdown-toggle');
+        if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+      });
+
+      dropdown.classList.toggle('open', willOpen);
+      toggleBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    dropdowns.forEach(dropdown => {
+      if (dropdown.contains(e.target)) return;
+      dropdown.classList.remove('open');
+      const toggleBtn = dropdown.querySelector('.nav-dropdown-toggle');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+    });
   });
 }
 
