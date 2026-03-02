@@ -43,8 +43,11 @@ function renderEventGallery(eventName, imageFiles) {
     return eventCard;
   }
 
+  const PREVIEW_COUNT = 9;
+  const hasMore = imageFiles.length > PREVIEW_COUNT;
+
   const grid = document.createElement('div');
-  grid.className = 'event-photo-grid';
+  grid.className = hasMore ? 'event-photo-grid collapsed' : 'event-photo-grid';
 
   imageFiles.forEach((imageFile, index) => {
     const figure = document.createElement('figure');
@@ -61,6 +64,24 @@ function renderEventGallery(eventName, imageFiles) {
   });
 
   eventCard.appendChild(grid);
+
+  if (hasMore) {
+    const hidden = imageFiles.length - PREVIEW_COUNT;
+    const btn = document.createElement('button');
+    btn.className = 'event-gallery-expand';
+    btn.innerHTML = `<span class="expand-label">VIEW ALL ${imageFiles.length} SNAPSHOTS</span><span class="expand-arrow">&#x25BE;</span>`;
+
+    btn.addEventListener('click', () => {
+      const collapsed = grid.classList.toggle('collapsed');
+      btn.classList.toggle('expanded', !collapsed);
+      btn.querySelector('.expand-label').textContent = collapsed
+        ? `VIEW ALL ${imageFiles.length} SNAPSHOTS`
+        : 'COLLAPSE GALLERY';
+    });
+
+    eventCard.appendChild(btn);
+  }
+
   return eventCard;
 }
 
