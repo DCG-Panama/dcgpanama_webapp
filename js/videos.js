@@ -34,7 +34,7 @@ const VIDEOS = [
     odyseeUrl: 'https://odysee.com/%24/embed/%40zerotrustoffsec%3A1%2Fdcgpa02-Post-Compromise-Session-Attacks-Entra-ID%3A2?r=HzgmZTDLvBSdTiNaRMh2nPPTYZMPEj61',
     thumbnail: 'https://thumbs.odycdn.com/4263fe862e4430695283db8f1754ee2a.webp',
     date: '2026-05-02',
-    duration: '00:31:17',
+    duration: '00:36:22',
     tags: ['Azure', 'Red Team', 'EDR Bypass', 'hacking', 'malware'],
     desc: "Post-Compromise Session - Attacks Entra ID - Elzer Pineda"
   }
