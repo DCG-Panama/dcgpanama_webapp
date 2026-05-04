@@ -20,54 +20,25 @@
 const VIDEOS = [
   {
     id: 'v001',
-    title: 'DEF CON 25 - SupaFraud - Official DEF CON Teaser Video',
-    odyseeUrl: 'https://www.youtube.com/embed/FNtVqHaWFbU?si=lvxGpN0_F0Quk_z3',
-    thumbnail: 'https://i.ytimg.com/vi/FNtVqHaWFbU/hq720.jpg',
-    date: '2017-07-18',
-    duration: '1:08',
-    tags: ['teaser', 'hacking'],
-    desc: 'The official DEF CON 25 Teaser Video.'
+    title: "Hallucinations and Evasions: Red Teaming with AI-Generated Malware - Alejandro Torres",
+    odyseeUrl: 'https://odysee.com/%24/embed/%40zerotrustoffsec%3A1%2Fdcgpa01-Red-Teaming-with-AI-Generated-Malware%3Ab?r=HzgmZTDLvBSdTiNaRMh2nPPTYZMPEj61',
+    thumbnail: 'https://thumbs.odycdn.com/2970d2eb170506fa12b7b5e917c837fc.webp',
+    date: '2026-05-02',
+    duration: '00:31:17',
+    tags: ['Conference', 'hacking', 'culture', 'AI', 'malware'],
+    desc: "Hallucinations and Evasions: Red Teaming with AI-Generated Malware"
   },
   {
     id: 'v002',
-    title: "DEF CON 33 - Stories from a Tor dev - Roger 'arma' Dingledine",
-    odyseeUrl: 'https://www.youtube.com/embed/djM70O0SnsY?si=IOj-1OBBJHjo-Axb',
-    thumbnail: 'https://i.ytimg.com/vi/djM70O0SnsY/hqdefault.jpg',
-    date: '2025-10-10',
-    duration: '42:46',
-    tags: ['tor', 'talk', 'anonymity', 'stealth'],
-    desc: "What is it actually like to support and balance a global anonymity network, with users ranging from political dissidents to national security analysts? You say it's important to teach law enforcement and governments about privacy and end-to-end encryption, but how do those conversations go in practice? I heard you accidentally got Russia to block all of Azure for a day? Are you ever going to do a Tor talk in China? Wait, who exactly tried to bribe you to leave bugs in Tor to support their criminal schemes?"
-  },
-  {
-    id: 'v003',
-    title: "DEF CON 32 - Winning the Game of Active Directory - Brandon Colley",
-    odyseeUrl: 'https://www.youtube.com/embed/M-2d3sM3I2o?si=PhwSz-RpbCcXUimp',
-    thumbnail: 'https://i.ytimg.com/vi/M-2d3sM3I2o/hqdefault.jpg',
-    date: '2024-10-16',
-    duration: '43:04',
-    tags: ['active directory', 'GOAD', 'talk', 'anonymity', 'pass spray', 'kerberoasting', 'asreproasting','printnightmare'],
-    desc: "The Game Of Active Directory (GOAD) is a prebuilt vulnerable Active Directory (AD) environment primarily created for pentesters. Touting over 30 methods of attack, GOAD offers multiple paths to full AD takeover. But is that really how you win the game? Regardless of color, as security professions our goal should be to better secure environments. This talk walks through AD attack strategies, exploiting misconfigurations that ultimately pwn AD. Mitigations for these attacks are discussed and implemented, showcasing how they stop common attacks. Implementing these protections in your environment is truly how you win the Game Of Active Directory."
-  },
-  {
-    id: 'v004',
-    title: "DEF CON 32 - RF Attacks on Aviation's Defense Against Mid-Air Collisions - G. Longo, V. Lenders",
-    odyseeUrl: 'https://www.youtube.com/embed/p1H6-0clP7U?si=ivJ4O7dgzTimjKPQ',
-    thumbnail: 'https://i.ytimg.com/vi/p1H6-0clP7U/sddefault.jpg',
-    date: '2024-10-16',
-    duration: '26:22',
-    tags: ['RF', 'Aviation', 'talk', 'Aviation Radar', 'survillance', 'GPS'],
-    desc: "Aviation's Traffic Collision Avoidance System (TCAS) II has been touted as a foolproof safety net since its introduction in the 1980s. But what if we told you that this supposedly impenetrable system can be compromised? For years, attacks on TCAS have been mere theoretical exercises, foiled by an (accidental) built in security feature. That is, until now. In this presentation, we'll reveal the first working RF attacks on TCAS II, demonstrating how to hijack collision avoidance displays and create fake Traffic Advisories (TAs) and Resolution Advisories (RAs). We'll walk you through the technical challenges of building the necessary tooling using commercial off-the-shelf hardware. But that's not all. Our research has also uncovered a second attack capable of remotely disabling an aircraft's TCAS capabilities, rendering it vulnerable to mid-air collisions. The implications are clear: if our findings can be exploited in real-world scenarios, the safety of millions of passengers hangs in the balance. Join us as we lift the lid on this shocking vulnerability and explore the dark side of aviation security."
-  },
-  {
-    id: 'v005',
-    title: "🏴‍☠️ DEFCON: Inside the World's Most Infamous Hacking Conference | Full Documentary",
-    odyseeUrl: 'https://www.youtube.com/embed/YcQEXZWSSFE?si=tE322-fehS4EEGQp',
-    thumbnail: 'https://i.ytimg.com/vi/YcQEXZWSSFE/sddefault.jpg',
-    date: '2025-03-06',
-    duration: '1:50:56',
-    tags: ['Documentary', 'Conference', 'hacking', 'culture'],
-    desc: "DEFCON: The Full Documentary takes you inside the world's largest and most legendary hacking conference. Witness how ethical hackers, security experts, and cybercriminals gather annually in Las Vegas to discuss vulnerabilities, showcase exploits, and push the boundaries of cybersecurity. This film explores DEFCON's origins, the hacking culture, and the evolving world of cybersecurity, ethical hacking, and digital warfare. Whether you're a hacker, pentester, or cybersecurity enthusiast, this documentary is a must-watch!"
-  }//,
+    title: "Post-Compromise Session - Attacks Entra ID - Elzer Pineda",
+    odyseeUrl: 'https://odysee.com/%24/embed/%40zerotrustoffsec%3A1%2Fdcgpa02-Post-Compromise-Session-Attacks-Entra-ID%3A2?r=HzgmZTDLvBSdTiNaRMh2nPPTYZMPEj61',
+    thumbnail: 'https://thumbs.odycdn.com/4263fe862e4430695283db8f1754ee2a.webp',
+    date: '2026-05-02',
+    duration: '00:31:17',
+    tags: ['Azure', 'Red Team', 'EDR Bypass', 'hacking', 'malware'],
+    desc: "Post-Compromise Session - Attacks Entra ID - Elzer Pineda"
+  }
+  //,
   //{
   //  id: 'v006',
   //  title: "Official DCG Panama Meetup #1 AI generated Teaser Video",
@@ -96,7 +67,7 @@ const ALLOWED_EMBED_ORIGINS = [
 // ============================================
 const ALLOWED_THUMBNAIL_ORIGINS = [
   'https://i.ytimg.com',
-  'https://thumbnail.odycdn.com',
+  'https://thumbs.odycdn.com',
   'https://odysee.com',
 ];
 
