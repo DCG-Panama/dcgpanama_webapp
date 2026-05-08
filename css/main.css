@@ -399,7 +399,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: blur(8px) brightness(0.38) saturate(0.85);
+  filter: blur(6px) brightness(0.38) saturate(0.85);
   transform: scale(1.05);
   pointer-events: none;
 }
