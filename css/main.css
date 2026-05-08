@@ -387,6 +387,23 @@ body {
   background-size: 50px 50px;
 }
 
+/* --- Image Background (blurred + darkened) --- */
+.bg-image {
+  position: fixed;
+  top: -40px;
+  left: -40px;
+  right: -40px;
+  bottom: -40px;
+  z-index: -3;
+  background-image: url("../assets/img/bg-meetup2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(14px) brightness(0.28) saturate(0.85);
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
 /* --- Footer --- */
 .site-footer {
   border-top: 1px solid var(--red-dark);
