@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DCG Panama - Snapshots</title>
-  <meta name="description" content="DEF CON Group Panama - Event snapshots and gallery archives.">
+  <title data-i18n="page.snapshots.title">DCG Panama - Snapshots</title>
+  <meta name="description" data-i18n-attrs="content:page.snapshots.desc" content="DEF CON Group Panama - Event snapshots and gallery archives.">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/snapshots.css">
   <link rel="icon" type="image/png" href="../assets/img/dcgpanamalogonobg.png">
@@ -20,36 +20,45 @@
       <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
       <span>DCG Panama</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle menu">[=]</button>
+    <button class="nav-toggle" aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">[=]</button>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="manifesto.html">Manifesto</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="sponsors.html">Sponsors</a></li>
-      <li><a href="team.html">Team</a></li>
+      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
+      <li><a href="about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+      <li><a href="sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
+      <li><a href="team.html" data-i18n="nav.team">Team</a></li>
       <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle active" type="button" aria-expanded="true">Media</button>
+        <button class="nav-dropdown-toggle active" type="button" aria-expanded="true" data-i18n="nav.media">Media</button>
         <ul class="nav-dropdown-menu">
-          <li><a href="videohub.html">VidHub</a></li>
-          <li><a href="snapshots.html" class="active">Snapshots</a></li>
+          <li><a href="videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
+          <li><a href="snapshots.html" class="active" data-i18n="nav.snapshots">Snapshots</a></li>
         </ul>
+      </li>
+      <li class="nav-lang">
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
       </li>
     </ul>
   </nav>
   <div class="page-content snapshots-page">
     <div class="snapshots-header">
-      <h1 class="glitch" data-text="// Snapshots">// Snapshots</h1>
-      <p>Auto-indexed event galleries from <code>/assets/events/&lt;event-name&gt;</code>.</p>
+      <h1 class="glitch" data-text="// Snapshots" data-i18n="snap.title" data-i18n-attrs="data-text:snap.title">// Snapshots</h1>
+      <p><span data-i18n="snap.intro">Auto-indexed event galleries from</span> <code>/assets/events/&lt;event-name&gt;</code>.</p>
       <div class="snapshots-meta" id="gallery-meta">Scanning event archives...</div>
     </div>
     <div class="events-gallery" id="events-gallery"></div>
   </div>
   <footer class="site-footer">
     <div class="footer-line"><span class="green">DCG Panama</span> - DEF CON Group Panama</div>
-    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7">We do not ask for permission to understand systems. We take them apart.</div>
-    <div class="footer-line">&copy; 2026. All rights reserved. Developed by: <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
+    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7" data-i18n="footer.tag.apart">We do not ask for permission to understand systems. We take them apart.</div>
+    <div class="footer-line"><span data-i18n="footer.rights">&copy; 2026. All rights reserved. Developed by:</span> <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
   </footer>
+  <script src="../js/lang.js"></script>
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/snapshots.js"></script>
 </body>

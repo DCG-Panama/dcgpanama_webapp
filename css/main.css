@@ -195,6 +195,68 @@ body {
   opacity: 1;
 }
 
+/* --- Language switcher --- */
+.nav-lang {
+  margin-left: 0.6rem;
+  padding-left: 0.6rem;
+  border-left: 1px solid var(--red-dark);
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.lang-btn {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--white-dim);
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* Matches the 44px touch target used elsewhere without changing nav height. */
+  min-width: 34px;
+  padding: 10px 2px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.lang-btn:hover,
+.lang-btn:focus-visible {
+  color: var(--red-primary);
+  text-shadow: 0 0 8px var(--red-glow);
+}
+
+.lang-btn.active {
+  color: var(--red-primary);
+  text-shadow: 0 0 8px var(--red-glow);
+}
+
+.lang-sep {
+  color: var(--red-dark);
+  font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .nav-lang {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--red-dark);
+    padding-top: 1rem;
+  }
+
+  .lang-switch {
+    justify-content: center;
+  }
+
+  .lang-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
 /* Mobile nav toggle */
 .nav-toggle {
   display: none;

@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const terminalBody = document.querySelector('.terminal-body');
 
   // --- Virtual Filesystem ---
+  // Copy that only exists here. The literal below each key is the English;
+  // Spanish lives in lang.js under strings.es.term.
+  function tr(key, fallback) {
+    return (window.I18N ? window.I18N.t('term.' + key) : null) ?? fallback;
+  }
+
   const fs = {
     '/': {
       type: 'dir',
@@ -17,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     '/README.txt': {
       type: 'file',
+      key: 'readme',
       content: `══════════════════════════════════════════════════════
            DEF CON GROUP PANAMA (DCG PANAMA)          
           Panama's First DEF CON Group Chapter         
@@ -40,6 +47,7 @@ Type 'tree' for a full overview of available content.`
     },
     '/about/mission.txt': {
       type: 'file',
+      key: 'mission',
       content: `>> MISSION STATEMENT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -49,6 +57,7 @@ We aim to foster a culture of responsible hacking, technical excellence, and con
     },
     '/about/vision.txt': {
       type: 'file',
+      key: 'vision',
       content: `>> VISION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -58,6 +67,7 @@ Our vision is to create a self-sustaining hacker culture where knowledge flows o
     },
     '/about/core_values.txt': {
       type: 'file',
+      key: 'values',
       content: `>> CORE VALUES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -78,6 +88,7 @@ Our vision is to create a self-sustaining hacker culture where knowledge flows o
     },
     '/about/operating_principles.txt': {
       type: 'file',
+      key: 'principles',
       content: `>> OPERATING PRINCIPLES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -93,6 +104,7 @@ Our vision is to create a self-sustaining hacker culture where knowledge flows o
     },
     '/community/core_goals.txt': {
       type: 'file',
+      key: 'goals',
       content: `>> CORE GOALS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -130,6 +142,7 @@ Our vision is to create a self-sustaining hacker culture where knowledge flows o
     },
     '/community/who_we_are.txt': {
       type: 'file',
+      key: 'who',
       content: `>> WHO WE ARE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -150,6 +163,7 @@ We are not spectators. We are operators.`
     },
     '/community/join.txt': {
       type: 'file',
+      key: 'join',
       content: `>> JOIN DCG PANAMA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -177,6 +191,7 @@ There are no spectators here.
     },
     '/operations/focus_areas.txt': {
       type: 'file',
+      key: 'focus',
       content: `>> FOCUS AREAS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -212,6 +227,7 @@ Breaking applications at their core. Injection, logic abuse, auth bypass, and we
 },
     '/operations/activities.txt': {
       type: 'file',
+      key: 'activities',
       content: `>> ACTIVITIES & OPERATIONS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -296,23 +312,24 @@ COMMUNITY EVENTS:
   const commands = {
     help() {
       addLine('');
-      addLine('Available commands:', 'highlight');
+      addLine(tr('help.title', 'Available commands:'), 'highlight');
       addLine('');
+      // Command names stay as typed; only their descriptions localise.
       const cmds = [
-        ['ls', 'List directory contents'],
-        ['cd', 'Change directory'],
-        ['cat', 'Display file contents'],
-        ['pwd', 'Print working directory'],
-        ['whoami', 'Display current user'],
-        ['tree', 'Show full directory tree'],
-        ['clear', 'Clear terminal'],
-        ['help', 'Show this help message'],
-        ['uname -a', 'Show system info'],
-        ['id', 'Show user identity'],
-        ['date', 'Show current date'],
-        ['echo <text>', 'Print text'],
-        ['history', 'Show command history'],
-        ['banner', 'Show DCG Panama banner'],
+        ['ls', tr('help.ls', 'List directory contents')],
+        ['cd', tr('help.cd', 'Change directory')],
+        ['cat', tr('help.cat', 'Display file contents')],
+        ['pwd', tr('help.pwd', 'Print working directory')],
+        ['whoami', tr('help.whoami', 'Display current user')],
+        ['tree', tr('help.tree', 'Show full directory tree')],
+        ['clear', tr('help.clear', 'Clear terminal')],
+        ['help', tr('help.help', 'Show this help message')],
+        ['uname -a', tr('help.uname', 'Show system info')],
+        ['id', tr('help.id', 'Show user identity')],
+        ['date', tr('help.date', 'Show current date')],
+        ['echo <text>', tr('help.echo', 'Print text')],
+        ['history', tr('help.history', 'Show command history')],
+        ['banner', tr('help.banner', 'Show DCG Panama banner')],
       ];
       cmds.forEach(([cmd, desc]) => {
         addHTML(
@@ -387,7 +404,7 @@ COMMUNITY EVENTS:
       }
 
       addLine('');
-      node.content.split('\n').forEach(line => {
+      tr(node.key, node.content).split('\n').forEach(line => {
         if (line.startsWith('>>')) {
           addLine(line, 'header');
         } else if (line.startsWith('━')) {

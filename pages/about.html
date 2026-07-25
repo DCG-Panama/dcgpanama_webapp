@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DCG Panama — About // Terminal</title>
+  <title data-i18n="page.about.title">DCG Panama — About // Terminal</title>
   <link rel="stylesheet" href="../css/main.css">
   <link rel="stylesheet" href="../css/about.css">
   <link rel="icon" type="image/png" href="../assets/img/dcgpanamalogonobg.png">
@@ -22,20 +22,27 @@
       <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
       <span>DCG Panama</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle menu">[=]</button>
+    <button class="nav-toggle" aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">[=]</button>
     <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="manifesto.html">Manifesto</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="sponsors.html">Sponsors</a></li>
-      <li><a href="team.html">Team</a></li>
+      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+      <li><a href="manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
+      <li><a href="about.html" class="active" data-i18n="nav.about">About</a></li>
+      <li><a href="events.html" data-i18n="nav.events">Events</a></li>
+      <li><a href="sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
+      <li><a href="team.html" data-i18n="nav.team">Team</a></li>
       <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Media</button>
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" data-i18n="nav.media">Media</button>
         <ul class="nav-dropdown-menu">
-          <li><a href="videohub.html">VidHub</a></li>
-          <li><a href="snapshots.html">Snapshots</a></li>
+          <li><a href="videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
+          <li><a href="snapshots.html" data-i18n="nav.snapshots">Snapshots</a></li>
         </ul>
+      </li>
+      <li class="nav-lang">
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
       </li>
     </ul>
   </nav>
@@ -65,7 +72,7 @@
           <span class="prompt-separator">:</span>
           <span class="prompt-path">~</span>
           <span class="prompt-symbol">$</span>
-          <input type="text" class="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="type a command...">
+          <input type="text" class="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="type a command..." data-i18n-attrs="placeholder:about.inputPlaceholder">
         </div>
       </div>
 
@@ -84,7 +91,7 @@
           </div>
         </div>
         <div>
-          <span>Type "help" for commands</span>
+          <span data-i18n="about.helpHint">Type "help" for commands</span>
         </div>
       </div>
     </div>
@@ -94,10 +101,12 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-line"><span class="green">DCG Panama</span> — DEF CON Group Panama</div>
-    <div class="footer-line" style="opacity:0.7">Capability is everything.</div>
-    <div class="footer-line">© 2026. All rights reserved. Developed by: <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
+    <div class="footer-line" style="opacity:0.7" data-i18n="footer.tag.capability">Capability is everything.</div>
+    <div class="footer-line"><span data-i18n="footer.rights">© 2026. All rights reserved. Developed by:</span> <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
   </footer>
 
+  <script src="../js/lang.js"></script>
+  <script src="../js/i18n.js"></script>
   <script src="../js/main.js"></script>
   <script src="../js/terminal.js"></script>
   <script src="../js/attkdetct.js"></script>

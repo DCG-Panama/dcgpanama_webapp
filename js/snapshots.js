@@ -6,6 +6,19 @@ const galleryEl = document.getElementById('events-gallery');
 
 const PREVIEW_COUNT = 4;   // tiles shown before "View All"
 
+// ─── Copy ─────────────────────────────────────────────────
+// Falls back to the English literal if lang.js/i18n.js are not present, so the
+// gallery still renders if either fails to load.
+function tr(key, vars, fallback) {
+  let text = (window.I18N ? window.I18N.t('snap.' + key) : null) ?? fallback;
+  if (vars) {
+    Object.keys(vars).forEach(name => {
+      text = text.split('{' + name + '}').join(vars[name]);
+    });
+  }
+  return text;
+}
+
 // ─── Helpers ──────────────────────────────────────────────
 function toTitle(str) {
   return str.replace(/[-_]+/g, ' ').trim()
@@ -46,7 +59,7 @@ function buildLightbox() {
   root.className = 'lightbox';
   root.setAttribute('role', 'dialog');
   root.setAttribute('aria-modal', 'true');
-  root.setAttribute('aria-label', 'Photo viewer');
+  root.setAttribute('aria-label', tr('viewer', null, 'Photo viewer'));
   root.hidden = true;
 
   const stage = document.createElement('div');
@@ -78,12 +91,12 @@ function buildLightbox() {
 
   const save = document.createElement('a');
   save.className = 'lightbox-btn';
-  save.textContent = '↓ SAVE';
+  save.textContent = tr('save', null, '↓ SAVE');
 
-  controls.appendChild(makeControl('Previous photo', '← PREV', () => step(-1)));
-  controls.appendChild(makeControl('Next photo', 'NEXT →', () => step(1)));
+  controls.appendChild(makeControl(tr('prevLabel', null, 'Previous photo'), tr('prev', null, '← PREV'), () => step(-1)));
+  controls.appendChild(makeControl(tr('nextLabel', null, 'Next photo'), tr('next', null, 'NEXT →'), () => step(1)));
   controls.appendChild(save);
-  controls.appendChild(makeControl('Close viewer', '✕ CLOSE', closeLightbox));
+  controls.appendChild(makeControl(tr('closeLabel', null, 'Close viewer'), tr('close', null, '✕ CLOSE'), closeLightbox));
 
   bar.appendChild(counter);
   bar.appendChild(controls);
@@ -116,11 +129,14 @@ function showPhoto(index) {
   lightbox.img.width = photo.w;
   lightbox.img.height = photo.h;
   lightbox.img.src = src;
-  lightbox.img.alt = `${toTitle(lightbox.eventName)} photo ${lightbox.index + 1} of ${total}`;
+  lightbox.img.alt = tr('photoOf', { name: toTitle(lightbox.eventName), i: lightbox.index + 1, n: total },
+    `${toTitle(lightbox.eventName)} photo ${lightbox.index + 1} of ${total}`);
 
   lightbox.save.href = src;
   lightbox.save.download = photo.file;
-  lightbox.save.setAttribute('aria-label', `Download photo ${lightbox.index + 1}`);
+  lightbox.save.setAttribute('aria-label', tr('downloadPhoto',
+    { label: tr('photoLabel', { name: toTitle(lightbox.eventName), i: lightbox.index + 1 }, '') },
+    `Download photo ${lightbox.index + 1}`));
 
   lightbox.counter.textContent = `${lightbox.index + 1} / ${total}`;
 
@@ -203,7 +219,7 @@ function closeLightbox() {
 // intrinsic size attributes to avoid layout shift.
 function makeTile(eventName, photos, index) {
   const photo = photos[index];
-  const label = `${toTitle(eventName)} photo ${index + 1}`;
+  const label = tr('photoLabel', { name: toTitle(eventName), i: index + 1 }, `${toTitle(eventName)} photo ${index + 1}`);
 
   const figure = document.createElement('figure');
   figure.className = 'event-photo';
@@ -211,7 +227,7 @@ function makeTile(eventName, photos, index) {
   const opener = document.createElement('button');
   opener.type = 'button';
   opener.className = 'photo-open';
-  opener.setAttribute('aria-label', `Open ${label}`);
+  opener.setAttribute('aria-label', tr('openPhoto', { label }, `Open ${label}`));
   opener.addEventListener('click', () => openLightbox(eventName, photos, index, opener));
 
   const img = document.createElement('img');
@@ -227,8 +243,8 @@ function makeTile(eventName, photos, index) {
   dlBtn.className = 'photo-dl-btn';
   dlBtn.href = fullURL(eventName, photo.file);
   dlBtn.download = photo.file;
-  dlBtn.setAttribute('aria-label', `Download ${label}`);
-  dlBtn.textContent = '↓ SAVE';
+  dlBtn.setAttribute('aria-label', tr('downloadPhoto', { label }, `Download ${label}`));
+  dlBtn.textContent = tr('save', null, '↓ SAVE');
   overlay.appendChild(dlBtn);
 
   figure.appendChild(opener);
@@ -249,7 +265,9 @@ function renderEventGallery(eventName, photos) {
   titleEl.textContent = toTitle(eventName);
   const countEl = document.createElement('div');
   countEl.className = 'event-count';
-  countEl.textContent = `${photos.length} SNAPSHOT${photos.length === 1 ? '' : 'S'}`;
+  countEl.textContent = `${photos.length} ` + (photos.length === 1
+    ? tr('snapshot', null, 'SNAPSHOT')
+    : tr('snapshots', null, 'SNAPSHOTS'));
   head.appendChild(titleEl);
   head.appendChild(countEl);
   card.appendChild(head);
@@ -257,7 +275,7 @@ function renderEventGallery(eventName, photos) {
   if (photos.length === 0) {
     const empty = document.createElement('div');
     empty.className = 'event-empty';
-    empty.textContent = 'No image files found in this event folder.';
+    empty.textContent = tr('empty', null, 'No image files found in this event folder.');
     card.appendChild(empty);
     return card;
   }
@@ -280,7 +298,7 @@ function renderEventGallery(eventName, photos) {
 
   const label = document.createElement('span');
   label.className = 'expand-label';
-  label.textContent = `VIEW ALL ${photos.length} SNAPSHOTS`;
+  label.textContent = tr('viewAll', { n: photos.length }, `VIEW ALL ${photos.length} SNAPSHOTS`);
   const arrow = document.createElement('span');
   arrow.className = 'expand-arrow';
   arrow.textContent = '▾';
@@ -325,8 +343,8 @@ function renderEventGallery(eventName, photos) {
     btn.classList.toggle('expanded', isOpen);
     btn.setAttribute('aria-expanded', String(isOpen));
     label.textContent = isOpen
-      ? 'COLLAPSE GALLERY'
-      : `VIEW ALL ${photos.length} SNAPSHOTS`;
+      ? tr('collapse', null, 'COLLAPSE GALLERY')
+      : tr('viewAll', { n: photos.length }, `VIEW ALL ${photos.length} SNAPSHOTS`);
 
     if (isOpen) {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -347,36 +365,65 @@ function isValidPhoto(entry) {
     && Number.isFinite(entry.h) && entry.h > 0;
 }
 
+// Kept so a language switch can re-render without re-fetching.
+let loadedManifest = null;
+
+function renderGalleries(manifest) {
+  const events = Object.keys(manifest)
+    .filter(name => Array.isArray(manifest[name]))
+    .sort((a, b) => b.localeCompare(a));
+
+  if (events.length === 0) {
+    metaEl.textContent = tr('noFolders', null, 'No event folders found.');
+    renderMessage(tr('noGalleries', null, 'No galleries found.'));
+    return;
+  }
+
+  galleryEl.replaceChildren();
+  events.forEach(name => {
+    const photos = manifest[name].filter(isValidPhoto);
+    galleryEl.appendChild(renderEventGallery(name, photos));
+  });
+  metaEl.textContent = `${events.length} ` + (events.length === 1
+    ? tr('gallery', null, 'EVENT GALLERY LOADED')
+    : tr('galleries', null, 'EVENT GALLERIES LOADED'));
+}
+
 async function initSnapshots() {
   try {
-    metaEl.textContent = 'Scanning event archives...';
+    metaEl.textContent = tr('scanning', null, 'Scanning event archives...');
 
     const res = await fetch(MANIFEST_URL, { cache: 'no-store' });
     if (!res.ok) throw new Error(`manifest.json not found (${res.status})`);
 
-    const manifest = await res.json();
-    const events = Object.keys(manifest)
-      .filter(name => Array.isArray(manifest[name]))
-      .sort((a, b) => b.localeCompare(a));
-
-    if (events.length === 0) {
-      metaEl.textContent = 'No event folders found.';
-      renderMessage('No galleries found. Add folders under /assets/events/ and run tools/build-gallery.py.');
-      return;
-    }
-
-    galleryEl.replaceChildren();
-    events.forEach(name => {
-      const photos = manifest[name].filter(isValidPhoto);
-      galleryEl.appendChild(renderEventGallery(name, photos));
-    });
-    metaEl.textContent = `${events.length} EVENT GALLER${events.length === 1 ? 'Y' : 'IES'} LOADED`;
+    loadedManifest = await res.json();
+    renderGalleries(loadedManifest);
 
   } catch (err) {
     console.error(err);
-    metaEl.textContent = 'Unable to load galleries.';
-    renderMessage('Could not load the gallery manifest. See the browser console for details.');
+    metaEl.textContent = tr('unavailable', null, 'Unable to load galleries.');
+    renderMessage(tr('loadError', null, 'Could not load the gallery manifest.'));
   }
+}
+
+// The gallery is built entirely in JS, so a language switch has to rebuild it.
+if (window.I18N) {
+  window.I18N.onChange(() => {
+    // The viewer's buttons are labelled once at build time, so discard it and
+    // let the next open rebuild it in the new language.
+    if (lightbox.root) {
+      const wasOpen = !lightbox.root.hidden;
+      const eventName = lightbox.eventName;
+      const photos = lightbox.photos;
+      const index = lightbox.index;
+      const opener = lightbox.lastFocused;   // captured before close clears it
+      if (wasOpen) closeLightbox();
+      lightbox.root.remove();
+      lightbox.root = null;
+      if (wasOpen) openLightbox(eventName, photos, index, opener);
+    }
+    if (loadedManifest) renderGalleries(loadedManifest);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', initSnapshots);

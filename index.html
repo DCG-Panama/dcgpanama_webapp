@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DCG Panama — DEF CON Group Panama</title>
-  <meta name="description" content="DEF CON Group Panama — Panama's first DEF CON Group Offensive Security Community. Hackers, pentesters, researchers. There are no spectators here.">
+  <title data-i18n="page.home.title">DCG Panama — DEF CON Group Panama</title>
+  <meta name="description" data-i18n-attrs="content:page.home.desc" content="DEF CON Group Panama — Panama's first DEF CON Group Offensive Security Community. Hackers, pentesters, researchers. There are no spectators here.">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/home.css">
   <link rel="icon" type="image/png" href="assets/img/dcgpanamalogonobg.png">
@@ -24,20 +24,27 @@
       <img src="assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
       <span>DCG Panama</span>
     </a>
-    <button class="nav-toggle" aria-label="Toggle menu">[=]</button>
+    <button class="nav-toggle" aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">[=]</button>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="pages/manifesto.html">Manifesto</a></li>
-      <li><a href="pages/about.html">About</a></li>
-      <li><a href="pages/events.html">Events</a></li>
-      <li><a href="pages/sponsors.html">Sponsors</a></li>
-      <li><a href="pages/team.html">Team</a></li>
+      <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
+      <li><a href="pages/manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
+      <li><a href="pages/about.html" data-i18n="nav.about">About</a></li>
+      <li><a href="pages/events.html" data-i18n="nav.events">Events</a></li>
+      <li><a href="pages/sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
+      <li><a href="pages/team.html" data-i18n="nav.team">Team</a></li>
       <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Media</button>
+        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" data-i18n="nav.media">Media</button>
         <ul class="nav-dropdown-menu">
-          <li><a href="pages/videohub.html">VidHub</a></li>
-          <li><a href="pages/snapshots.html">Snapshots</a></li>
+          <li><a href="pages/videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
+          <li><a href="pages/snapshots.html" data-i18n="nav.snapshots">Snapshots</a></li>
         </ul>
+      </li>
+      <li class="nav-lang">
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <button type="button" class="lang-btn" data-lang="es">ES</button>
+        </div>
       </li>
     </ul>
   </nav>
@@ -56,26 +63,26 @@
       </div>
 
       <!-- Tagline -->
-      <div class="hero-tagline glitch flicker" data-text="There Are No Spectators Here">There Are No Spectators Here</div>
-      <div class="hero-sub">Panama's First DEF CON Group &mdash; Offensive Security Community</div>
+      <div class="hero-tagline glitch flicker" data-text="There Are No Spectators Here" data-i18n="home.tagline" data-i18n-attrs="data-text:home.tagline">There Are No Spectators Here</div>
+      <div class="hero-sub" data-i18n="home.sub">Panama's First DEF CON Group &mdash; Offensive Security Community</div>
 
       <!-- Stats -->
       <div class="stats-bar">
         <div class="stat-item">
           <span class="stat-value" data-count="10">0</span>
-          <span class="stat-label">Focus Areas</span>
+          <span class="stat-label" data-i18n="home.stats.1">Focus Areas</span>
         </div>
         <div class="stat-item">
           <span class="stat-value" data-count="5">0</span>
-          <span class="stat-label">Core Values</span>
+          <span class="stat-label" data-i18n="home.stats.2">Core Values</span>
         </div>
         <div class="stat-item">
           <span class="stat-value" data-count="4">0</span>
-          <span class="stat-label">Core Goals</span>
+          <span class="stat-label" data-i18n="home.stats.3">Core Goals</span>
         </div>
         <div class="stat-item">
           <span class="stat-value" data-count="1">0</span>
-          <span class="stat-label">Chapter</span>
+          <span class="stat-label" data-i18n="home.stats.4">Chapter</span>
         </div>
       </div>
 
@@ -87,67 +94,67 @@
 
     <!-- Focus Areas Section -->
     <section class="home-section">
-      <h2 class="section-header">// Focus Areas</h2>
+      <h2 class="section-header" data-i18n="home.focusHeader">// Focus Areas</h2>
       <div class="section-divider"></div>
 
       <div class="focus-grid">
         <div class="focus-card">
           <span class="focus-card-icon">⚔️</span>
-          <div class="focus-card-title">Red Team Operations</div>
-          <div class="focus-card-desc">We become the adversary. Full-spectrum intrusion, persistence, lateral movement, and complete domain domination without detection.</div>
+          <div class="focus-card-title" data-i18n="home.focus.1.title">Red Team Operations</div>
+          <div class="focus-card-desc" data-i18n="home.focus.1.desc">We become the adversary. Full-spectrum intrusion, persistence, lateral movement, and complete domain domination without detection.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">🌐</span>
-          <div class="focus-card-title">Network & Web Exploitation</div>
-          <div class="focus-card-desc">Breaking exposed surfaces. Exploiting services, abusing protocols, and tearing through web applications to gain initial footholds.</div>
+          <div class="focus-card-title" data-i18n="home.focus.2.title">Network & Web Exploitation</div>
+          <div class="focus-card-desc" data-i18n="home.focus.2.desc">Breaking exposed surfaces. Exploiting services, abusing protocols, and tearing through web applications to gain initial footholds.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">👁️‍🗨️</span>
-          <div class="focus-card-title">EDR Evasion</div>
-          <div class="focus-card-desc">Silencing the watchdogs. Bypassing EDR, evading telemetry, and executing payloads while remaining invisible to defensive controls.</div>
+          <div class="focus-card-title" data-i18n="home.focus.3.title">EDR Evasion</div>
+          <div class="focus-card-desc" data-i18n="home.focus.3.desc">Silencing the watchdogs. Bypassing EDR, evading telemetry, and executing payloads while remaining invisible to defensive controls.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">🔓</span>
-          <div class="focus-card-title">Physical Security</div>
-          <div class="focus-card-desc">When firewalls fail, doors fall next. Lock bypass, badge cloning, and physical intrusion to access what was never meant to be reached.</div>
+          <div class="focus-card-title" data-i18n="home.focus.4.title">Physical Security</div>
+          <div class="focus-card-desc" data-i18n="home.focus.4.desc">When firewalls fail, doors fall next. Lock bypass, badge cloning, and physical intrusion to access what was never meant to be reached.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">🔧</span>
-          <div class="focus-card-title">Hardware Hacking</div>
-          <div class="focus-card-desc">Owning devices below the operating system. Firmware extraction, hardware implants, and embedded system compromise.</div>
+          <div class="focus-card-title" data-i18n="home.focus.5.title">Hardware Hacking</div>
+          <div class="focus-card-desc" data-i18n="home.focus.5.desc">Owning devices below the operating system. Firmware extraction, hardware implants, and embedded system compromise.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">📡</span>
-          <div class="focus-card-title">RF Hacking</div>
-          <div class="focus-card-desc">Weaponizing the airwaves. Intercepting, decoding, and exploiting wireless communications across unknown frequencies.</div>
+          <div class="focus-card-title" data-i18n="home.focus.6.title">RF Hacking</div>
+          <div class="focus-card-desc" data-i18n="home.focus.6.desc">Weaponizing the airwaves. Intercepting, decoding, and exploiting wireless communications across unknown frequencies.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">🚗</span>
-          <div class="focus-card-title">Automotive Security</div>
-          <div class="focus-card-desc">Breaking machines in motion. CAN bus injection, ECU compromise, and full control over vehicle systems.</div>
+          <div class="focus-card-title" data-i18n="home.focus.7.title">Automotive Security</div>
+          <div class="focus-card-desc" data-i18n="home.focus.7.desc">Breaking machines in motion. CAN bus injection, ECU compromise, and full control over vehicle systems.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">🎯</span>
-          <div class="focus-card-title">Threat Emulation</div>
-          <div class="focus-card-desc">Thinking like real attackers. Reproducing nation-state tradecraft, adversary TTPs, and real-world attack chains.</div>
+          <div class="focus-card-title" data-i18n="home.focus.8.title">Threat Emulation</div>
+          <div class="focus-card-desc" data-i18n="home.focus.8.desc">Thinking like real attackers. Reproducing nation-state tradecraft, adversary TTPs, and real-world attack chains.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">🏢</span>
-          <div class="focus-card-title">Active Directory</div>
-          <div class="focus-card-desc">Total enterprise takeover. Privilege escalation, credential harvesting, and complete domain compromise.</div>
+          <div class="focus-card-title" data-i18n="home.focus.9.title">Active Directory</div>
+          <div class="focus-card-desc" data-i18n="home.focus.9.desc">Total enterprise takeover. Privilege escalation, credential harvesting, and complete domain compromise.</div>
         </div>
         <div class="focus-card">
           <span class="focus-card-icon">🔎🐞</span>
-          <div class="focus-card-title">APPSEC</div>
-          <div class="focus-card-desc">Breaking applications at their core. Injection, logic abuse, auth bypass, and weaponizing code flaws to achieve full compromise.</div>
+          <div class="focus-card-title" data-i18n="home.focus.10.title">APPSEC</div>
+          <div class="focus-card-desc" data-i18n="home.focus.10.desc">Breaking applications at their core. Injection, logic abuse, auth bypass, and weaponizing code flaws to achieve full compromise.</div>
         </div>
       </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-section">
-      <div class="cta-text glitch" data-text="You either remain ordinary. Or you become something else.">You either remain ordinary. Or you become something else.</div>
-      <a href="pages/about.html" class="cta-btn">Access Terminal →</a>
+      <div class="cta-text glitch" data-text="You either remain ordinary. Or you become something else." data-i18n="home.cta.text" data-i18n-attrs="data-text:home.cta.text">You either remain ordinary. Or you become something else.</div>
+      <a href="pages/about.html" class="cta-btn" data-i18n="home.cta.btn">Access Terminal →</a>
     </section>
 
   </div>
@@ -155,10 +162,12 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-line"><span class="green">DCG Panama</span> — DEF CON Group Panama</div>
-    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7">We do not ask for permission to understand systems. We take them apart.</div>
-    <div class="footer-line">© 2026. All rights reserved. Developed by: <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
+    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7" data-i18n="footer.tag.apart">We do not ask for permission to understand systems. We take them apart.</div>
+    <div class="footer-line"><span data-i18n="footer.rights">© 2026. All rights reserved. Developed by:</span> <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
   </footer>
 
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

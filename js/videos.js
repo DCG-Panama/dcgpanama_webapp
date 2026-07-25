@@ -102,6 +102,15 @@ function getAllTags() {
 }
 
 // ============================================
+// COPY
+// Falls back to the English literal so the hub still renders if lang.js or
+// i18n.js fail to load.
+// ============================================
+function tr(key, fallback) {
+  return (window.I18N ? window.I18N.t('vid.' + key) : null) ?? fallback;
+}
+
+// ============================================
 // RENDER TAG FILTERS
 // ============================================
 function renderTagFilters() {
@@ -110,7 +119,7 @@ function renderTagFilters() {
 
   const clearBtn = document.createElement('button');
   clearBtn.className = 'tag-pill-clear';
-  clearBtn.textContent = '× CLEAR';
+  clearBtn.textContent = tr('clear', '× CLEAR');
   clearBtn.onclick = () => {
     state.activeTag = null;
     state.searchQuery = '';
@@ -155,14 +164,20 @@ function filterVideos() {
 // ============================================
 function renderGrid() {
   videosGrid.innerHTML = '';
-  videoCount.textContent = `${state.filteredVideos.length} SIGNALS`;
+  videoCount.textContent = `${state.filteredVideos.length} ${tr('signals', 'SIGNALS')}`;
 
   if (state.filteredVideos.length === 0) {
-    videosGrid.innerHTML = `
-      <div class="no-results">
-        <div class="no-results-title">[ NO SIGNAL ]</div>
-        <div class="no-results-sub">No videos match your query. Try different tags or keywords.</div>
-      </div>`;
+    const empty = document.createElement('div');
+    empty.className = 'no-results';
+    const emptyTitle = document.createElement('div');
+    emptyTitle.className = 'no-results-title';
+    emptyTitle.textContent = tr('noSignalTitle', '[ NO SIGNAL ]');
+    const emptySub = document.createElement('div');
+    emptySub.className = 'no-results-sub';
+    emptySub.textContent = tr('noSignalSub', 'No videos match your query. Try different tags or keywords.');
+    empty.appendChild(emptyTitle);
+    empty.appendChild(emptySub);
+    videosGrid.appendChild(empty);
     return;
   }
 
@@ -182,7 +197,7 @@ function renderGrid() {
     } else {
       const placeholder = document.createElement('div');
       placeholder.className = 'card-thumb-placeholder';
-      placeholder.textContent = '[ NO PREVIEW ]';
+      placeholder.textContent = tr('noPreview', '[ NO PREVIEW ]');
       thumbContainer.appendChild(placeholder);
     }
 
@@ -309,7 +324,7 @@ function renderSidebar(currentVideo) {
 
   const label = document.createElement('div');
   label.className = 'sidebar-label';
-  label.textContent = 'MORE TRANSMISSIONS';
+  label.textContent = tr('more', 'MORE TRANSMISSIONS');
   sidebar.appendChild(label);
 
   const others = VIDEOS.filter(v => v.id !== currentVideo.id);
@@ -332,7 +347,7 @@ function buildSidebarCard(container, v) {
   } else {
     const ph = document.createElement('div');
     ph.className = 'sidebar-thumb-placeholder';
-    ph.textContent = '[ NO SIG ]';
+    ph.textContent = tr('noSig', '[ NO SIG ]');
     thumbDiv.appendChild(ph);
   }
 
@@ -397,7 +412,7 @@ function renderSidebarFiltered(currentVideo, query) {
 
   const label = document.createElement('div');
   label.className = 'sidebar-label';
-  label.textContent = 'MORE TRANSMISSIONS';
+  label.textContent = tr('more', 'MORE TRANSMISSIONS');
   sidebar.appendChild(label);
 
   const others = VIDEOS.filter(v => {
@@ -555,3 +570,11 @@ function closePlayerWithoutReplace() {
 }
 
 // Nav fallback removed — handled by main.js
+
+// The hub is built entirely in JS, so a language switch has to re-render it.
+if (window.I18N) {
+  window.I18N.onChange(() => {
+    renderTagFilters();
+    renderGrid();
+  });
+}

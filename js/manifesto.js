@@ -47,14 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Small delay to ensure fonts are loaded and layout is stable
   setTimeout(initScroll, 300);
 
+  // The label depends on paused state as well as language, so JS owns it
+  // outright; the literal in the HTML is only the no-JS fallback.
+  function labelFor(paused) {
+    const key = paused ? 'manifesto.resume' : 'manifesto.pause';
+    const fallback = paused ? '\u25B6 Resume' : '\u23F8 Pause';
+    return (window.I18N ? window.I18N.t(key) : null) ?? fallback;
+  }
+
   // Toggle scroll/pause
   if (toggleBtn && scroller) {
+    toggleBtn.textContent = labelFor(isPaused);
+
     toggleBtn.addEventListener('click', () => {
       isPaused = !isPaused;
 
       if (isPaused) {
         scroller.classList.add('paused');
-        toggleBtn.textContent = '\u25B6 Resume';
         toggleBtn.classList.add('active');
         if (led) led.classList.add('off');
 
@@ -62,13 +71,18 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.overflowY = 'auto';
       } else {
         scroller.classList.remove('paused');
-        toggleBtn.textContent = '\u23F8 Pause';
         toggleBtn.classList.remove('active');
         if (led) led.classList.remove('off');
 
         container.style.overflowY = 'hidden';
       }
+
+      toggleBtn.textContent = labelFor(isPaused);
     });
+
+    if (window.I18N) {
+      window.I18N.onChange(() => { toggleBtn.textContent = labelFor(isPaused); });
+    }
   }
 
   // Knob hover effect (decorative)
