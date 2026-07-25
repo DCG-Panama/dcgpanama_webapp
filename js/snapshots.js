@@ -170,13 +170,23 @@ function openLightbox(eventName, photos, index, opener) {
 
   showPhoto(index);
   lightbox.root.hidden = false;
+  // The Tab trap keeps sighted keyboard users in, but a screen reader can still
+  // browse the page behind a dialog; `inert` takes the rest of the page out.
+  setBackgroundInert(true);
   document.body.classList.add('lightbox-open');
   document.addEventListener('keydown', onLightboxKeydown);
   lightbox.root.querySelector('.lightbox-btn').focus();
 }
 
+function setBackgroundInert(inert) {
+  Array.from(document.body.children).forEach(child => {
+    if (child !== lightbox.root) child.inert = inert;
+  });
+}
+
 function closeLightbox() {
   lightbox.root.hidden = true;
+  setBackgroundInert(false);
   document.body.classList.remove('lightbox-open');
   document.removeEventListener('keydown', onLightboxKeydown);
   // Drop the decoded image so a long browsing session does not retain it.
