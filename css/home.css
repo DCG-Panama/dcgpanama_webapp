@@ -21,6 +21,10 @@
 
 .hero-logo {
   width: min(500px, 80vw);
+  /* The width/height attributes on the tag reserve the box before the image
+     loads; height:auto lets the aspect ratio drive the height instead of the
+     literal attribute value. */
+  height: auto;
   filter: drop-shadow(0 0 20px var(--red-glow)) drop-shadow(0 0 60px rgba(255, 0, 0, 0.15));
   animation: logoReveal 1.5s ease forwards, logoPulse 4s ease-in-out 2s infinite;
   opacity: 0;
