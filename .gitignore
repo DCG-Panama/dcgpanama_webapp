@@ -1,6 +1,7 @@
 # Claude Code
 .claude/
 CLAUDE.md
+AGENTS.md
 
 # Environment / secrets
 .env
@@ -33,3 +34,7 @@ node_modules/
 dist/
 build/
 .cache/
+
+# Camera originals — keep them in the group's own archive, never in the repo.
+# tools/build-gallery.py reads them from here and commits only the derivatives.
+assets/events/*/originals/
