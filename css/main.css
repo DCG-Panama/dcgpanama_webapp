@@ -150,6 +150,10 @@ body {
 
 .nav-brand img {
   height: 32px;
+  /* The width/height attributes on the tag reserve the box before the image
+     loads; width:auto lets the aspect ratio set the width instead of the
+     literal attribute value. */
+  width: auto;
   filter: brightness(1.1);
 }
 
