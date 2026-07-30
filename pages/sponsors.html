@@ -4,442 +4,266 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="page.sponsors.title">DCG Panama – Sponsors</title>
-  <meta name="description" data-i18n-attrs="content:page.sponsors.desc" content="DEF CON Group Panama — Support the hackers who break things before your adversaries do.">
+  <meta name="description" content="DEF CON Group Panama — Support the hackers who break things before your adversaries do." data-i18n-attrs="content:page.sponsors.desc">
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/sponsors.css">
+  <link rel="stylesheet" href="../css/pages.css">
   <link rel="icon" type="image/png" href="../assets/img/dcgpanamalogonobg.png">
 </head>
 <body>
-
-  <!-- Background effects -->
-  <div class="bg-image"></div>
-  <canvas id="matrix-canvas"></canvas>
-  <div class="grid-bg"></div>
-  <div class="scanlines"></div>
-  <div class="noise-overlay"></div>
-
-  <!-- Navigation -->
-  <nav class="nav-bar">
-    <a href="../index.html" class="nav-brand">
-      <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
-      <span>DCG Panama</span>
-    </a>
-    <button class="nav-toggle" aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">[=]</button>
-    <ul class="nav-links">
-      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
-      <li><a href="manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
-      <li><a href="about.html" data-i18n="nav.about">About</a></li>
-      <li><a href="events.html" data-i18n="nav.events">Events</a></li>
-      <li><a href="sponsors.html" class="active" data-i18n="nav.sponsors">Sponsors</a></li>
-      <li><a href="team.html" data-i18n="nav.team">Team</a></li>
-      <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" data-i18n="nav.media">Media</button>
-        <ul class="nav-dropdown-menu">
-          <li><a href="videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
-          <li><a href="snapshots.html" data-i18n="nav.snapshots">Snapshots</a></li>
-        </ul>
-      </li>
-      <li class="nav-lang">
-        <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <span class="lang-sep" aria-hidden="true">|</span>
-          <button type="button" class="lang-btn" data-lang="es">ES</button>
-        </div>
-      </li>
-    </ul>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
+        <span>DCG Panama</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../pages/manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
+        <li><a href="../pages/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../pages/events.html" data-i18n="nav.events">Events</a></li>
+        <li><a href="../pages/sponsors.html" class="active" aria-current="page" data-i18n="nav.sponsors">Sponsors</a></li>
+        <li><a href="../pages/team.html" data-i18n="nav.team">Team</a></li>
+        <li><a href="../pages/videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
+        <li><a href="../pages/snapshots.html" data-i18n="nav.snapshots">Snapshots</a></li>
+      </ul>
+      <div class="nav-sep" aria-hidden="true"></div>
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links"
+              aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">≡</button>
+    </div>
   </nav>
-
-  <div class="page-content">
-
-    <!-- Header -->
-    <div class="sponsors-header">
-      <span class="sponsors-header-label">// system/sponsors</span>
-      <h1><span data-i18n="spon.h1a">Our</span> <span data-i18n="spon.h1b">Sponsors</span></h1>
-      <p class="sponsors-header-sub" data-i18n="spon.sub">The organizations that invest in real offensive security capability.</p>
-    </div>
-
-    <!-- Ticker Tape -->
-    <div class="ticker-wrap">
-      <div class="ticker-inner" id="ticker-inner">
-        <span><span class="ticker-sym">PLATINUM</span><span class="ticker-up">Zero Trust Offsec</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">GOLD</span><span class="ticker-up" data-i18n="spon.ticker.slot">SLOT OPEN</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">SILVER</span><span class="ticker-up">Wegoo Travels</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">INFRA</span><span class="ticker-up">Servidores Rápidos</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">INFRA</span><span class="ticker-up">TPIHS</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">DCG-PANAMA</span><span class="ticker-down" data-i18n="spon.ticker.recruiting">RECRUITING SPONSORS</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">STATUS</span><span class="ticker-up">OPERATIONAL</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">CHAPTER</span><span class="ticker-up">PANAMA CITY, PA</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">DEFCON</span><span class="ticker-up">AFFILIATED GROUP</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">PLATINUM</span><span class="ticker-up" data-i18n="spon.ticker.slot">SLOT OPEN</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">GOLD</span><span class="ticker-up" data-i18n="spon.ticker.slot">SLOT OPEN</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">SILVER</span><span class="ticker-up" data-i18n="spon.ticker.slot">SLOT OPEN</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">INFRA</span><span class="ticker-up" data-i18n="spon.ticker.slot">SLOT OPEN</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">DCG-PANAMA</span><span class="ticker-down" data-i18n="spon.ticker.recruiting">RECRUITING SPONSORS</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">STATUS</span><span class="ticker-up">OPERATIONAL</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">CHAPTER</span><span class="ticker-up">PANAMA CITY, PA</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
-        <span><span class="ticker-sym">DEF CON</span><span class="ticker-up">AFFILIATED GROUP</span></span>
-        <span>&#x2015;&#x2015;&#x2015;</span>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow" data-i18n="spon.label.1">active sponsors</p>
+        <h1><span data-i18n="spon.h1a">Our</span> <span data-i18n="spon.h1b">Sponsors</span></h1>
+        <div class="rule-accent"></div>
+        <p class="lead" data-i18n="spon.sub">The organizations that invest in real offensive security capability.</p>
       </div>
-    </div>
+    </section>
 
-    <!-- ============================================
-         ACTIVE SPONSORS SECTION
-    ============================================ -->
-    <div class="sponsors-section">
-      <div class="section-label" data-i18n="spon.label.1">active sponsors</div>
-      <div class="section-title" data-i18n="spon.title.1">Sponsor Registry</div>
-      <div class="section-bar"></div>
-
-      <!-- PLATINUM -->
-      <div class="section-label" data-i18n="spon.label.2" style="margin-bottom:0.5rem; color: var(--platinum-color); opacity:40;">Platinum Tier</div>
-      <div class="tier-placeholder-row" style="margin-bottom: 2px;">
-        <div class="tier-slot platinum" data-tier="PLATINUM SPONSOR">
-          <span class="slot-label platinum" data-i18n="spon.slot.platinum">Platinum Sponsor</span>
-          <a href="https://zerotrustoffsec.com" target="_blank" rel="noopener noreferrer">
-            <img
-              src="../assets/sponsors/zerotrustoffsec.png"
-              alt="Zero Trust Offsec"
-              style="max-width: 160px; max-height: 60px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85;"
-            >
+    <section class="section">
+      <div class="wrap">
+        <div class="tier-strip" data-reveal>
+          <a class="tier-slot" href="https://zerotrustoffsec.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/sponsors/zerotrustoffsec.png" alt="Zero Trust Offsec" loading="lazy">
+            <span class="tier-name" data-i18n="spon.slot.platinum">Platinum Sponsor</span>
           </a>
-          <span style="font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 2px; color: #dddddd; margin-top: 0.5rem;">Zero Trust Offsec</span>
-        </div>
-        <div class="tier-slot platinum" data-tier="PLATINUM SPONSOR">
-          <span class="slot-label platinum" data-i18n="spon.slot.platinum">Platinum Sponsor</span>
-          <div class="slot-placeholder platinum"></div>
-        </div>
-      </div>
-
-      <!-- GOLD -->
-      <div class="section-label" data-i18n="spon.label.3" style="margin-top:1.5rem; margin-bottom:0.5rem; color: var(--gold-color); opacity:40;">Gold Tier</div>
-      <div class="tier-placeholder-row" style="margin-bottom: 2px;">
-        <div class="tier-slot gold" data-tier="GOLD SPONSOR">
-          <span class="slot-label gold" data-i18n="spon.slot.gold">Gold Sponsor</span>
-          <div class="slot-placeholder gold"></div>
-        </div>
-        <div class="tier-slot gold" data-tier="GOLD SPONSOR">
-          <span class="slot-label gold" data-i18n="spon.slot.gold">Gold Sponsor</span>
-          <div class="slot-placeholder gold"></div>
-        </div>
-        <div class="tier-slot gold" data-tier="GOLD SPONSOR">
-          <span class="slot-label gold" data-i18n="spon.slot.gold">Gold Sponsor</span>
-          <div class="slot-placeholder gold"></div>
-        </div>
-      </div>
-
-      <!-- SILVER -->
-      <div class="section-label" data-i18n="spon.label.4" style="margin-top:1.5rem; margin-bottom:0.5rem; color: var(--silver-color); opacity:405;">Silver Tier</div>
-      <div class="tier-placeholder-row" style="margin-bottom: 2px;">
-        <div class="tier-slot silver" data-tier="SILVER SPONSOR">
-          <span class="slot-label silver" data-i18n="spon.slot.silver">Silver Sponsor</span>
-          <a href="https://www.instagram.com/wegootravels" target="_blank" rel="noopener noreferrer">
-            <img
-              src="../assets/sponsors/wegootravels.png"
-              alt="Wegoo Travels"
-              style="max-width: 160px; max-height: 60px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85;"
-            >
+          <a class="tier-slot" href="https://www.instagram.com/wegootravels" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/sponsors/wegootravels.png" alt="Wegoo Travels" loading="lazy">
+            <span class="tier-name" data-i18n="spon.slot.silver">Silver Sponsor</span>
           </a>
-          <span style="font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 2px; color: #dddddd; margin-top: 0.5rem;">Wegoo Travels</span>
-        </div>
-        <div class="tier-slot silver" data-tier="SILVER SPONSOR">
-          <span class="slot-label silver" data-i18n="spon.slot.silver">Silver Sponsor</span>
-          <div class="slot-placeholder silver"></div>
-        </div>
-        <div class="tier-slot silver" data-tier="SILVER SPONSOR">
-          <span class="slot-label silver" data-i18n="spon.slot.silver">Silver Sponsor</span>
-          <div class="slot-placeholder silver"></div>
-        </div>
-        <div class="tier-slot silver" data-tier="SILVER SPONSOR">
-          <span class="slot-label silver" data-i18n="spon.slot.silver">Silver Sponsor</span>
-          <div class="slot-placeholder silver"></div>
-        </div>
-      </div>
-
-      <!-- INFRASTRUCTURE -->
-      <div class="section-label" data-i18n="spon.label.5" style="margin-top:1.5rem; margin-bottom:0.5rem; color: var(--infra-color); opacity:25;">Infrastructure Tier</div>
-      <div class="tier-placeholder-row" style="margin-bottom: 2px;">
-        <div class="tier-slot infrastructure" data-tier="INFRASTRUCTURE SPONSOR">
-          <span class="slot-label infrastructure" data-i18n="spon.slot.infrastructure">Infrastructure Sponsor</span>
-          <a href="https://panamahotelschool.com/" target="_blank" rel="noopener noreferrer">
-            <img
-              src="../assets/sponsors/tpihs.png"
-              alt="Holiday Inn"
-              style="max-width: 160px; max-height: 60px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85;"
-            >
+          <a class="tier-slot" href="https://panamahotelschool.com/" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/sponsors/tpihs.png" alt="TPIHS" loading="lazy">
+            <span class="tier-name" data-i18n="spon.slot.infrastructure">Infrastructure Sponsor</span>
           </a>
-          <span style="font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 2px; color: #dddddd; margin-top: 0.5rem;">TPIHS</span>
-        </div>
-        <div class="tier-slot infrastructure" data-tier="INFRASTRUCTURE SPONSOR">
-          <span class="slot-label infrastructure" data-i18n="spon.slot.infrastructure">Infrastructure Sponsor</span>
-          <a href="https://servidoresrapidos.net/" target="_blank" rel="noopener noreferrer">
-            <img
-              src="../assets/sponsors/servidoresrapidos.png"
-              alt="Servidores Rápidos"
-              style="max-width: 160px; max-height: 60px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.85;"
-            >
+          <a class="tier-slot" href="https://servidoresrapidos.net/" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/sponsors/servidoresrapidos.png" alt="Servidores Rápidos" loading="lazy">
+            <span class="tier-name" data-i18n="spon.slot.infrastructure">Infrastructure Sponsor</span>
           </a>
-          <span style="font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 2px; color: #dddddd; margin-top: 0.5rem;">Servidores Rápidos</span>
-        </div>
-        <div class="tier-slot infra" data-tier="INFRASTRUCTURE SPONSOR">
-          <span class="slot-label infra" data-i18n="spon.slot.infrastructure">Infrastructure Sponsor</span>
-          <div class="slot-placeholder infra"></div>
+          <div class="tier-slot open">
+            <span class="tier-name" data-i18n="spon.ticker.slot">SLOT OPEN</span>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Empty state notice 
-      <div class="sponsors-empty-state" style="margin-top: 2px;">
-        <span class="empty-icon">[ NO ACTIVE SPONSORS ]</span>
-        <div class="empty-title">Registry Empty</div>
-        <div class="empty-sub">Be the first organization to join. Your logo goes here.</div>
-      </div>-->
-
-    </div><!-- end .sponsors-section -->
-
-
-    <!-- ============================================
-         SPONSORSHIP INFORMATION SECTION
-    ============================================ -->
-    <div class="info-section">
-
-      <div class="section-label" data-i18n="spon.label.6">sponsorship info</div>
-      <div class="section-title" data-i18n="spon.title.2">Why Sponsor Us</div>
-      <div class="section-bar"></div>
-
-      <!-- Terminal block — Who we are / Why it matters -->
-      <div class="why-terminal">
-        <div class="terminal-topbar">
-          <div class="tbar-dot"></div>
-          <div class="tbar-dot"></div>
-          <div class="tbar-dot"></div>
-          <span class="tbar-title">dcg-panama // sponsorship-brief.txt</span>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="spon.label.6">sponsorship info</p>
+          <h2 data-i18n="spon.title.2">Why Sponsor Us</h2>
         </div>
-
-        <div class="terminal-line">
-          <span class="prompt">$</span>
-          <span class="cmd">cat who_we_are.txt</span>
-        </div>
-        <div class="terminal-line">
-          <span class="out" data-i18n="spon.brief.1">DEF CON Group Panama is not a classroom. Not a marketing event.</span>
-          <span class="out highlight" data-i18n="spon.brief.2">It's a gathering point for individuals who actually understand how systems fail.</span>
-          <span class="out" data-i18n="spon.brief.3">Penetration testers. Red team operators. Hardware hackers. Reverse engineers.</span>
-          <span class="out" data-i18n="spon.brief.4">Security researchers operating in Panama.</span>
-          <span class="out" data-i18n="spon.brief.5">This group exists to develop real offensive capability. Not theory. Capability.</span>
-        </div>
-
-        <div class="terminal-line" style="margin-top: 1rem;">
-          <span class="prompt">$</span>
-          <span class="cmd">cat why_this_matters.txt</span>
-        </div>
-        <div class="terminal-line">
-          <span class="out highlight" data-i18n="spon.brief.6">Every organization today is a target.</span>
-          <span class="out" data-i18n="spon.brief.7">Attackers are not waiting. They are evolving.</span>
-          <span class="out" data-i18n="spon.brief.8">They are already inside environments worldwide.</span>
-          <span class="out" data-i18n="spon.brief.9">We train minds that think like attackers — because defenders who don't</span>
-          <span class="out" data-i18n="spon.brief.10">understand offensive tradecraft are blind.</span>
-        </div>
-
-        <div class="terminal-line" style="margin-top: 1rem;">
-          <span class="prompt">$</span>
-          <span class="cmd">cat why_companies_sponsor.txt</span>
-        </div>
-        <div class="terminal-line">
-          <span class="out highlight" data-i18n="spon.brief.11">Not for marketing. For proximity.</span>
-          <span class="out" data-i18n="spon.brief.12">Proximity to talent. Proximity to knowledge. Proximity to capability.</span>
-          <span class="out" data-i18n="spon.brief.13">Sponsors gain direct visibility and access to individuals capable of</span>
-          <span class="out" data-i18n="spon.brief.14">identifying critical vulnerabilities before real adversaries do.</span>
-          <span class="out" data-i18n="spon.brief.15">This is access to the offensive security underground — legally, ethically, transparently.</span>
-        </div>
-
-        <div class="terminal-line" style="margin-top: 1rem;">
-          <span class="prompt">$</span>
-          <span class="cmd" style="color: var(--red-dim);">_<span style="animation: blink 1s step-end infinite; display:inline-block;">&#x2588;</span></span>
+        <div class="brief">
+          <div class="brief-item" data-reveal>
+            <h3 data-i18n="spon.briefHead.1">Who we are</h3>
+            <p data-i18n="spon.brief.2">It's a gathering point for individuals who actually understand how systems fail.</p>
+            <p data-i18n="spon.brief.3">Penetration testers. Red team operators. Hardware hackers. Reverse engineers.</p>
+            <p data-i18n="spon.brief.5">This group exists to develop real offensive capability. Not theory. Capability.</p>
+          </div>
+          <div class="brief-item" data-reveal>
+            <h3 data-i18n="spon.briefHead.2">Why it matters</h3>
+            <p data-i18n="spon.brief.6">Every organization today is a target.</p>
+            <p data-i18n="spon.brief.7">Attackers are not waiting. They are evolving.</p>
+            <p data-i18n="spon.briefWhy">We train minds that think like attackers — because defenders who don't understand offensive tradecraft are blind.</p>
+          </div>
+          <div class="brief-item" data-reveal>
+            <h3 data-i18n="spon.briefHead.3">Why companies sponsor</h3>
+            <p data-i18n="spon.brief.11">Not for marketing. For proximity.</p>
+            <p data-i18n="spon.brief.12">Proximity to talent. Proximity to knowledge. Proximity to capability.</p>
+            <p data-i18n="spon.brief.15">This is access to the offensive security underground — legally, ethically, transparently.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- What you gain -->
-      <div class="section-label" data-i18n="spon.label.7" style="margin-bottom:0.5rem;">what you gain</div>
-      <div class="enables-grid" style="margin-bottom: 2rem;">
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F3AF;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.1">Access to Talent</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.1">Direct pipeline to highly skilled offensive security professionals — the people companies try to hire but rarely find.</div>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="spon.label.7">what you gain</p>
+          <h2 data-i18n="spon.gainsHeading">What sponsorship buys</h2>
         </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F4E1;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.2">Brand Visibility</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.2">Placement across all official materials, events, and the DCG Panama website — inside Panama's hacker ecosystem.</div>
-        </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F91D;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.3">Community Access</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.3">Direct presence at our events. Network with red team operators, researchers, and future offensive security specialists.</div>
-        </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F6E1;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.4">Real Security Credibility</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.4">Position your organization as a supporter of real cybersecurity capability — not marketing security. Real security.</div>
-        </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F30E;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.5">Regional Foundation</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.5">Early sponsors become part of Panama's offensive security foundation as we grow into a recognized Latin American hub.</div>
-        </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F4BB;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.6">Technical Presence</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.6">Platinum sponsors may present technical content directly to an audience that actually evaluates what they see.</div>
+        <div class="grid grid-3">
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.1">Access to Talent</h3>
+            <p data-i18n="spon.enable.desc.1">Direct pipeline to highly skilled offensive security professionals — the people companies try to hire but rarely find.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.2">Brand Visibility</h3>
+            <p data-i18n="spon.enable.desc.2">Placement across all official materials, events, and the DCG Panama website — inside Panama's hacker ecosystem.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.3">Community Access</h3>
+            <p data-i18n="spon.enable.desc.3">Direct presence at our events. Network with red team operators, researchers, and future offensive security specialists.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.4">Real Security Credibility</h3>
+            <p data-i18n="spon.enable.desc.4">Position your organization as a supporter of real cybersecurity capability — not marketing security. Real security.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.5">Regional Foundation</h3>
+            <p data-i18n="spon.enable.desc.5">Early sponsors become part of Panama's offensive security foundation as we grow into a recognized Latin American hub.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.6">Technical Presence</h3>
+            <p data-i18n="spon.enable.desc.6">Platinum sponsors may present technical content directly to an audience that actually evaluates what they see.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.7">Hands-On Hacking Labs</h3>
+            <p data-i18n="spon.enable.desc.7">Live operational environments where members actively compromise real systems under controlled conditions.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.8">Technical Workshops</h3>
+            <p data-i18n="spon.enable.desc.8">Deep-dive sessions on offensive tradecraft, tool development, and real-world attack chain reproduction.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.9">CTF Competitions</h3>
+            <p data-i18n="spon.enable.desc.9">Capture The Flag operations that develop competitive, battle-tested offensive security skills.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.10">Hardware Environments</h3>
+            <p data-i18n="spon.enable.desc.10">Physical labs for embedded systems research, firmware analysis, RF hacking, and automotive security work.</p>
+          </article>
+          <article class="card focus-card" data-reveal>
+            <h3 data-i18n="spon.enable.title.11">Community Infrastructure</h3>
+            <p data-i18n="spon.enable.desc.11">Servers, tools, platforms and resources that keep the group operational and growing.</p>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- Tier Cards -->
-      <div class="section-label" data-i18n="spon.label.8" style="margin-bottom:0.5rem;">sponsorship tiers</div>
-      <div class="section-title" data-i18n="spon.title.3">Select Your Access Level</div>
-      <div class="section-bar"></div>
-
-      <div class="tiers-grid">
-
-        <!-- PLATINUM -->
-        <div class="tier-card platinum">
-          <span class="tier-badge">Platinum</span>
-          <span class="tier-price">$2,000</span>
-          <span class="tier-period" data-i18n="spon.tier.period.1">/ year — Highest visibility</span>
-          <div class="tier-desc" data-i18n="spon.tier.desc.1">Highest level of visibility and influence. Maximum impact across all platforms.</div>
-          <ul class="tier-features">
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow" data-i18n="spon.label.8">sponsorship tiers</p>
+          <h2 data-i18n="spon.title.3">Select Your Access Level</h2>
+        </div>
+        <div class="grid grid-2">
+          <article class="card tier-card featured" data-reveal>
+            <span class="tier-badge" data-i18n="spon.label.2">Platinum Tier</span>
+            <div>
+              <div class="tier-price">$2,000</div>
+              <div class="tier-period" data-i18n="spon.tier.period.1">/ year — Highest visibility</div>
+            </div>
+            <p class="tier-desc" data-i18n="spon.tier.desc.1">Highest level of visibility and influence. Maximum impact across all platforms.</p>
+            <ul class="tier-features">
             <li data-i18n="spon.feat.1">Primary logo placement on all official materials</li>
             <li data-i18n="spon.feat.2">Direct access to members during events</li>
             <li data-i18n="spon.feat.3">Opportunity to present technical content</li>
             <li data-i18n="spon.feat.4">Priority recognition across all platforms</li>
             <li data-i18n="spon.feat.5">Permanent sponsor recognition</li>
-          </ul>
-        </div>
-
-        <!-- GOLD -->
-        <div class="tier-card gold">
-          <span class="tier-badge">Gold</span>
-          <span class="tier-price">$1,000</span>
-          <span class="tier-period" data-i18n="spon.tier.period.2">/ year — Strong engagement</span>
-          <div class="tier-desc" data-i18n="spon.tier.desc.2">Strong visibility and community engagement. Direct presence in our ecosystem.</div>
-          <ul class="tier-features">
+            </ul>
+          </article>
+          <article class="card tier-card" data-reveal>
+            <span class="tier-badge" data-i18n="spon.label.3">Gold Tier</span>
+            <div>
+              <div class="tier-price">$1,000</div>
+              <div class="tier-period" data-i18n="spon.tier.period.2">/ year — Strong engagement</div>
+            </div>
+            <p class="tier-desc" data-i18n="spon.tier.desc.2">Strong visibility and community engagement. Direct presence in our ecosystem.</p>
+            <ul class="tier-features">
             <li data-i18n="spon.feat.6">Logo placement on event materials</li>
             <li data-i18n="spon.feat.7">Recognition during official meetings</li>
             <li data-i18n="spon.feat.8">Access to community networking opportunities</li>
-          </ul>
-        </div>
-
-        <!-- SILVER -->
-        <div class="tier-card silver">
-          <span class="tier-badge">Silver</span>
-          <span class="tier-price">$500</span>
-          <span class="tier-period" data-i18n="spon.tier.period.3">/ year — Community support</span>
-          <div class="tier-desc" data-i18n="spon.tier.desc.3">Support community growth and gain sustained visibility within the group.</div>
-          <ul class="tier-features">
+            <li data-i18n="spon.feat.5">Permanent sponsor recognition</li>
+            </ul>
+          </article>
+          <article class="card tier-card" data-reveal>
+            <span class="tier-badge" data-i18n="spon.label.4">Silver Tier</span>
+            <div>
+              <div class="tier-price">$500</div>
+              <div class="tier-period" data-i18n="spon.tier.period.3">/ year — Community support</div>
+            </div>
+            <p class="tier-desc" data-i18n="spon.tier.desc.3">Support community growth and gain sustained visibility within the group.</p>
+            <ul class="tier-features">
             <li data-i18n="spon.feat.9">Logo placement on website</li>
             <li data-i18n="spon.feat.10">Recognition during selected events</li>
-          </ul>
-        </div>
-
-        <!-- INFRASTRUCTURE -->
-        <div class="tier-card infra">
-          <span class="tier-badge">Infrastructure</span>
-          <span class="tier-price">In-Kind</span>
-          <span class="tier-period" data-i18n="spon.tier.period.4">Contribution-based recognition</span>
-          <div class="tier-desc" data-i18n="spon.tier.desc.4">Provide the physical or digital infrastructure that makes our operations possible.</div>
-          <ul class="tier-features">
+            <li data-i18n="spon.feat.8">Access to community networking opportunities</li>
+            </ul>
+          </article>
+          <article class="card tier-card" data-reveal>
+            <span class="tier-badge" data-i18n="spon.label.5">Infrastructure Tier</span>
+            <div>
+              <div class="tier-price">—</div>
+              <div class="tier-period" data-i18n="spon.tier.period.4">Contribution-based recognition</div>
+            </div>
+            <p class="tier-desc" data-i18n="spon.tier.desc.4">Provide the physical or digital infrastructure that makes our operations possible.</p>
+            <ul class="tier-features">
             <li data-i18n="spon.feat.11">Venue space for events</li>
             <li data-i18n="spon.feat.12">Hardware &amp; embedded equipment</li>
             <li data-i18n="spon.feat.13">Cloud infrastructure</li>
             <li data-i18n="spon.feat.14">Recognition equivalent to contribution value</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- What sponsorship enables -->
-      <div class="section-label" data-i18n="spon.label.9" style="margin-bottom:0.5rem;">what your funding enables</div>
-      <div class="enables-grid">
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F9EA;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.7">Hands-On Hacking Labs</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.7">Live operational environments where members actively compromise real systems under controlled conditions.</div>
-        </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F4DA;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.8">Technical Workshops</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.8">Deep-dive sessions on offensive tradecraft, tool development, and real-world attack chain reproduction.</div>
-        </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F3C6;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.9">CTF Competitions</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.9">Capture The Flag operations that develop competitive, battle-tested offensive security skills.</div>
-        </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F527;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.10">Hardware Environments</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.10">Physical labs for embedded systems research, firmware analysis, RF hacking, and automotive security work.</div>
-        </div>
-        <div class="enable-item">
-          <span class="enable-icon">&#x1F5A7;</span>
-          <div class="enable-title" data-i18n="spon.enable.title.11">Community Infrastructure</div>
-          <div class="enable-desc" data-i18n="spon.enable.desc.11">Servers, tools, platforms and resources that keep the group operational and growing.</div>
+            </ul>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- Final CTA -->
-      <div class="sponsor-cta">
-        <div class="cta-headline" data-i18n="spon.cta.headline.1">Attackers are already organized.</div>
-        <div class="cta-sub" data-i18n="spon.cta.sub.1">// This is how defenders catch up.</div>
-
-        <div class="contact-block">
-          <div class="contact-row">
-            <span class="contact-key" data-i18n="spon.contact.key.1">email:</span>
-            <a href="mailto:dcgpanama@zerotrustoffsec.com" class="contact-val">dcgpanama@zerotrustoffsec.com</a>
+    <section class="section">
+      <div class="wrap">
+        <div class="card" style="padding: var(--s6) var(--s5)" data-reveal>
+          <h2 data-i18n="spon.cta.headline.1">Attackers are already organized.</h2>
+          <p class="lead" style="margin-top: var(--s2)" data-i18n="spon.cta.sub.1">// This is how defenders catch up.</p>
+          <dl class="contact-strip">
+            <div class="contact-cell">
+              <dt data-i18n="spon.contact.key.1">email:</dt>
+              <dd><a href="mailto:dcgpanama@zerotrustoffsec.com">dcgpanama@zerotrustoffsec.com</a></dd>
+            </div>
+            <div class="contact-cell">
+              <dt data-i18n="spon.contact.key.2">web:</dt>
+              <dd><a href="https://zerotrustoffsec.com" target="_blank" rel="noopener noreferrer">zerotrustoffsec.com</a></dd>
+            </div>
+            <div class="contact-cell">
+              <dt data-i18n="spon.contact.key.3">location:</dt>
+              <dd data-i18n="spon.contact.location">Panama City, Panama</dd>
+            </div>
+          </dl>
+          <div class="btn-row" style="margin-top: var(--s4)">
+            <a class="btn btn-primary" href="mailto:dcgpanama@zerotrustoffsec.com" data-i18n="spon.cta.primary">Become a Sponsor →</a>
+            <a class="btn" href="../assets/docs/DCG-PANAMA-SPONSOR-PROP.pdf" target="_blank" rel="noopener noreferrer" data-i18n="spon.cta.secondary">Download Proposal</a>
           </div>
-          <div class="contact-row">
-            <span class="contact-key" data-i18n="spon.contact.key.2">web:</span>
-            <a href="https://zerotrustoffsec.com" class="contact-val" target="_blank">zerotrustoffsec.com</a>
-          </div>
-          <div class="contact-row">
-            <span class="contact-key" data-i18n="spon.contact.key.3">location:</span>
-            <span class="contact-val" data-i18n="spon.contact.location">Panama City, Panama</span>
-          </div>
-        </div>
-
-        <div class="cta-buttons">
-          <a href="mailto:dcgpanama@zerotrustoffsec.com" class="cta-btn-primary" data-i18n="spon.cta.primary">Become a Sponsor &rarr;</a>
-          <a href="../assets/docs/DCG-PANAMA-SPONSOR-PROP.pdf" class="cta-btn-secondary" target="_blank" data-i18n="spon.cta.secondary">Download Proposal</a>
         </div>
       </div>
-
-    </div><!-- end .info-section -->
-
-  </div><!-- end .page-content -->
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-line"><span class="green">DCG Panama</span> &mdash; DEF CON Group Panama</div>
-    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7" data-i18n="footer.tag.apart">We do not ask for permission to understand systems. We take them apart.</div>
-    <div class="footer-line"><span data-i18n="footer.rights">&copy; 2026. All rights reserved. Developed by:</span> <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">DCG Panama</div>
+        <p class="footer-tag" data-i18n="footer.tag.apart">We do not ask for permission to understand systems. We take them apart.</p>
+      </div>
+      <div class="footer-meta">
+        <span data-i18n="footer.rights">© 2026. All rights reserved. Developed by:</span>
+        <a href="https://zerotrustoffsec.com" target="_blank" rel="noopener noreferrer">ZeroTrustOffsec.com</a>
+      </div>
+    </div>
   </footer>
-
   <script src="../js/lang.js"></script>
   <script src="../js/i18n.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="../js/sponsors.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

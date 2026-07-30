@@ -1,17 +1,17 @@
 /* ============================================
-   DCG PANAMA — TERMINAL JS
-   Interactive shell emulator
-   ============================================ */
+   DCG PANAMA — INFORMATION TERMINAL
+   A real, navigable filesystem. Output is built with createElement and
+   textContent only: nothing typed into the prompt is ever parsed as markup.
+============================================ */
+(function () {
+  'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const output = document.querySelector('.terminal-output');
-  const input = document.querySelector('.terminal-input');
-  const promptPath = document.querySelector('.prompt-path');
-  const terminalBody = document.querySelector('.terminal-body');
+  const out = document.getElementById('term-out');
+  const input = document.getElementById('term-in');
+  const promptEl = document.getElementById('term-prompt');
+  if (!out || !input) return;
 
-  // --- Virtual Filesystem ---
-  // Copy that only exists here. The literal below each key is the English;
-  // Spanish lives in lang.js under strings.es.term.
+  // Copy that only exists here; the literal is the English, lang.js has Spanish.
   function tr(key, fallback) {
     return (window.I18N ? window.I18N.t('term.' + key) : null) ?? fallback;
   }
@@ -123,6 +123,8 @@ Our vision is to create a self-sustaining hacker culture where knowledge flows o
   > Threat emulation and adversary simulation
   > Active Directory attacks
   > APPSEC
+  > Social engineering
+  > Cloud hacking
 \\
 [GOAL 3] PROMOTE HANDS-ON LEARNING
   Encourage practical experimentation through:
@@ -223,7 +225,13 @@ Thinking like real attackers. Reproducing nation-state tradecraft, adversary TTP
 Total enterprise takeover. Privilege escalation, credential harvesting, and complete domain compromise.
 \\
 [10] APPSEC
-Breaking applications at their core. Injection, logic abuse, auth bypass, and weaponizing code flaws to achieve full compromise.`
+Breaking applications at their core. Injection, logic abuse, auth bypass, and weaponizing code flaws to achieve full compromise.
+\\
+[11] Social Engineering
+Attacking the human layer. Pretexting, phishing infrastructure, and physical impersonation to bypass controls no exploit can reach.
+\\
+[12] Cloud Hacking
+Breaking managed infrastructure. Identity abuse, misconfigured IAM, exposed metadata services, and lateral movement across cloud tenants.`
 },
     '/operations/activities.txt': {
       type: 'file',
@@ -252,421 +260,196 @@ COMMUNITY EVENTS:
     }
   };
 
-  let currentPath = '/';
-  const commandHistory = [];
-  let historyIndex = -1;
+  let cwd = '/';
+  const history = [];
+  let histIndex = -1;
 
-  // --- Resolve path ---
-  function resolvePath(input) {
-    if (!input) return currentPath;
-    
-    let path;
-    if (input.startsWith('/')) {
-      path = input;
-    } else {
-      path = currentPath === '/' ? '/' + input : currentPath + '/' + input;
-    }
-
-    // Handle .. and .
-    const parts = path.split('/').filter(Boolean);
-    const resolved = [];
-    for (const part of parts) {
-      if (part === '..') {
-        resolved.pop();
-      } else if (part !== '.') {
-        resolved.push(part);
-      }
-    }
-    return '/' + resolved.join('/') || '/';
-  }
-  
-  // --- Add line to output ---
-  function addLine(text, className = '') {
+  // ── Output ────────────────────────────────
+  function line(text, cls) {
     const div = document.createElement('div');
-    div.className = `line ${className}`;
-    div.textContent = text;
-    output.appendChild(div);
+    div.className = 'ln' + (cls ? ' ' + cls : '');
+    div.textContent = text;              // never innerHTML
+    out.appendChild(div);
+    out.scrollTop = out.scrollHeight;
+    return div;
   }
 
-  function addHTML(html, className = '') {
-    const div = document.createElement('div');
-    div.className = `line ${className}`;
-    div.innerHTML = html;
-    output.appendChild(div);
+  function blank() { line(' '); }
+
+  function setPrompt() {
+    promptEl.textContent = (cwd === '/' ? '~' : '~' + cwd) + ' $';
   }
 
-  // --- Print prompt record ---
-  function addCommandLine(cmd) {
-    const pathDisplay = currentPath === '/' ? '~' : '~' + currentPath;
-    addHTML(
-      `<span style="color:var(--red-primary);text-shadow:0 0 5px var(--red-glow)">operator@dcgpanama</span><span style="color:var(--white-dim)">:</span><span style="color:var(--cyan-accent)">${pathDisplay}</span><span style="color:var(--white)">$ ${escapeHtml(cmd)}</span>`,
-      'command'
-    );
+  // ── Path handling ─────────────────────────
+  function resolve(p) {
+    if (!p) return cwd;
+    const abs = p.startsWith('/') ? p : (cwd === '/' ? '/' + p : cwd + '/' + p);
+    const parts = abs.split('/').filter(Boolean);
+    const stack = [];
+    parts.forEach(part => {
+      if (part === '.') return;
+      if (part === '..') { stack.pop(); return; }
+      stack.push(part);
+    });
+    return '/' + stack.join('/');
   }
 
-  function escapeHtml(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  // --- Commands ---
+  // ── Commands ──────────────────────────────
   const commands = {
     help() {
-      addLine('');
-      addLine(tr('help.title', 'Available commands:'), 'highlight');
-      addLine('');
-      // Command names stay as typed; only their descriptions localise.
-      const cmds = [
-        ['ls', tr('help.ls', 'List directory contents')],
-        ['cd', tr('help.cd', 'Change directory')],
-        ['cat', tr('help.cat', 'Display file contents')],
-        ['pwd', tr('help.pwd', 'Print working directory')],
-        ['whoami', tr('help.whoami', 'Display current user')],
-        ['tree', tr('help.tree', 'Show full directory tree')],
-        ['clear', tr('help.clear', 'Clear terminal')],
-        ['help', tr('help.help', 'Show this help message')],
-        ['uname -a', tr('help.uname', 'Show system info')],
-        ['id', tr('help.id', 'Show user identity')],
-        ['date', tr('help.date', 'Show current date')],
-        ['echo <text>', tr('help.echo', 'Print text')],
-        ['history', tr('help.history', 'Show command history')],
-        ['banner', tr('help.banner', 'Show DCG Panama banner')],
-      ];
-      cmds.forEach(([cmd, desc]) => {
-        addHTML(
-          `  <span style="color:var(--red-primary);min-width:180px;display:inline-block;font-weight:bold">${cmd.padEnd(20)}</span> <span style="color:var(--white-dim)">${desc}</span>`
-        );
-      });
-      addLine('');
+      blank();
+      line(tr('help.title', 'Available commands:'), 'head');
+      [['ls', tr('help.ls', 'List directory contents')],
+       ['cd', tr('help.cd', 'Change directory')],
+       ['cat', tr('help.cat', 'Display file contents')],
+       ['pwd', tr('help.pwd', 'Print working directory')],
+       ['tree', tr('help.tree', 'Show full directory tree')],
+       ['whoami', tr('help.whoami', 'Display current user')],
+       ['clear', tr('help.clear', 'Clear terminal')],
+       ['help', tr('help.help', 'Show this help message')],
+      ].forEach(([cmd, desc]) => line('  ' + cmd.padEnd(10) + desc));
+      blank();
     },
 
     ls(args) {
-      const targetPath = args[0] ? resolvePath(args[0]) : currentPath;
-      const node = fs[targetPath];
-
+      const target = resolve(args[0]);
+      const node = fs[target];
       if (!node || node.type !== 'dir') {
-        addLine(`ls: cannot access '${args[0] || targetPath}': No such directory`, 'error');
+        line('ls: ' + (args[0] || target) + ': No such directory', 'err');
         return;
       }
-
-      const items = node.children;
-      let listing = '';
-      items.forEach(item => {
-        const fullPath = targetPath === '/' ? '/' + item : targetPath + '/' + item;
-        const isDir = fs[fullPath] && fs[fullPath].type === 'dir';
-        if (isDir) {
-          listing += `<span style="color:var(--cyan-accent);font-weight:bold">${item}/</span>    `;
-        } else {
-          listing += `<span style="color:var(--red-dim)">${item}</span>    `;
-        }
+      node.children.forEach(child => {
+        const full = target === '/' ? '/' + child : target + '/' + child;
+        const isDir = fs[full] && fs[full].type === 'dir';
+        line((isDir ? '  ' + child + '/' : '  ' + child), isDir ? 'accent' : null);
       });
-      addHTML(listing);
     },
 
     cd(args) {
-      if (!args[0] || args[0] === '~') {
-        currentPath = '/';
-        updatePrompt();
-        return;
-      }
-
-      const target = resolvePath(args[0]);
+      if (!args[0] || args[0] === '~') { cwd = '/'; setPrompt(); return; }
+      const target = resolve(args[0]);
       const node = fs[target];
-
-      if (!node) {
-        addLine(`cd: no such file or directory: ${args[0]}`, 'error');
-        return;
-      }
-      if (node.type !== 'dir') {
-        addLine(`cd: not a directory: ${args[0]}`, 'error');
-        return;
-      }
-
-      currentPath = target;
-      updatePrompt();
+      if (!node) { line('cd: ' + args[0] + ': No such file or directory', 'err'); return; }
+      if (node.type !== 'dir') { line('cd: ' + args[0] + ': Not a directory', 'err'); return; }
+      cwd = target;
+      setPrompt();
     },
 
     cat(args) {
-      if (!args[0]) {
-        addLine('cat: missing operand', 'error');
-        return;
-      }
-
-      const target = resolvePath(args[0]);
+      if (!args[0]) { line('cat: missing operand', 'err'); return; }
+      const target = resolve(args[0]);
       const node = fs[target];
+      if (!node) { line('cat: ' + args[0] + ': No such file or directory', 'err'); return; }
+      if (node.type === 'dir') { line('cat: ' + args[0] + ': Is a directory', 'err'); return; }
 
-      if (!node) {
-        addLine(`cat: ${args[0]}: No such file or directory`, 'error');
-        return;
-      }
-      if (node.type === 'dir') {
-        addLine(`cat: ${args[0]}: Is a directory`, 'error');
-        return;
-      }
-
-      addLine('');
-      tr(node.key, node.content).split('\n').forEach(line => {
-        if (line.startsWith('>>')) {
-          addLine(line, 'header');
-        } else if (line.startsWith('━')) {
-          addLine(line, 'dim');
-        } else if (line.startsWith('  >')) {
-          addLine(line, 'highlight');
-        } else if (line.match(/^\[.*\]/)) {
-          addLine(line, 'info');
-        } else if (line.startsWith('╔') || line.startsWith('║') || line.startsWith('╚')) {
-          addLine(line, 'header');
-        } else {
-          addLine(line, 'output');
-        }
+      blank();
+      tr(node.key, node.content).split('\n').forEach(raw => {
+        const text = raw.replace(/\s+$/, '');
+        if (!text) { blank(); return; }
+        if (text.startsWith('>>')) line(text.replace(/^>>\s*/, ''), 'head');
+        else if (/^[━═]/.test(text)) return;              // the rules are drawn by CSS now
+        else if (text === '\\') { blank(); }
+        else if (/^\s*>/.test(text)) line(text, 'accent');
+        else if (/^\[/.test(text)) line(text, 'head');
+        else line(text);
       });
-      addLine('');
+      blank();
     },
 
-    pwd() {
-      addLine(currentPath === '/' ? '/' : currentPath, 'output');
-    },
+    pwd() { line(cwd); },
 
-    whoami() {
-      addLine('operator', 'highlight');
-    },
-
-    id() {
-      addLine('uid=1337(operator) gid=1337(dcgpanama) groups=1337(dcgpanama),31337(hackers)', 'output');
-    },
-
-    uname(args) {
-      addLine('DCG-Panama-OS 5.15.0-dcg #1337 SMP PREEMPT x86_64 GNU/Hack', 'output');
-    },
-
-    date() {
-      addLine(new Date().toString(), 'output');
-    },
-
-    echo(args) {
-      addLine(args.join(' '), 'output');
-    },
-
-    clear() {
-      output.innerHTML = '';
-    },
-
-    history() {
-      commandHistory.forEach((cmd, i) => {
-        addLine(`  ${(i + 1).toString().padStart(4)}  ${cmd}`, 'output');
-      });
-    },
+    whoami() { line('operator'); },
 
     tree() {
-      addLine('');
-      addLine('.', 'highlight');
-      addLine('├── README.txt', 'output');
-      addLine('├── about/', 'info');
-      addLine('│   ├── mission.txt', 'output');
-      addLine('│   ├── vision.txt', 'output');
-      addLine('│   ├── core_values.txt', 'output');
-      addLine('│   └── operating_principles.txt', 'output');
-      addLine('├── community/', 'info');
-      addLine('│   ├── core_goals.txt', 'output');
-      addLine('│   ├── who_we_are.txt', 'output');
-      addLine('│   └── join.txt', 'output');
-      addLine('└── operations/', 'info');
-      addLine('    ├── focus_areas.txt', 'output');
-      addLine('    └── activities.txt', 'output');
-      addLine('');
-      addLine('3 directories, 10 files', 'dim');
+      blank();
+      (function walk(path, prefix) {
+        const node = fs[path];
+        if (!node || node.type !== 'dir') return;
+        node.children.forEach((child, i) => {
+          const last = i === node.children.length - 1;
+          const full = path === '/' ? '/' + child : path + '/' + child;
+          const isDir = fs[full] && fs[full].type === 'dir';
+          line(prefix + (last ? '└─ ' : '├─ ') + child + (isDir ? '/' : ''), isDir ? 'accent' : null);
+          if (isDir) walk(full, prefix + (last ? '   ' : '│  '));
+        });
+      })('/', '');
+      blank();
     },
 
-    banner() {
-      const welcomeLines = [
-        { text: '      :::::::::   ::::::::   ::::::::          :::::::::     :::  ', cls: 'header' },
-        { text: '     :+:    :+: :+:    :+: :+:    :+:         :+:    :+:  :+: :+: ', cls: 'header' },
-        { text: '    +:+    +:+ +:+        +:+                +:+    +:+ +:+   +:+ ', cls: 'header' },
-        { text: '   +#+    +:+ +#+        :#:                +#++:++#+ +#++:++#++: ', cls: 'header' },
-        { text: '  +#+    +#+ +#+        +#+   +#+#         +#+       +#+     +#+  ', cls: 'header' },
-        { text: ' #+#    #+# #+#    #+# #+#    #+#         #+#       #+#     #+#   ', cls: 'header' },
-        { text: '#########   ########   ########          ###       ###     ###    ', cls: 'header' },
-        { text: '', cls: '' },
-        { text: "Panama's First DEF CON Group Chapter", cls: 'highlight' },
-        { text: '', cls: '' },
-      ];
-
-      let delay = 0;
-      welcomeLines.forEach((line, i) => {
-        setTimeout(() => {
-          addLine(line.text, line.cls);
-          terminalBody.scrollTop = terminalBody.scrollHeight;
-        }, delay);
-        delay += 70;
-      });
-    }
+    clear() { out.replaceChildren(); },
   };
 
-  // --- Update prompt path display ---
-  function updatePrompt() {
-    if (promptPath) {
-      promptPath.textContent = currentPath === '/' ? '~' : '~' + currentPath;
-    }
-  }
-
-  // --- Process command ---
-  function processCommand(cmdStr) {
-    const trimmed = cmdStr.trim();
+  // ── Input ─────────────────────────────────
+  function run(raw) {
+    const trimmed = raw.trim();
+    line((cwd === '/' ? '~' : '~' + cwd) + ' $ ' + trimmed, 'cmd');
     if (!trimmed) return;
 
-    // ===== SECURITY CHECK =====
-    // Check for attack patterns BEFORE processing
+    history.push(trimmed);
+    histIndex = history.length;
+
+    // Attack-detection layer (js/attkdetct.js). Payloads never reach the
+    // dispatcher; the terminal answers with a taunt instead.
     if (window._0xSECCHECK) {
-      const secCheck = window._0xSECCHECK(trimmed);
-      if (secCheck._0x8j9k) {
-        commandHistory.push(trimmed);
-        historyIndex = commandHistory.length;
-        addCommandLine(trimmed);
-        addLine('');
-        addLine(secCheck._0x9l0m, 'error');
-        addLine('');
-        
-        // Log the attack
-        if (window._0xLOGATTACK) {
-          window._0xLOGATTACK(secCheck._0xan1b, trimmed);
-        }
-        
-        setTimeout(() => {
-          terminalBody.scrollTop = terminalBody.scrollHeight;
-        }, 10);
+      const verdict = window._0xSECCHECK(trimmed);
+      if (verdict._0x8j9k) {
+        blank();
+        line(verdict._0x9l0m, 'err');
+        blank();
+        if (window._0xLOGATTACK) window._0xLOGATTACK(verdict._0xan1b, trimmed);
         return;
       }
     }
 
-    // Check Easter eggs
-    if (window._0xEASTEREGG && window._0xEASTEREGG[trimmed]) {
-      commandHistory.push(trimmed);
-      historyIndex = commandHistory.length;
-      addCommandLine(trimmed);
-      addLine('');
-      addLine(window._0xEASTEREGG[trimmed], 'highlight');
-      addLine('');
-      
-      setTimeout(() => {
-        terminalBody.scrollTop = terminalBody.scrollHeight;
-      }, 10);
+    // hasOwnProperty, not a bare lookup: otherwise 'toString' or 'constructor'
+    // would resolve up the prototype chain and print a function body.
+    if (window._0xEASTEREGG &&
+        Object.prototype.hasOwnProperty.call(window._0xEASTEREGG, trimmed)) {
+      blank();
+      line(window._0xEASTEREGG[trimmed], 'accent');
+      blank();
       return;
     }
-    // ===== END SECURITY CHECK =====
-
-    commandHistory.push(trimmed);
-    historyIndex = commandHistory.length;
-
-    addCommandLine(trimmed);
 
     const parts = trimmed.split(/\s+/);
-    let cmdName = parts[0].toLowerCase();
+    const cmd = parts[0].toLowerCase();
     const args = parts.slice(1);
 
-    // Handle composite commands
-    if (cmdName === 'uname' && args[0] === '-a') {
-      commands.uname(args);
-    } else if (commands[cmdName]) {
-      commands[cmdName](args);
+    if (Object.prototype.hasOwnProperty.call(commands, cmd)) {
+      commands[cmd](args);
     } else {
-      addLine(`bash: ${cmdName}: command not found. Type 'help' for available commands.`, 'error');
-    }
-
-    // Scroll to bottom
-    setTimeout(() => {
-      terminalBody.scrollTop = terminalBody.scrollHeight;
-    }, 10);
-  }
-
-  // --- Input handling ---
-  if (input) {
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        processCommand(input.value);
-        input.value = '';
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (historyIndex > 0) {
-          historyIndex--;
-          input.value = commandHistory[historyIndex];
-        }
-      } else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (historyIndex < commandHistory.length - 1) {
-          historyIndex++;
-          input.value = commandHistory[historyIndex];
-        } else {
-          historyIndex = commandHistory.length;
-          input.value = '';
-        }
-      } else if (e.key === 'Tab') {
-        e.preventDefault();
-        autocomplete(input);
-      } else if (e.key === 'l' && e.ctrlKey) {
-        e.preventDefault();
-        commands.clear();
-      }
-    });
-
-    // Focus on click anywhere in terminal
-    terminalBody.addEventListener('click', () => {
-      input.focus();
-    });
-
-    // Initial focus
-    input.focus();
-  }
-
-  // --- Tab autocomplete ---
-  function autocomplete(inputEl) {
-    const value = inputEl.value;
-    const parts = value.split(/\s+/);
-    
-    if (parts.length <= 1) {
-      // Command autocomplete
-      const partial = parts[0].toLowerCase();
-      const matches = Object.keys(commands).filter(c => c.startsWith(partial));
-      if (matches.length === 1) {
-        inputEl.value = matches[0] + ' ';
-      }
-    } else {
-      // File/dir autocomplete
-      const partial = parts[parts.length - 1];
-      const dirPath = currentPath;
-      const node = fs[dirPath];
-      if (node && node.type === 'dir') {
-        const matches = node.children.filter(c => c.startsWith(partial));
-        if (matches.length === 1) {
-          parts[parts.length - 1] = matches[0];
-          inputEl.value = parts.join(' ');
-        }
-      }
+      line(cmd + ': command not found', 'err');
+      line(tr('notFound', "Type 'help' for available commands."), 'mute');
     }
   }
 
-  // --- Show welcome message ---
-  function showWelcome() {
-    const welcomeLines = [
-      { text: '  ╔══════════════════════════════════════════════╗', cls: 'header' },
-      { text: '            DCG PANAMA — INFORMATION TERMINAL         ', cls: 'header' },
-      { text: '           Type "help" for available commands         ', cls: 'header' },
-      { text: '  ╚══════════════════════════════════════════════╝', cls: 'header' },
-      { text: '', cls: '' },
-      { text: '  System initialized. Welcome, operator.', cls: 'highlight' },
-      { text: '  Current date: ' + new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }), cls: 'dim' },
-      { text: '', cls: '' },
-      { text: '  Hint: Start with "ls" to explore, "cat README.txt" to read.', cls: 'dim' },
-      { text: '', cls: '' },
-    ];
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      run(input.value);
+      input.value = '';
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (histIndex > 0) { histIndex--; input.value = history[histIndex]; }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (histIndex < history.length - 1) { histIndex++; input.value = history[histIndex]; }
+      else { histIndex = history.length; input.value = ''; }
+    }
+  });
 
-    let delay = 0;
-    welcomeLines.forEach((line, i) => {
-      setTimeout(() => {
-        addLine(line.text, line.cls);
-        terminalBody.scrollTop = terminalBody.scrollHeight;
-      }, delay);
-      delay += 60;
-    });
+  // Clicking anywhere in the terminal focuses the prompt, as a real one would.
+  out.parentElement.addEventListener('click', e => {
+    if (window.getSelection().toString()) return;   // don't steal a text selection
+    if (e.target.tagName !== 'A') input.focus();
+  });
+
+  function greet() {
+    out.replaceChildren();
+    commands.cat(['/README.txt']);
   }
 
-  showWelcome();
-});
+  setPrompt();
+  greet();
+
+  if (window.I18N) window.I18N.onChange(greet);
+})();

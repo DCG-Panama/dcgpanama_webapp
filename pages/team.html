@@ -4,424 +4,193 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="page.team.title">DCG Panama – Founding Operators</title>
-  <meta name="description" data-i18n-attrs="content:page.team.desc" content="DEF CON Group Panama — Meet the founding operators.">
+  <meta name="description" content="DEF CON Group Panama — Meet the founding operators." data-i18n-attrs="content:page.team.desc">
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/home.css">
-  <link rel="stylesheet" href="../css/team.css">
+  <link rel="stylesheet" href="../css/pages.css">
   <link rel="icon" type="image/png" href="../assets/img/dcgpanamalogonobg.png">
 </head>
 <body>
-
-  <!-- Background effects -->
-  <div class="bg-image"></div>
-  <canvas id="matrix-canvas"></canvas>
-  <div class="grid-bg"></div>
-  <div class="scanlines"></div>
-  <div class="noise-overlay"></div>
-
-  <!-- Navigation -->
-  <nav class="nav-bar">
-    <a href="../index.html" class="nav-brand">
-      <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
-      <span>DCG Panama</span>
-    </a>
-    <button class="nav-toggle" aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">[=]</button>
-    <ul class="nav-links">
-      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
-      <li><a href="manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
-      <li><a href="about.html" data-i18n="nav.about">About</a></li>
-      <li><a href="events.html" data-i18n="nav.events">Events</a></li>
-      <li><a href="sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
-      <li><a href="team.html" class="active" data-i18n="nav.team">Team</a></li>
-      <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" data-i18n="nav.media">Media</button>
-        <ul class="nav-dropdown-menu">
-          <li><a href="videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
-          <li><a href="snapshots.html" data-i18n="nav.snapshots">Snapshots</a></li>
-        </ul>
-      </li>
-      <li class="nav-lang">
-        <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <span class="lang-sep" aria-hidden="true">|</span>
-          <button type="button" class="lang-btn" data-lang="es">ES</button>
-        </div>
-      </li>
-    </ul>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
+        <span>DCG Panama</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../pages/manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
+        <li><a href="../pages/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../pages/events.html" data-i18n="nav.events">Events</a></li>
+        <li><a href="../pages/sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
+        <li><a href="../pages/team.html" class="active" aria-current="page" data-i18n="nav.team">Team</a></li>
+        <li><a href="../pages/videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
+        <li><a href="../pages/snapshots.html" data-i18n="nav.snapshots">Snapshots</a></li>
+      </ul>
+      <div class="nav-sep" aria-hidden="true"></div>
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links"
+              aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">≡</button>
+    </div>
   </nav>
-
-  <div class="page-content">
-
-    <!-- Header -->
-    <div class="team-header">
-      <span class="team-header-label">// system/operators</span>
-      <h1><span data-i18n="team.h1a">Founding</span> <span data-i18n="team.h1b">Operators</span></h1>
-      <p class="team-header-sub" data-i18n="team.sub">The people who built this from nothing.</p>
-      <div class="header-divider"><span data-i18n="team.classified">[ CLASSIFIED LEVEL: CREW ]</span></div>
-    </div>
-
-    <!-- Rack -->
-    <div class="rack-room">
-
-      <!-- Rack status bar -->
-      <div class="rack-status-bar">
-        <span>RACK-01 // DCG-PANAMA-CORE</span>
-        <div class="led-group">
-          <span class="led green"></span>
-          <span class="led green"></span>
-          <span class="led amber"></span>
-          <span class="led green"></span>
-          <span class="led blue"></span>
-          <span style="margin-left:6px; font-size:0.65rem;">ALL UNITS ONLINE</span>
-        </div>
-        <span id="rack-clock">--:--:--</span>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow" data-i18n="team.eyebrow">The crew</p>
+        <h1><span data-i18n="team.h1a">Founding</span> <span data-i18n="team.h1b">Operators</span></h1>
+        <div class="rule-accent"></div>
+        <p class="lead" data-i18n="team.sub">The people who built this from nothing.</p>
       </div>
+    </section>
 
-      <!-- THE RACK -->
-      <div class="server-rack">
-        <div class="rack-rail left"></div>
-        <div class="rack-rail right"></div>
-
-        <div class="rack-section-label">[ FOUNDING NODES — UNIT 1U THROUGH 6U ]</div>
-
-        <!-- ======= MEMBER 1 ======= -->
-        <div class="server-unit" data-member="1">
-          <div class="server-front">
-            <div class="unit-id">UNIT-01 // SN:DCG-2025-001</div>
-            <div class="unit-avatar"><img src="../assets/team/bl4cksku11.png"></div> <!--&#x1F464;-->
-            <div class="status-indicators">
-              <div class="status-indicator"></div>
-              <div class="status-indicator activity"></div>
-              <div class="status-indicator"></div>
-            </div>
-            <div class="power-btn"></div>
-          </div>
-          <div class="server-info">
-            <div class="server-info-top">
-              <div>
-                <div class="operator-name">Jose Rivas</div>
-                <div class="operator-handle">@bl4cksku11</div>
-                <div class="operator-role" data-i18n="team.role.1">ROLE // Founder &amp; Chapter Lead</div>
-              </div>
-              <div class="unit-badge">
-                <span class="uptime-label">UPTIME</span>
-                <span class="uptime-value">&#x221E;</span>
-              </div>
-            </div>
-            <div class="process-output">
-              <div class="proc-line"><span class="proc-key">specialization: </span><span class="proc-value">Red Team Operations, AD Exploitation, Social Engineering</span></div>
-              <div class="proc-line"><span class="proc-key">certifications: </span><span class="proc-value">eCPPT, eWPT, eJPT, Pentest+, CRTO I, [REDACTED]</span></div>
-              <div class="proc-line"><span class="proc-key">status:         </span><span class="proc-value">ACTIVE</span></div>
-              <div class="proc-line"><span class="proc-key">clearance:      </span><span class="proc-value">FOUNDER // UNRESTRICTED</span></div>
-            </div>
-            <div class="skill-bars">
-              <div class="skill-bar-row">
-                <span class="skill-label">Red Team</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-              <div class="skill-bar-row">
-                <span class="skill-label">Priv Esc</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-            </div>
-            <div class="operator-links">
-              <a href="https://github.com/bl4cksku11" class="op-link">Github</a>
-              <a href="https://www.linkedin.com/in/josemanuelrivasdiaz/" class="op-link">LinkedIn</a>
-              <a href="https://x.com/bl4cksku111" class="op-link">Twitter</a>
+    <section class="section">
+      <div class="wrap">
+        <div class="grid grid-3">
+        <article class="card operator" data-reveal>
+          <div class="operator-top">
+            <img class="operator-avatar" src="../assets/team/bl4cksku11.png" alt="" width="60" height="60" loading="lazy">
+            <div>
+              <div class="operator-name">Jose Rivas</div>
+              <div class="operator-handle">@bl4cksku11</div>
             </div>
           </div>
+          <div class="operator-role" data-i18n="team.role.1">ROLE // Founder &amp; Chapter Lead</div>
+          <div class="operator-spec">
+            <strong data-i18n="team.specLabel">Specialization</strong>
+            Red Team Operations, AD Exploitation, Social Engineering
+          </div>
+          <div class="operator-links">
+            <a class="op-link" href="https://github.com/bl4cksku11" target="_blank" rel="noopener noreferrer">Github</a>
+            <a class="op-link" href="https://www.linkedin.com/in/josemanuelrivasdiaz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="op-link" href="https://x.com/bl4cksku111" target="_blank" rel="noopener noreferrer">Twitter</a>
+          </div>
+        </article>
+        <article class="card operator" data-reveal>
+          <div class="operator-top">
+            <img class="operator-avatar" src="../assets/team/mind2hex.png" alt="" width="60" height="60" loading="lazy">
+            <div>
+              <div class="operator-name">johan giraldo</div>
+              <div class="operator-handle">@mind2hex</div>
+            </div>
+          </div>
+          <div class="operator-role" data-i18n="team.role.2">ROLE // Co-Founder &amp; Exploit Developer Lead</div>
+          <div class="operator-spec">
+            <strong data-i18n="team.specLabel">Specialization</strong>
+            Web Exploitation, AppSec, Exploit Developer, RF hacking
+          </div>
+          <div class="operator-links">
+            <a class="op-link" href="https://github.com/mind2hex" target="_blank" rel="noopener noreferrer">Github</a>
+            <a class="op-link" href="https://www.linkedin.com/in/mind2hex/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </article>
+        <article class="card operator" data-reveal>
+          <div class="operator-top">
+            <img class="operator-avatar" src="../assets/team/r00tb.png" alt="" width="60" height="60" loading="lazy">
+            <div>
+              <div class="operator-name">Eduardo Ferguson</div>
+              <div class="operator-handle">@r00tbr4k3r</div>
+            </div>
+          </div>
+          <div class="operator-role" data-i18n="team.role.3">ROLE // Co-Founder &amp; Technical Lead</div>
+          <div class="operator-spec">
+            <strong data-i18n="team.specLabel">Specialization</strong>
+            Web Explitation, AppSec, Forensics
+          </div>
+          <div class="operator-links">
+            <a class="op-link" href="https://github.com/R00tbre4ck3r" target="_blank" rel="noopener noreferrer">Github</a>
+            <a class="op-link" href="https://www.linkedin.com/in/eduardo-ferguson/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </article>
+        <article class="card operator" data-reveal>
+          <div class="operator-top">
+            <img class="operator-avatar" src="../assets/team/thr3sh.png" alt="" width="60" height="60" loading="lazy">
+            <div>
+              <div class="operator-name">Orinson Moreno</div>
+              <div class="operator-handle">@thr3sh</div>
+            </div>
+          </div>
+          <div class="operator-role" data-i18n="team.role.4">ROLE // Co-Founder &amp; Threat Intel Lead</div>
+          <div class="operator-spec">
+            <strong data-i18n="team.specLabel">Specialization</strong>
+            Threat Emulation, OSINT, EDR Evasion
+          </div>
+          <div class="operator-links">
+            <a class="op-link" href="https://www.linkedin.com/in/orinson-moreno/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </article>
+        <article class="card operator" data-reveal>
+          <div class="operator-top">
+            <img class="operator-avatar" src="../assets/team/gh0st.png" alt="" width="60" height="60" loading="lazy">
+            <div>
+              <div class="operator-name">Leyner Garzón</div>
+              <div class="operator-handle">@crossmark</div>
+            </div>
+          </div>
+          <div class="operator-role" data-i18n="team.role.5">ROLE // Co-Founder &amp; Offensive Security lead</div>
+          <div class="operator-spec">
+            <strong data-i18n="team.specLabel">Specialization</strong>
+            CTF devlopment, AD Exploitation, IoT hacking
+          </div>
+          <div class="operator-links">
+            <a class="op-link" href="https://www.linkedin.com/in/leyner-garzon-55a027247/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </article>
+        <article class="card operator" data-reveal>
+          <div class="operator-top">
+            <img class="operator-avatar" src="../assets/team/czx.png" alt="" width="60" height="60" loading="lazy">
+            <div>
+              <div class="operator-name">Cesar Prens</div>
+              <div class="operator-handle">@czrxplo1t </div>
+            </div>
+          </div>
+          <div class="operator-role" data-i18n="team.role.6">ROLE // Co-Founder &amp; Ethical Hacking Lead</div>
+          <div class="operator-spec">
+            <strong data-i18n="team.specLabel">Specialization</strong>
+            Web Exploitation, AD exploitation, Research
+          </div>
+          <div class="operator-links">
+            <a class="op-link" href="https://www.linkedin.com/in/cesar-prens/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </article>
         </div>
-
-        <!-- ======= MEMBER 2 ======= -->
-        <div class="server-unit" data-member="2">
-          <div class="server-front">
-            <div class="unit-id">UNIT-02 // SN:DCG-2025-002</div>
-            <div class="unit-avatar"><img src="../assets/team/mind2hex.png"></div>
-            <div class="status-indicators">
-              <div class="status-indicator"></div>
-              <div class="status-indicator"></div>
-              <div class="status-indicator activity"></div>
-            </div>
-            <div class="power-btn"></div>
-          </div>
-          <div class="server-info">
-            <div class="server-info-top">
-              <div>
-                <div class="operator-name">johan giraldo</div>
-                <div class="operator-handle">@mind2hex</div>
-                <div class="operator-role" data-i18n="team.role.2">ROLE // Co-Founder &amp; Exploit Developer Lead</div>
-              </div>
-              <div class="unit-badge">
-                <span class="uptime-label">UPTIME</span>
-                <span class="uptime-value">&#x221E;</span>
-              </div>
-            </div>
-            <div class="process-output">
-              <div class="proc-line"><span class="proc-key">specialization: </span><span class="proc-value">Web Exploitation, AppSec, Exploit Developer, RF hacking</span></div>
-              <div class="proc-line"><span class="proc-key">certifications: </span><span class="proc-value">BSCP, CASA, [REDACTED]</span></div>
-              <div class="proc-line"><span class="proc-key">status:         </span><span class="proc-value">ACTIVE</span></div>
-              <div class="proc-line"><span class="proc-key">clearance:      </span><span class="proc-value">FOUNDER // UNRESTRICTED</span></div>
-            </div>
-            <div class="skill-bars">
-              <div class="skill-bar-row">
-                <span class="skill-label">Web Exploit</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-              <div class="skill-bar-row">
-                <span class="skill-label">AppSec</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-            </div>
-            <div class="operator-links">
-              <a href="https://github.com/mind2hex" class="op-link">Github</a>
-              <a href="https://www.linkedin.com/in/mind2hex/" class="op-link">LinkedIn</a>
-            </div>
-          </div>
+        <div class="stats" style="margin-top: var(--s6)">
+        <div class="stat" data-reveal>
+          <span class="stat-value">6</span>
+          <span class="stat-label" data-i18n="team.stat.1">Founding Operators</span>
         </div>
-
-        <!-- ======= MEMBER 3 ======= -->
-        <div class="server-unit" data-member="3">
-          <div class="server-front">
-            <div class="unit-id">UNIT-03 // SN:DCG-2025-003</div>
-            <div class="unit-avatar"><img src="../assets/team/r00tb.png"></div>
-            <div class="status-indicators">
-              <div class="status-indicator activity"></div>
-              <div class="status-indicator"></div>
-              <div class="status-indicator"></div>
-            </div>
-            <div class="power-btn"></div>
-          </div>
-          <div class="server-info">
-            <div class="server-info-top">
-              <div>
-                <div class="operator-name">Eduardo Ferguson</div>
-                <div class="operator-handle">@r00tbr4k3r</div>
-                <div class="operator-role" data-i18n="team.role.3">ROLE // Co-Founder &amp; Technical Lead</div>
-              </div>
-              <div class="unit-badge">
-                <span class="uptime-label">UPTIME</span>
-                <span class="uptime-value">&#x221E;</span>
-              </div>
-            </div>
-            <div class="process-output">
-              <div class="proc-line"><span class="proc-key">specialization: </span><span class="proc-value">Web Explitation, AppSec, Forensics</span></div>
-              <div class="proc-line"><span class="proc-key">certifications: </span><span class="proc-value">BSCP, WAHS, C-AI/MLPen, CASA</span></div>
-              <div class="proc-line"><span class="proc-key">status:         </span><span class="proc-value">ACTIVE</span></div>
-              <div class="proc-line"><span class="proc-key">clearance:      </span><span class="proc-value">FOUNDER // UNRESTRICTED</span></div>
-            </div>
-            <div class="skill-bars">
-              <div class="skill-bar-row">
-                <span class="skill-label">AppSec</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-              <div class="skill-bar-row">
-                <span class="skill-label">Forensics</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-            </div>
-            <div class="operator-links">
-              <a href="https://github.com/R00tbre4ck3r" class="op-link">Github</a>
-              <a href="https://www.linkedin.com/in/eduardo-ferguson/" class="op-link">LinkedIn</a>
-            </div>
-          </div>
+        <div class="stat" data-reveal>
+          <span class="stat-value">100%</span>
+          <span class="stat-label" data-i18n="team.stat.2">Uptime Since Day 1</span>
         </div>
-
-        <!-- ======= MEMBER 4 ======= -->
-        <div class="server-unit" data-member="4">
-          <div class="server-front">
-            <div class="unit-id">UNIT-04 // SN:DCG-2025-004</div>
-            <div class="unit-avatar"><img src="../assets/team/thr3sh.png"></div>
-            <div class="status-indicators">
-              <div class="status-indicator"></div>
-              <div class="status-indicator activity"></div>
-              <div class="status-indicator activity"></div>
-            </div>
-            <div class="power-btn"></div>
-          </div>
-          <div class="server-info">
-            <div class="server-info-top">
-              <div>
-                <div class="operator-name">Orinson Moreno</div>
-                <div class="operator-handle">@thr3sh</div>
-                <div class="operator-role" data-i18n="team.role.4">ROLE // Co-Founder &amp; Threat Intel Lead</div>
-              </div>
-              <div class="unit-badge">
-                <span class="uptime-label">UPTIME</span>
-                <span class="uptime-value">&#x221E;</span>
-              </div>
-            </div>
-            <div class="process-output">
-              <div class="proc-line"><span class="proc-key">specialization: </span><span class="proc-value">Threat Emulation, OSINT, EDR Evasion</span></div>
-              <div class="proc-line"><span class="proc-key">certifications: </span><span class="proc-value">eJPT, CCFA, Darktrace Certified</span></div>
-              <div class="proc-line"><span class="proc-key">status:         </span><span class="proc-value">ACTIVE</span></div>
-              <div class="proc-line"><span class="proc-key">clearance:      </span><span class="proc-value">FOUNDER // UNRESTRICTED</span></div>
-            </div>
-            <div class="skill-bars">
-              <div class="skill-bar-row">
-                <span class="skill-label">EDR Evasion</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 91%"></div></div>
-                <span class="skill-pct">91%</span>
-              </div>
-              <div class="skill-bar-row">
-                <span class="skill-label">OSINT</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 85%"></div></div>
-                <span class="skill-pct">85%</span>
-              </div>
-            </div>
-            <div class="operator-links">
-              <a href="https://www.linkedin.com/in/orinson-moreno/" class="op-link">LinkedIn</a>
-            </div>
-          </div>
+        <div class="stat" data-reveal>
+          <span class="stat-value">0</span>
+          <span class="stat-label" data-i18n="team.stat.3">Compromises Suffered</span>
         </div>
-
-        <!-- ======= MEMBER 5 ======= -->
-        <div class="server-unit" data-member="5">
-          <div class="server-front">
-            <div class="unit-id">UNIT-05 // SN:DCG-2025-005</div>
-            <div class="unit-avatar"><img src="../assets/team/gh0st.png"></div>
-            <div class="status-indicators">
-              <div class="status-indicator"></div>
-              <div class="status-indicator"></div>
-              <div class="status-indicator"></div>
-            </div>
-            <div class="power-btn"></div>
-          </div>
-          <div class="server-info">
-            <div class="server-info-top">
-              <div>
-                <div class="operator-name">Leyner Garzón</div>
-                <div class="operator-handle">@crossmark</div>
-                <div class="operator-role" data-i18n="team.role.5">ROLE // Co-Founder &amp; Offensive Security lead</div>
-              </div>
-              <div class="unit-badge">
-                <span class="uptime-label">UPTIME</span>
-                <span class="uptime-value">&#x221E;</span>
-              </div>
-            </div>
-            <div class="process-output">
-              <div class="proc-line"><span class="proc-key">specialization: </span><span class="proc-value">CTF devlopment, AD Exploitation, IoT hacking</span></div>
-              <div class="proc-line"><span class="proc-key">certifications: </span><span class="proc-value">eJPT, eWPT, eCPPT, CRTA</span></div>
-              <div class="proc-line"><span class="proc-key">status:         </span><span class="proc-value">ACTIVE</span></div>
-              <div class="proc-line"><span class="proc-key">clearance:      </span><span class="proc-value">FOUNDER // UNRESTRICTED</span></div>
-            </div>
-            <div class="skill-bars">
-              <div class="skill-bar-row">
-                <span class="skill-label">AD Exploitation</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-              <div class="skill-bar-row">
-                <span class="skill-label">CTF development</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-            </div>
-            <div class="operator-links">
-              <a href="https://www.linkedin.com/in/leyner-garzon-55a027247/" class="op-link">LinkedIn</a>
-            </div>
-          </div>
+        <div class="stat" data-reveal>
+          <span class="stat-value">∞</span>
+          <span class="stat-label" data-i18n="team.stat.4">Systems Compromised</span>
         </div>
-
-        <!-- ======= MEMBER 6 ======= -->
-        <div class="server-unit" data-member="4">
-          <div class="server-front">
-            <div class="unit-id">UNIT-06 // SN:DCG-2025-004</div>
-            <div class="unit-avatar"><img src="../assets/team/czx.png"></div>
-            <div class="status-indicators">
-              <div class="status-indicator"></div>
-              <div class="status-indicator activity"></div>
-              <div class="status-indicator activity"></div>
-            </div>
-            <div class="power-btn"></div>
-          </div>
-          <div class="server-info">
-            <div class="server-info-top">
-              <div>
-                <div class="operator-name">Cesar Prens</div>
-                <div class="operator-handle">@czrxplo1t </div>
-                <div class="operator-role" data-i18n="team.role.6">ROLE // Co-Founder &amp; Ethical Hacking Lead</div>
-              </div>
-              <div class="unit-badge">
-                <span class="uptime-label">UPTIME</span>
-                <span class="uptime-value">&#x221E;</span>
-              </div>
-            </div>
-            <div class="process-output">
-              <div class="proc-line"><span class="proc-key">specialization: </span><span class="proc-value">Web Exploitation, AD exploitation, Research</span></div>
-              <div class="proc-line"><span class="proc-key">certifications: </span><span class="proc-value">eJPT, eWPT, CAP</span></div>
-              <div class="proc-line"><span class="proc-key">status:         </span><span class="proc-value">ACTIVE</span></div>
-              <div class="proc-line"><span class="proc-key">clearance:      </span><span class="proc-value">FOUNDER // UNRESTRICTED</span></div>
-            </div>
-            <div class="skill-bars">
-              <div class="skill-bar-row">
-                <span class="skill-label">Research</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-              <div class="skill-bar-row">
-                <span class="skill-label">Ethical Hacking</span>
-                <div class="skill-track"><div class="skill-fill" style="--skill-width: 100%"></div></div>
-                <span class="skill-pct">100%</span>
-              </div>
-            </div>
-            <div class="operator-links">
-              <a href="https://www.linkedin.com/in/cesar-prens/" class="op-link">LinkedIn</a>
-            </div>
-          </div>
         </div>
-
-      </div><!-- end .server-rack -->
-
-      <div class="rack-footer">[ DCG-PANAMA // RACK-01 // 6U // FOUNDING CLUSTER // EST. 2025 ]</div>
-
-    </div><!-- end .rack-room -->
-
-    <!-- System Log Feed -->
-    <div class="syslog-section">
-      <div class="syslog-header" data-i18n="team.syslogHeader">OPERATOR ACTIVITY FEED</div>
-      <div class="syslog-box">
-        <div class="syslog-feed" id="syslog-feed"></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">DCG Panama</div>
+        <p class="footer-tag" data-i18n="footer.tag.apart">We do not ask for permission to understand systems. We take them apart.</p>
+      </div>
+      <div class="footer-meta">
+        <span data-i18n="footer.rights">© 2026. All rights reserved. Developed by:</span>
+        <a href="https://zerotrustoffsec.com" target="_blank" rel="noopener noreferrer">ZeroTrustOffsec.com</a>
       </div>
     </div>
-
-    <!-- Team Stats -->
-    <div class="team-stats">
-      <div class="team-stat">
-        <span class="ts-value">6</span>
-        <span class="ts-label" data-i18n="team.stat.1">Founding Operators</span>
-      </div>
-      <div class="team-stat">
-        <span class="ts-value">100%</span>
-        <span class="ts-label" data-i18n="team.stat.2">Uptime Since Day 1</span>
-      </div>
-      <div class="team-stat">
-        <span class="ts-value">0</span>
-        <span class="ts-label" data-i18n="team.stat.3">Compromises Suffered</span>
-      </div>
-      <div class="team-stat">
-        <span class="ts-value">&#x221E;</span>
-        <span class="ts-label" data-i18n="team.stat.4">Systems Compromised</span>
-      </div>
-    </div>
-
-  </div><!-- end .page-content -->
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-line"><span class="green">DCG Panama</span> &mdash; DEF CON Group Panama</div>
-    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7" data-i18n="footer.tag.apart">We do not ask for permission to understand systems. We take them apart.</div>
-    <div class="footer-line"><span data-i18n="footer.rights">&copy; 2026. All rights reserved. Developed by:</span> <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
   </footer>
-
   <script src="../js/lang.js"></script>
   <script src="../js/i18n.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="../js/team.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

@@ -18,6 +18,8 @@ window.DCG_TRANSLATIONS = {
 
   es: {
 
+    a11y: { skip: 'Saltar al contenido' },
+
     nav: {
       home: 'Inicio',
       manifesto: 'Manifiesto',
@@ -60,6 +62,12 @@ window.DCG_TRANSLATIONS = {
 
     // ── Home ──────────────────────────────────────
     home: {
+      ctaEvents: 'Próximos eventos',
+      ctaManifesto: 'Leer el manifiesto',
+      ctaSponsor: 'Patrocínanos',
+      focusEyebrow: 'Capacidades',
+      focusHeading: 'Lo que hacemos de verdad',
+      focusIntro: 'Doce disciplinas, practicadas con las manos. Nada de teoría por la teoría.',
       tagline: 'Aquí No Hay Espectadores',
       sub: 'El Primer DEF CON Group de Panamá — Comunidad de Offensive Security',
       stats: { 1: 'Áreas de Enfoque', 2: 'Valores Fundamentales', 3: 'Objetivos Centrales', 4: 'Capítulo' },
@@ -85,6 +93,10 @@ window.DCG_TRANSLATIONS = {
              desc: 'Toma completa de la empresa. Escalada de privilegios, robo de credenciales y compromiso total del dominio.' },
         10: { title: 'APPSEC',
               desc: 'Romper aplicaciones desde su núcleo. Inyección, abuso de lógica, bypass de autenticación y explotación de fallas de código hasta el compromiso total.' },
+        11: { title: 'Social Engineering',
+              desc: 'Atacar la capa humana. Pretexting, infraestructura de phishing e impersonación física para saltar controles que ningún exploit alcanza.' },
+        12: { title: 'Cloud Hacking',
+              desc: 'Romper infraestructura gestionada. Abuso de identidades, IAM mal configurado, metadata services expuestos y movimiento lateral entre tenants.' },
       },
       cta: {
         text: 'O sigues siendo ordinario. O te conviertes en otra cosa.',
@@ -94,6 +106,10 @@ window.DCG_TRANSLATIONS = {
 
     // ── Events ────────────────────────────────────
     events: {
+      calendarEyebrow: 'Calendario',
+      calendarHeading: 'Próximos eventos',
+      calendarIntro: 'Regístrate desde nuestro calendario de Luma. Las sesiones nuevas se anuncian ahí primero.',
+      calendarTitle: 'Calendario de DCG Panamá',
       title: '// Eventos',
       subtitle: 'Meetups, CTFs, Workshops y Operaciones',
       status: 'Sistema Activo — Monitoreando eventos',
@@ -112,12 +128,17 @@ window.DCG_TRANSLATIONS = {
 
     // ── Snapshots ─────────────────────────────────
     snap: {
+      heading: 'Snapshots de los eventos',
+      lead: 'Fotografías de nuestros meetups.',
       title: '// Snapshots',
       intro: 'Galerías de eventos indexadas automáticamente desde',
     },
 
     // ── Video hub ─────────────────────────────────
     vid: {
+      heading: 'Charlas y grabaciones',
+      intro: 'Sesiones grabadas en nuestros meetups.',
+      searchLabel: 'Buscar charlas',
       label: '// FLUJO DE SEÑAL',
       searchPlaceholder: 'BUSCAR TRANSMISIONES...',
       scan: '[ESCANEAR]',
@@ -129,12 +150,18 @@ window.DCG_TRANSLATIONS = {
 
     // ── About / terminal chrome ───────────────────
     about: {
+      eyebrow: 'Nosotros',
+      heading: 'Explora el grupo desde una shell',
+      intro: 'Todo sobre DCG Panamá vive en este filesystem. Empieza con ls, muévete con cd, lee con cat.',
+      inputLabel: 'Comando de terminal',
       inputPlaceholder: 'escribe un comando...',
       helpHint: 'Escribe "help" para ver los comandos',
     },
 
     // ── Team ──────────────────────────────────────
     team: {
+      eyebrow: 'El equipo',
+      specLabel: 'Especialización',
       h1a: 'Operadores',
       h1b: 'Fundadores',
       sub: 'Las personas que construyeron esto desde cero.',
@@ -153,6 +180,13 @@ window.DCG_TRANSLATIONS = {
 
     // ── Sponsors ──────────────────────────────────
     spon: {
+      briefHead: {
+        1: 'Quiénes somos',
+        2: 'Por qué importa',
+        3: 'Por qué las empresas patrocinan',
+      },
+      briefWhy: 'Formamos mentes que piensan como atacantes — porque el defensor que no entiende el tradecraft ofensivo está ciego.',
+      gainsHeading: 'Qué obtienes al patrocinar',
       h1a: 'Nuestros',
       h1b: 'Patrocinadores',
       sub: 'Las organizaciones que invierten en capacidad ofensiva real.',
@@ -439,6 +473,7 @@ window.DCG_TRANSLATIONS = {
       // (">>", "━", "  >", "[...]"), así que la estructura se conserva tal cual.
       // Los nombres de comando y los oficios se quedan en inglés.
       term: {
+        notFound: "Escribe 'help' para ver los comandos disponibles.",
         help: {
           title: 'Comandos disponibles:',
           ls: 'Listar el contenido del directorio',
@@ -533,6 +568,8 @@ Nuestra visión es crear una cultura hacker autosostenible donde el conocimiento
   > Threat emulation y adversary simulation
   > Ataques a Active Directory
   > APPSEC
+  > Social engineering
+  > Cloud hacking
 \\
 [OBJETIVO 3] PROMOVER EL APRENDIZAJE PRÁCTICO
   Fomentar la experimentación real a través de:
@@ -620,7 +657,13 @@ Pensar como atacantes reales. Reproducimos tradecraft de actores estatales, TTPs
 Toma completa de la empresa. Escalada de privilegios, robo de credenciales y compromiso total del dominio.
 \\
 [10] APPSEC
-Romper aplicaciones desde su núcleo. Inyección, abuso de lógica, bypass de autenticación y explotación de fallas de código hasta el compromiso total.`,
+Romper aplicaciones desde su núcleo. Inyección, abuso de lógica, bypass de autenticación y explotación de fallas de código hasta el compromiso total.
+\\
+[11] Social Engineering
+Atacar la capa humana. Pretexting, infraestructura de phishing e impersonación física para saltar controles que ningún exploit alcanza.
+\\
+[12] Cloud Hacking
+Romper infraestructura gestionada. Abuso de identidades, IAM mal configurado, metadata services expuestos y movimiento lateral entre tenants.`,
 
         activities: `>> ACTIVIDADES Y OPERACIONES
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

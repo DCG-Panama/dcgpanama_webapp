@@ -4,62 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="page.snapshots.title">DCG Panama - Snapshots</title>
-  <meta name="description" data-i18n-attrs="content:page.snapshots.desc" content="DEF CON Group Panama - Event snapshots and gallery archives.">
+  <meta name="description" content="DEF CON Group Panama - Event snapshots and gallery archives." data-i18n-attrs="content:page.snapshots.desc">
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/snapshots.css">
+  <link rel="stylesheet" href="../css/pages.css">
   <link rel="icon" type="image/png" href="../assets/img/dcgpanamalogonobg.png">
 </head>
 <body>
-  <div class="bg-image"></div>
-  <canvas id="matrix-canvas"></canvas>
-  <div class="grid-bg"></div>
-  <div class="scanlines"></div>
-  <div class="noise-overlay"></div>
-  <nav class="nav-bar">
-    <a href="../index.html" class="nav-brand">
-      <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
-      <span>DCG Panama</span>
-    </a>
-    <button class="nav-toggle" aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">[=]</button>
-    <ul class="nav-links">
-      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
-      <li><a href="manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
-      <li><a href="about.html" data-i18n="nav.about">About</a></li>
-      <li><a href="events.html" data-i18n="nav.events">Events</a></li>
-      <li><a href="sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
-      <li><a href="team.html" data-i18n="nav.team">Team</a></li>
-      <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle active" type="button" aria-expanded="true" data-i18n="nav.media">Media</button>
-        <ul class="nav-dropdown-menu">
-          <li><a href="videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
-          <li><a href="snapshots.html" class="active" data-i18n="nav.snapshots">Snapshots</a></li>
-        </ul>
-      </li>
-      <li class="nav-lang">
-        <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <span class="lang-sep" aria-hidden="true">|</span>
-          <button type="button" class="lang-btn" data-lang="es">ES</button>
-        </div>
-      </li>
-    </ul>
-  </nav>
-  <div class="page-content snapshots-page">
-    <div class="snapshots-header">
-      <h1 class="glitch" data-text="// Snapshots" data-i18n="snap.title" data-i18n-attrs="data-text:snap.title">// Snapshots</h1>
-      <p><span data-i18n="snap.intro">Auto-indexed event galleries from</span> <code>/assets/events/&lt;event-name&gt;</code>.</p>
-      <div class="snapshots-meta" id="gallery-meta">Scanning event archives...</div>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
+        <span>DCG Panama</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../pages/manifesto.html" data-i18n="nav.manifesto">Manifesto</a></li>
+        <li><a href="../pages/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../pages/events.html" data-i18n="nav.events">Events</a></li>
+        <li><a href="../pages/sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
+        <li><a href="../pages/team.html" data-i18n="nav.team">Team</a></li>
+        <li><a href="../pages/videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
+        <li><a href="../pages/snapshots.html" class="active" aria-current="page" data-i18n="nav.snapshots">Snapshots</a></li>
+      </ul>
+      <div class="nav-sep" aria-hidden="true"></div>
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links"
+              aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">≡</button>
     </div>
-    <div class="events-gallery" id="events-gallery"></div>
-  </div>
-  <footer class="site-footer">
-    <div class="footer-line"><span class="green">DCG Panama</span> - DEF CON Group Panama</div>
-    <div class="footer-line" style="margin-top:0.5rem;opacity:0.7" data-i18n="footer.tag.apart">We do not ask for permission to understand systems. We take them apart.</div>
-    <div class="footer-line"><span data-i18n="footer.rights">&copy; 2026. All rights reserved. Developed by:</span> <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
+  </nav>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow" id="gallery-meta"></p>
+        <h1 data-i18n="snap.heading">Event snapshots</h1>
+        <div class="rule-accent"></div>
+        <p class="lead" data-i18n="snap.lead">Photographs from our meetups.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap" id="galleries"></div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">DCG Panama</div>
+        <p class="footer-tag" data-i18n="footer.tag.apart">We do not ask for permission to understand systems. We take them apart.</p>
+      </div>
+      <div class="footer-meta">
+        <span data-i18n="footer.rights">© 2026. All rights reserved. Developed by:</span>
+        <a href="https://zerotrustoffsec.com" target="_blank" rel="noopener noreferrer">ZeroTrustOffsec.com</a>
+      </div>
+    </div>
   </footer>
   <script src="../js/lang.js"></script>
   <script src="../js/i18n.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="../js/snapshots.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/gallery.js"></script>
 </body>
 </html>

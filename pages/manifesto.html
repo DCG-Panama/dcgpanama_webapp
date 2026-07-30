@@ -5,324 +5,215 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="page.manifesto.title">DCG Panama — Manifesto</title>
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../css/manifesto.css">
+  <link rel="stylesheet" href="../css/pages.css">
   <link rel="icon" type="image/png" href="../assets/img/dcgpanamalogonobg.png">
 </head>
 <body>
-
-  <div class="bg-image"></div>
-  <canvas id="matrix-canvas"></canvas>
-  <div class="grid-bg"></div>
-  <div class="scanlines"></div>
-  <div class="noise-overlay"></div>
-
-  <!-- Navigation -->
-  <nav class="nav-bar">
-    <a href="../index.html" class="nav-brand">
-      <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
-      <span>DCG Panama</span>
-    </a>
-    <button class="nav-toggle" aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">[=]</button>
-    <ul class="nav-links">
-      <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
-      <li><a href="manifesto.html" class="active" data-i18n="nav.manifesto">Manifesto</a></li>
-      <li><a href="about.html" data-i18n="nav.about">About</a></li>
-      <li><a href="events.html" data-i18n="nav.events">Events</a></li>
-      <li><a href="sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
-      <li><a href="team.html" data-i18n="nav.team">Team</a></li>
-      <li class="nav-dropdown">
-        <button class="nav-dropdown-toggle" type="button" aria-expanded="false" data-i18n="nav.media">Media</button>
-        <ul class="nav-dropdown-menu">
-          <li><a href="videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
-          <li><a href="snapshots.html" data-i18n="nav.snapshots">Snapshots</a></li>
-        </ul>
-      </li>
-      <li class="nav-lang">
-        <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
-          <span class="lang-sep" aria-hidden="true">|</span>
-          <button type="button" class="lang-btn" data-lang="es">ES</button>
-        </div>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Page Content -->
-  <div class="page-content manifesto-page">
-
-    <div class="tv-set">
-      <!-- TV Body -->
-      <div class="tv-body">
-        <!-- Screen -->
-        <div class="tv-screen-wrapper">
-          <div class="tv-screen">
-            <div class="tv-scanlines"></div>
-            <div class="tv-sync-line"></div>
-
-            <div class="manifesto-content">
-              <div class="manifesto-scroller">
-
-                <div class="manifesto-line title-line" data-i18n="mf.1">DCG PANAMA — MANIFESTO</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.2">There are no spectators here…</div>
-                <div class="manifesto-line dim" data-i18n="mf.3">Read this carefully. This is not for everyone.</div>
-                <div class="manifesto-line">&nbsp;</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.4">The world runs on systems built by people</div>
-                <div class="manifesto-line" data-i18n="mf.5">who assume no one is looking.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.6">We are the ones looking.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.7">We are the ones who refuse to trust surfaces.</div>
-                <div class="manifesto-line" data-i18n="mf.8">We are the ones who refuse to trust claims.</div>
-                <div class="manifesto-line" data-i18n="mf.9">We are the ones who refuse to trust security</div>
-                <div class="manifesto-line" data-i18n="mf.10">that has not been broken and proven.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.11">We do not accept illusion.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.12">We verify.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.13">Every system leaks truth under pressure.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.14">Code leaks.</div>
-                <div class="manifesto-line" data-i18n="mf.15">Hardware leaks.</div>
-                <div class="manifesto-line" data-i18n="mf.16">Networks leak.</div>
-                <div class="manifesto-line" data-i18n="mf.17">People leak.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line dim" data-i18n="mf.18">Most never notice.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.19">We notice.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.20">We force systems to reveal themselves.</div>
-                <div class="manifesto-line" data-i18n="mf.21">We strip away abstraction.</div>
-                <div class="manifesto-line" data-i18n="mf.22">We expose trust boundaries.</div>
-                <div class="manifesto-line" data-i18n="mf.23">We map control.</div>
-                <div class="manifesto-line" data-i18n="mf.24">We map weakness.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.25">We do not guess.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.26">We extract.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.27">This is not a club.</div>
-                <div class="manifesto-line" data-i18n="mf.28">This is not a social group.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.29">This is an operational environment.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.30">You are not here to consume.</div>
-                <div class="manifesto-line" data-i18n="mf.31">You are here to transform.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line dim" data-i18n="mf.32">If you remain passive, you will be left behind.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.33">We do not measure skill in words.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.34">We measure skill in artifacts.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.35">Code written.</div>
-                <div class="manifesto-line" data-i18n="mf.36">Systems broken.</div>
-                <div class="manifesto-line" data-i18n="mf.37">Controls bypassed.</div>
-                <div class="manifesto-line" data-i18n="mf.38">Tools created.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.39">Talk is irrelevant.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.40">Capability is everything.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line emphasis" data-i18n="mf.41">Comfort is a slow death.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.42">Comfort creates defenders who cannot defend.</div>
-                <div class="manifesto-line" data-i18n="mf.43">Comfort creates engineers who cannot secure.</div>
-                <div class="manifesto-line" data-i18n="mf.44">Comfort creates operators who cannot operate.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.45">We reject comfort.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.46">We seek resistance.</div>
-                <div class="manifesto-line" data-i18n="mf.47">We seek complexity.</div>
-                <div class="manifesto-line" data-i18n="mf.48">We seek systems designed to stop us.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line dim" data-i18n="mf.49">Because those systems teach the most.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.50">Failure is not defeat.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.51">Failure is signal.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.52">Every failed exploit reveals structure.</div>
-                <div class="manifesto-line" data-i18n="mf.53">Every denied action reveals control logic.</div>
-                <div class="manifesto-line" data-i18n="mf.54">Every crash reveals truth.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.55">We do not fear failure.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.56">We weaponize it.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.57">We do not depend on tools.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.58">Tools are disposable.</div>
-                <div class="manifesto-line" data-i18n="mf.59">Tools are temporary.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.60">Understanding is permanent.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.61">When tools fail, we do not stop.</div>
-                <div class="manifesto-line" data-i18n="mf.62">We build new ones.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line emphasis" data-i18n="mf.63">Ego is a liability.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.64">The system does not care who you are.</div>
-                <div class="manifesto-line" data-i18n="mf.65">The system does not care what you believe.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.66">The system only responds to capability.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.67">Stay precise.</div>
-                <div class="manifesto-line" data-i18n="mf.68">Stay quiet.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.69">Stay dangerous.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.70">We observe everything.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.71">We trust nothing.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.72">Trust is an attack surface.</div>
-                <div class="manifesto-line" data-i18n="mf.73">Assumptions are vulnerabilities.</div>
-                <div class="manifesto-line" data-i18n="mf.74">Certainty is weakness.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.75">Verification is survival.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.76">We do not announce ourselves.</div>
-                <div class="manifesto-line" data-i18n="mf.77">We do not perform.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.78">We operate.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.79">Quietly.</div>
-                <div class="manifesto-line" data-i18n="mf.80">Deliberately.</div>
-                <div class="manifesto-line" data-i18n="mf.81">Precisely.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.82">Presence without noise.</div>
-                <div class="manifesto-line" data-i18n="mf.83">Capability without advertisement.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.84">We are building operators.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.85">Not spectators.</div>
-                <div class="manifesto-line" data-i18n="mf.86">Not consumers.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.87">Operators.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.88">Individuals capable of understanding</div>
-                <div class="manifesto-line" data-i18n="mf.89">complex systems at their lowest level.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.90">Individuals capable of breaking assumptions</div>
-                <div class="manifesto-line" data-i18n="mf.91">others depend on.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.92">Individuals capable of seeing</div>
-                <div class="manifesto-line" data-i18n="mf.93">what others cannot.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line emphasis" data-i18n="mf.94">Understand This Clearly</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.95">We are not hacktivists.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.96">We do not operate with political motivation.</div>
-                <div class="manifesto-line" data-i18n="mf.97">We do not target organizations unlawfully.</div>
-                <div class="manifesto-line" data-i18n="mf.98">We do not engage in illegal activity.</div>
-                <div class="manifesto-line" data-i18n="mf.99">We do not destroy.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.100">We study.</div>
-                <div class="manifesto-line" data-i18n="mf.101">We test.</div>
-                <div class="manifesto-line" data-i18n="mf.102">We simulate.</div>
-                <div class="manifesto-line" data-i18n="mf.103">We improve.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line dim" data-i18n="mf.104">Everything we do exists to develop capability,</div>
-                <div class="manifesto-line dim" data-i18n="mf.105">knowledge, and discipline within ethical</div>
-                <div class="manifesto-line dim" data-i18n="mf.106">and legal boundaries.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.107">We do not seek chaos.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.108">We seek understanding.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line emphasis" data-i18n="mf.109">This is a filter.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.110">Not everyone belongs here.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line dim" data-i18n="mf.111">Some will observe and leave.</div>
-                <div class="manifesto-line dim" data-i18n="mf.112">Some will hesitate and stagnate.</div>
-                <div class="manifesto-line dim" data-i18n="mf.113">Some will refuse to confront their own limitations.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line dim" data-i18n="mf.114">They will disappear.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.115">A few will remain.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.116">Those who remain will evolve.</div>
-
-                <div class="manifesto-line separator">═══════════════════════════════════</div>
-
-                <div class="manifesto-line" data-i18n="mf.117">You are now at the edge.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.118">What happens next is your decision.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line" data-i18n="mf.119">You either remain ordinary.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.120">Or you become something else.</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line">&nbsp;</div>
-
-                <div class="manifesto-line title-line" data-i18n="mf.121">We are DCG Panama.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.122">We do not ask for permission to understand systems.</div>
-                <div class="manifesto-line emphasis" data-i18n="mf.123">We take them apart.</div>
-
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line">&nbsp;</div>
-                <div class="manifesto-line">&nbsp;</div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Controls -->
-        <div class="tv-controls">
-          <div class="tv-controls-left">
-            <div class="tv-knob"></div>
-            <div class="tv-knob"></div>
-            <span class="tv-brand">DCG PANAMA</span>
-          </div>
-          <div class="tv-controls-right">
-            <button class="toggle-btn">⏸ Pause</button>
-            <div class="tv-led"></div>
-          </div>
-        </div>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../assets/img/dcgpanamalogonobg.png" alt="DCG Panama" width="192" height="128">
+        <span>DCG Panama</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="../pages/manifesto.html" class="active" aria-current="page" data-i18n="nav.manifesto">Manifesto</a></li>
+        <li><a href="../pages/about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="../pages/events.html" data-i18n="nav.events">Events</a></li>
+        <li><a href="../pages/sponsors.html" data-i18n="nav.sponsors">Sponsors</a></li>
+        <li><a href="../pages/team.html" data-i18n="nav.team">Team</a></li>
+        <li><a href="../pages/videohub.html" data-i18n="nav.vidhub">VidHub</a></li>
+        <li><a href="../pages/snapshots.html" data-i18n="nav.snapshots">Snapshots</a></li>
+      </ul>
+      <div class="nav-sep" aria-hidden="true"></div>
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-attrs="aria-label:nav.langGroup">
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
       </div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links"
+              aria-label="Toggle menu" data-i18n-attrs="aria-label:nav.toggleMenu">≡</button>
+    </div>
+  </nav>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow" data-i18n="mf.1">DCG PANAMA — MANIFESTO</p>
+        <h1 data-i18n="mf.2">There are no spectators here…</h1>
+        <div class="rule-accent"></div>
+        <p class="lead quiet" data-i18n="mf.3">Read this carefully. This is not for everyone.</p>
+      </div>
+    </section>
 
-      <!-- TV Legs -->
-      <div class="tv-legs">
-        <div class="tv-leg"></div>
-        <div class="tv-leg"></div>
+    <div class="wrap">
+      <div class="manifesto">
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.4">The world runs on systems built by people</p>
+          <p data-i18n="mf.5">who assume no one is looking.</p>
+          <p class="key" data-i18n="mf.6">We are the ones looking.</p>
+          <p data-i18n="mf.7">We are the ones who refuse to trust surfaces.</p>
+          <p data-i18n="mf.8">We are the ones who refuse to trust claims.</p>
+          <p data-i18n="mf.9">We are the ones who refuse to trust security</p>
+          <p data-i18n="mf.10">that has not been broken and proven.</p>
+          <p data-i18n="mf.11">We do not accept illusion.</p>
+          <p class="key" data-i18n="mf.12">We verify.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.13">Every system leaks truth under pressure.</p>
+          <p data-i18n="mf.14">Code leaks.</p>
+          <p data-i18n="mf.15">Hardware leaks.</p>
+          <p data-i18n="mf.16">Networks leak.</p>
+          <p data-i18n="mf.17">People leak.</p>
+          <p class="quiet" data-i18n="mf.18">Most never notice.</p>
+          <p class="key" data-i18n="mf.19">We notice.</p>
+          <p data-i18n="mf.20">We force systems to reveal themselves.</p>
+          <p data-i18n="mf.21">We strip away abstraction.</p>
+          <p data-i18n="mf.22">We expose trust boundaries.</p>
+          <p data-i18n="mf.23">We map control.</p>
+          <p data-i18n="mf.24">We map weakness.</p>
+          <p data-i18n="mf.25">We do not guess.</p>
+          <p class="key" data-i18n="mf.26">We extract.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.27">This is not a club.</p>
+          <p data-i18n="mf.28">This is not a social group.</p>
+          <p class="key" data-i18n="mf.29">This is an operational environment.</p>
+          <p data-i18n="mf.30">You are not here to consume.</p>
+          <p data-i18n="mf.31">You are here to transform.</p>
+          <p class="quiet" data-i18n="mf.32">If you remain passive, you will be left behind.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.33">We do not measure skill in words.</p>
+          <p class="key" data-i18n="mf.34">We measure skill in artifacts.</p>
+          <p data-i18n="mf.35">Code written.</p>
+          <p data-i18n="mf.36">Systems broken.</p>
+          <p data-i18n="mf.37">Controls bypassed.</p>
+          <p data-i18n="mf.38">Tools created.</p>
+          <p data-i18n="mf.39">Talk is irrelevant.</p>
+          <p class="key" data-i18n="mf.40">Capability is everything.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p class="key" data-i18n="mf.41">Comfort is a slow death.</p>
+          <p data-i18n="mf.42">Comfort creates defenders who cannot defend.</p>
+          <p data-i18n="mf.43">Comfort creates engineers who cannot secure.</p>
+          <p data-i18n="mf.44">Comfort creates operators who cannot operate.</p>
+          <p data-i18n="mf.45">We reject comfort.</p>
+          <p data-i18n="mf.46">We seek resistance.</p>
+          <p data-i18n="mf.47">We seek complexity.</p>
+          <p data-i18n="mf.48">We seek systems designed to stop us.</p>
+          <p class="quiet" data-i18n="mf.49">Because those systems teach the most.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.50">Failure is not defeat.</p>
+          <p class="key" data-i18n="mf.51">Failure is signal.</p>
+          <p data-i18n="mf.52">Every failed exploit reveals structure.</p>
+          <p data-i18n="mf.53">Every denied action reveals control logic.</p>
+          <p data-i18n="mf.54">Every crash reveals truth.</p>
+          <p data-i18n="mf.55">We do not fear failure.</p>
+          <p class="key" data-i18n="mf.56">We weaponize it.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.57">We do not depend on tools.</p>
+          <p data-i18n="mf.58">Tools are disposable.</p>
+          <p data-i18n="mf.59">Tools are temporary.</p>
+          <p class="key" data-i18n="mf.60">Understanding is permanent.</p>
+          <p data-i18n="mf.61">When tools fail, we do not stop.</p>
+          <p data-i18n="mf.62">We build new ones.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p class="key" data-i18n="mf.63">Ego is a liability.</p>
+          <p data-i18n="mf.64">The system does not care who you are.</p>
+          <p data-i18n="mf.65">The system does not care what you believe.</p>
+          <p data-i18n="mf.66">The system only responds to capability.</p>
+          <p data-i18n="mf.67">Stay precise.</p>
+          <p data-i18n="mf.68">Stay quiet.</p>
+          <p class="key" data-i18n="mf.69">Stay dangerous.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.70">We observe everything.</p>
+          <p class="key" data-i18n="mf.71">We trust nothing.</p>
+          <p data-i18n="mf.72">Trust is an attack surface.</p>
+          <p data-i18n="mf.73">Assumptions are vulnerabilities.</p>
+          <p data-i18n="mf.74">Certainty is weakness.</p>
+          <p class="key" data-i18n="mf.75">Verification is survival.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.76">We do not announce ourselves.</p>
+          <p data-i18n="mf.77">We do not perform.</p>
+          <p class="key" data-i18n="mf.78">We operate.</p>
+          <p data-i18n="mf.79">Quietly.</p>
+          <p data-i18n="mf.80">Deliberately.</p>
+          <p data-i18n="mf.81">Precisely.</p>
+          <p data-i18n="mf.82">Presence without noise.</p>
+          <p data-i18n="mf.83">Capability without advertisement.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.84">We are building operators.</p>
+          <p data-i18n="mf.85">Not spectators.</p>
+          <p data-i18n="mf.86">Not consumers.</p>
+          <p class="key" data-i18n="mf.87">Operators.</p>
+          <p data-i18n="mf.88">Individuals capable of understanding</p>
+          <p data-i18n="mf.89">complex systems at their lowest level.</p>
+          <p data-i18n="mf.90">Individuals capable of breaking assumptions</p>
+          <p data-i18n="mf.91">others depend on.</p>
+          <p data-i18n="mf.92">Individuals capable of seeing</p>
+          <p data-i18n="mf.93">what others cannot.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p class="key" data-i18n="mf.94">Understand This Clearly</p>
+          <p data-i18n="mf.95">We are not hacktivists.</p>
+          <p data-i18n="mf.96">We do not operate with political motivation.</p>
+          <p data-i18n="mf.97">We do not target organizations unlawfully.</p>
+          <p data-i18n="mf.98">We do not engage in illegal activity.</p>
+          <p data-i18n="mf.99">We do not destroy.</p>
+          <p data-i18n="mf.100">We study.</p>
+          <p data-i18n="mf.101">We test.</p>
+          <p data-i18n="mf.102">We simulate.</p>
+          <p data-i18n="mf.103">We improve.</p>
+          <p class="quiet" data-i18n="mf.104">Everything we do exists to develop capability,</p>
+          <p class="quiet" data-i18n="mf.105">knowledge, and discipline within ethical</p>
+          <p class="quiet" data-i18n="mf.106">and legal boundaries.</p>
+          <p data-i18n="mf.107">We do not seek chaos.</p>
+          <p class="key" data-i18n="mf.108">We seek understanding.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p class="key" data-i18n="mf.109">This is a filter.</p>
+          <p data-i18n="mf.110">Not everyone belongs here.</p>
+          <p class="quiet" data-i18n="mf.111">Some will observe and leave.</p>
+          <p class="quiet" data-i18n="mf.112">Some will hesitate and stagnate.</p>
+          <p class="quiet" data-i18n="mf.113">Some will refuse to confront their own limitations.</p>
+          <p class="quiet" data-i18n="mf.114">They will disappear.</p>
+          <p data-i18n="mf.115">A few will remain.</p>
+          <p class="key" data-i18n="mf.116">Those who remain will evolve.</p>
+        </div>
+        <div class="mf-stanza" data-reveal>
+          <p data-i18n="mf.117">You are now at the edge.</p>
+          <p data-i18n="mf.118">What happens next is your decision.</p>
+          <p data-i18n="mf.119">You either remain ordinary.</p>
+          <p class="key" data-i18n="mf.120">Or you become something else.</p>
+        </div>
+        <div class="mf-close" data-reveal>
+          <p data-i18n="mf.121">We are DCG Panama.</p>
+          <p data-i18n="mf.122">We do not ask for permission to understand systems.</p>
+          <p data-i18n="mf.123">We take them apart.</p>
+        </div>
       </div>
     </div>
-
-  </div>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-line"><span class="green">DCG Panama</span> — DEF CON Group Panama</div>
-    <div class="footer-line" style="opacity:0.7" data-i18n="footer.tag.takeapart">We take them apart.</div>
-    <div class="footer-line"><span data-i18n="footer.rights">© 2026. All rights reserved. Developed by:</span> <a href="https://zerotrustoffsec.com"><span class="green">ZeroTrustOffsec.com</span></a></div>
+  </main>
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">DCG Panama</div>
+        <p class="footer-tag" data-i18n="footer.tag.takeapart">We take them apart.</p>
+      </div>
+      <div class="footer-meta">
+        <span data-i18n="footer.rights">© 2026. All rights reserved. Developed by:</span>
+        <a href="https://zerotrustoffsec.com" target="_blank" rel="noopener noreferrer">ZeroTrustOffsec.com</a>
+      </div>
+    </div>
   </footer>
-
   <script src="../js/lang.js"></script>
   <script src="../js/i18n.js"></script>
-  <script src="../js/main.js"></script>
-  <script src="../js/manifesto.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>
