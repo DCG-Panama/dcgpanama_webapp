@@ -118,6 +118,7 @@ window.DCG_TRANSLATIONS = {
       card1: { desc: 'El primer meetup del DEF CON Group de Panamá. Conocimos a la comunidad, discutimos el roadmap y conectamos con otros operadores. Aquí empezó todo.' },
       talks: 'Charlas',
       speaker: 'Ponente:',
+      speakers: 'Ponentes:',
       contact: {
         l1: '¿Quieres proponer una charla, un workshop, un evento o patrocinarnos?',
         l2: 'Esto lo construimos entre todos.',
