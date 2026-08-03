@@ -423,11 +423,12 @@
 .tile img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
-  opacity: 0.9;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.tile:hover img { transform: scale(1.04); opacity: 1; }
+/* No resting opacity: these are dim indoor photographs on a near-black page,
+   and holding them at 90% flattened what contrast they had. */
+.tile:hover img { transform: scale(1.04); }
 
 .tile-save {
   position: absolute;

@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """Generate web-sized gallery derivatives and rebuild assets/events/manifest.json.
 
-Camera originals are 4000x3000 / ~5 MB each; serving them as grid tiles cost a
-visitor ~1 GB to scroll one event. This produces two WebP renditions per photo —
-a 640px grid thumbnail and a 1920px lightbox image — and writes the full-size
-dimensions into the manifest so the lightbox can reserve space before decode.
+Camera originals are several thousand pixels wide and ~5 MB each; serving them
+as grid tiles cost a visitor ~1 GB to scroll one event. This produces two WebP
+renditions per photo — an 800px grid thumbnail and a 2560px viewer image — and
+writes the full-size dimensions into the manifest so the viewer can reserve
+space before decode.
+
+Sizes only ever shrink: an original smaller than the box is left at its own
+resolution rather than upscaled into fake detail.
 
 Re-encoding also drops EXIF: the originals carry GPS coordinates and camera
 serial data that must not ship to the browser.
@@ -26,13 +30,15 @@ try:
 except ImportError:
     sys.exit("Pillow is required: pip install --user Pillow")
 
-# Longest-edge box for each rendition. The grid renders tiles at most ~330 CSS px
-# (1320px container, minmax(220px, 1fr)), so 640 covers a 2x display. The
-# lightbox is viewport-bound, so 1920 covers a 1080p-class screen at 1x.
-THUMB_EDGE = 640
-FULL_EDGE = 1920
-THUMB_QUALITY = 72
-FULL_QUALITY = 80
+# Longest-edge box for each rendition, sized from measured render sizes rather
+# than round numbers. Grid tiles land at ~213 CSS px, so 800 still has headroom
+# on a 3x phone. The viewer is viewport-bound: a 1440 retina laptop asks for
+# ~2320 device pixels and a 2560 monitor for ~1910, so 1920 was being upscaled
+# on the first and had no margin on the second.
+THUMB_EDGE = 800
+FULL_EDGE = 2560
+THUMB_QUALITY = 78
+FULL_QUALITY = 84
 
 SOURCE_DIR = "originals"
 RENDITIONS = (("thumb", THUMB_EDGE, THUMB_QUALITY), ("full", FULL_EDGE, FULL_QUALITY))
