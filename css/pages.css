@@ -291,7 +291,65 @@
 .contact-cell a:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ── Events ────────────────────────────────── */
-.event { padding: var(--s5); }
+/* Each archived event is a native <details>: keyboard-operable and readable
+   with JavaScript off, without a modal's focus plumbing. */
+.event { padding: 0; }
+
+.event-summary {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas:
+    "meta  count chevron"
+    "title count chevron";
+  align-items: center;
+  column-gap: var(--s4);
+  padding: var(--s4) var(--s5);
+  cursor: pointer;
+  list-style: none;          /* hide the default disclosure triangle */
+}
+
+.event-summary::-webkit-details-marker { display: none; }
+
+.event-summary:hover .event-count,
+.event[open] > .event-summary .event-count { color: var(--text); }
+
+.event-summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: var(--radius);
+}
+
+.event-summary .event-meta { grid-area: meta; }
+.event-summary h3 { grid-area: title; }
+.event-count { grid-area: count; }
+
+/* Chevron drawn from two borders so it inherits colour and needs no asset. */
+.event-summary::after {
+  grid-area: chevron;
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--text-mute);
+  border-bottom: 2px solid var(--text-mute);
+  transform: translateY(-3px) rotate(45deg);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.event-summary:hover::after { border-color: var(--accent); }
+.event[open] > .event-summary::after { transform: translateY(3px) rotate(-135deg); }
+
+.event-count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  white-space: nowrap;
+  transition: color 0.22s ease;
+}
+
+.event-body { padding: 0 var(--s5) var(--s5); }
+
 .event-meta { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; }
 
 .tag {
@@ -306,10 +364,10 @@
 }
 
 .event-date { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-mute); }
-.event h3 { margin-top: var(--s3); font-size: clamp(1.2rem, 2.2vw, 1.55rem); }
-.event p { margin-top: var(--s2); color: var(--text-dim); max-width: 62ch; }
+.event h3 { margin-top: var(--s2); font-size: clamp(1.2rem, 2.2vw, 1.55rem); }
+.event p { margin-top: 0; margin-bottom: var(--s3); color: var(--text-dim); max-width: 62ch; }
 
-.talks { list-style: none; margin-top: var(--s4); border-top: 1px solid var(--line-soft); }
+.talks { list-style: none; border-top: 1px solid var(--line-soft); }
 .talks li { padding-block: var(--s3); border-bottom: 1px solid var(--line-soft); }
 .talk-title { font-size: 0.96rem; }
 .talk-speaker { font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-mute); margin-top: 3px; }
@@ -567,5 +625,18 @@ body.lb-open { overflow: hidden; }
 @media (max-width: 640px) {
   .hero { padding-top: var(--s6); }
   .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-  .event { padding: var(--s4); }
+
+  /* Too narrow for a three-column header: the count moves under the title and
+     only the chevron stays on the right. */
+  .event-summary {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "meta  chevron"
+      "title chevron"
+      "count chevron";
+    column-gap: var(--s3);
+    padding: var(--s3) var(--s4);
+  }
+  .event-count { margin-top: var(--s1); }
+  .event-body { padding: 0 var(--s4) var(--s4); }
 }

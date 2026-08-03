@@ -70,13 +70,17 @@
         <div class="section-head" data-reveal>
           <p class="eyebrow" data-i18n="events.archived">// Archived Operations</p>
         </div>
-        <article class="card event" data-reveal>
-          <div class="event-meta">
+        <details class="card event" data-reveal>
+          <summary class="event-summary">
+          <span class="event-meta">
             <span class="tag" data-i18n="events.tag.meetup">Meetup</span>
             <span class="event-date">2026-08-01 · Panama City</span>
-          </div>
-          <h3>DCG Panama Meetup #2</h3>
-          <ul class="talks">
+          </span>
+            <h3>DCG Panama Meetup #2</h3>
+            <span class="event-count">7 <span data-i18n="events.talks">Talks</span></span>
+          </summary>
+          <div class="event-body">
+            <ul class="talks">
             <li>
               <div class="talk-title">From Printer to Domain Admin - A Real-World Active Directory Takeover</div>
               <div class="talk-speaker"><span data-i18n="events.speaker">Speaker:</span> Ignacio Hernández</div>
@@ -106,15 +110,20 @@
               <div class="talk-speaker"><span data-i18n="events.speaker">Speaker:</span> D3ad-Pr3sid3nts</div>
             </li>
           </ul>
-        </article>
+          </div>
+        </details>
 
-        <article class="card event" data-reveal>
-          <div class="event-meta">
+        <details class="card event" data-reveal>
+          <summary class="event-summary">
+          <span class="event-meta">
             <span class="tag" data-i18n="events.tag.meetup">Meetup</span>
             <span class="event-date">2026-03-01 · Panama City</span>
-          </div>
-          <h3>DCG Panama Meetup #1</h3>
-          <p data-i18n="events.card1.desc">The inaugural meetup for Panama's DEF CON Group. Met the community,
+          </span>
+            <h3>DCG Panama Meetup #1</h3>
+            <span class="event-count">5 <span data-i18n="events.talks">Talks</span></span>
+          </summary>
+          <div class="event-body">
+            <p data-i18n="events.card1.desc">The inaugural meetup for Panama's DEF CON Group. Met the community,
           discussed the roadmap, and connected with fellow operators.
           This is where it started.</p>
           <ul class="talks">
@@ -139,7 +148,8 @@
               <div class="talk-speaker"><span data-i18n="events.speaker">Speaker:</span> Raul Moreno</div>
             </li>
           </ul>
-        </article>
+          </div>
+        </details>
       </div>
     </section>
 
